@@ -43,6 +43,7 @@ namespace Pticefabrica
             this.label6.Size = new System.Drawing.Size(14, 15);
             this.label6.TabIndex = 10;
             this.label6.Text = "X";
+            this.label6.Click += new System.EventHandler(this.label6_Click_1);
             // 
             // label1
             // 
