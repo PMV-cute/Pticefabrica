@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WinFormsLibrary1
+namespace WinFormsLibrary1.Entity
 {
     public class Reproductor
     {

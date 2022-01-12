@@ -1,40 +1,29 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Npgsql;
+using WinFormsLibrary1.Entity;
 
 namespace WinFormsLibrary1
 {
     public class ApplicationContext : DbContext
     {
-        public DbSet<Broyler> Broylers { get; set; }
-        //public DbSet<UPK> UPK { get; set; }
-
-        //public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
-        //{
-         //  Database.EnsureCreated();
-           //Database.Migrate();
-           //Context.AddDb(this);
-            //
-        //}
-
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public DbSet<Broyler> Broyler { get; set; }
+        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Cleaning;Username=postgres;Password=maksimka09");
+            Database.EnsureCreated();
+            Database.Migrate();
+            Context.AddDb(this);
+           
         }
+
+
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<Broyler>(entity =>
-            {
-                entity.HasKey(e => e.ID);
-                entity.Property(e => e.TypeChiсken).IsRequired();
-            });
+            modelBuilder.Entity<Broyler>().HasIndex(s => s.TypeChiсken).IsUnique();
         }
         public static DbContextOptions<ApplicationContext> GetDb()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
-            return optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Cleaning;Username=postgres;Password=maksimka09").Options;
+            return optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Pti;Username=postgres;Password=maksimka09").Options;
         }
     }
 }

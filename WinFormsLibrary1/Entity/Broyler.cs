@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 
-namespace WinFormsLibrary1
+namespace WinFormsLibrary1.Entity
 {
     public class Broyler
     {
         public int ID { get; set; }
         [Required]
-        public string TypeChiсken { get; set; }
-        
+        [MaxLength(100)] public string TypeChiсken { get; set; }
+
 
     }
 }

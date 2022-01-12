@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsLibrary1.Entity;
 using WinFormsLibrary1;
 using Npgsql;
 using Microsoft.EntityFrameworkCore;
@@ -20,32 +21,29 @@ namespace Pticefabrica
         Form f3 = new Form3();
         public Form1()
         {
-            //new ApplicationContext(ApplicationContext.GetDb());
+            new ApplicationContext(ApplicationContext.GetDb());
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(MyForm_MouseDown);
-
-
-            Broyler user1 = new Broyler { TypeChiсken = "Tom", ID = 1 };
-            Broyler user2 = new Broyler { TypeChiсken = "Alice", ID = 2 };
-            // using (ApplicationContext db = new ApplicationContext(ApplicationContext.GetDb()))
-            //{
-            //db.Broylers.AddRange(user1, user2);
-            // db.SaveChanges();
-
-            // }
-
-            //Context.Db.Broylers.Add(user1);
-            //Context.Db.SaveChanges();
-
-            using (var context = new ApplicationContext())
+            var broyler = new Broyler
             {
-                // Creates the database if not exists
-                context.Database.EnsureCreated();
-
-                context.Broylers.Add(user2);
-                // Saves changes
-                context.SaveChanges();
+                TypeChiсken = "Bro"
+            };
+            using (ApplicationContext db = new ApplicationContext(ApplicationContext.GetDb()))
+            {
+                db.Broyler.AddRange(broyler);
             }
+            //
+
+
+            //using (var context = new ApplicationContext())
+            //{
+            // Creates the database if not exists
+            //    context.Database.EnsureCreated();
+
+            //    context.Broylers.Add(user2);
+            // Saves changes
+            //    context.SaveChanges();
+            //}
         }
 
         private void Form1_Load(object sender, EventArgs e) { }
@@ -59,6 +57,13 @@ namespace Pticefabrica
         {
             string log = textBox1.Text.ToString();
             string pas = textBox2.Text.ToString();
+            var broyler = new Broyler
+            {
+                TypeChiсken = "Bro"
+            };
+            
+            //Context.Db.Broyler.Add(broyler);
+            //Context.Db.SaveChanges();
 
             ConnectionBD connect = new ConnectionBD();
             connect.OpenConn();
