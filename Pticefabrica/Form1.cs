@@ -9,7 +9,7 @@ using ApplicationContext = WinFormsLibrary1.ApplicationContext;
 namespace Pticefabrica
 {
     public partial class Form1 : Form
-    {
+    {   
         Form f2 = new Form2();
         Form f3 = new Form3();
         public Form1()
@@ -30,17 +30,16 @@ namespace Pticefabrica
         {
             string log = textBox1.Text.ToString();
             string pas = textBox2.Text.ToString();
-            var broyler = new Broyler 
-            {
-                TypeChiсken = "Broyler"
-            };
-            var CPO = new CehPererabotkiOthodov
-            {
-                NormsPererab = "132"
-            };
-            Context.Db.CehPererabotkiOthodov.Add(CPO);
-            Context.Db.Broyler.Add(broyler); // Добавление данных в бд (Оно не обязательно для создания бд в первый раз)
-            Context.Db.SaveChanges();
+            ApplicationContext context = new ApplicationContext(ApplicationContext.GetDb());
+            //ApplicationContext context = new ApplicationContext(ApplicationContext.GetDb());
+            //LogPas logPas = new LogPas
+            //{
+            //    login = "Maksim",
+            //    passaword = "1234",
+            //    role = "Admin"
+            //};
+            //context.LogPas.Add(logPas); // Добавление данных в бд (Оно не обязательно для создания бд в первый 
+            //context.SaveChanges();
 
             ConnectionBD connect = new ConnectionBD();
             connect.OpenConn();

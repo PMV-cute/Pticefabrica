@@ -7,6 +7,7 @@ namespace WinFormsLibrary1
     {
         public DbSet<Broyler> Broyler { get; set; }
         public DbSet<CehPererabotkiOthodov> CehPererabotkiOthodov { get; set; }
+        public DbSet<LogPas> LogPas { get; set; }
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
             Database.EnsureCreated();
@@ -21,7 +22,11 @@ namespace WinFormsLibrary1
         public static DbContextOptions<ApplicationContext> GetDb()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
-            return optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Pticefabricaa;Username=postgres;Password=maksimka09").Options;
+            return optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Pticefabrica;Username=postgres;Password=maksimka09").Options;
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Pticefabrica;Username=postgres;Password=maksimka09");
         }
     }
 }
