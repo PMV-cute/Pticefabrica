@@ -1,9 +1,16 @@
-﻿namespace WinFormsLibrary1.Entity
+﻿using System.ComponentModel.DataAnnotations;
+using System;
+
+namespace WinFormsLibrary1.Entity
 {
     public class Melanj
     {
-        public int Ntari;
-        public string TypeMelanga;
-        public string DateRosliva;
+        [Key]
+        [Required]
+        public int Ntari { get; set; }
+        [Required]
+        public string TypeMelanga { get; set; }
+        [Required]
+        public DateTime DateRosliva { get; set; }
     }
 }

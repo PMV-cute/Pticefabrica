@@ -34,6 +34,7 @@ namespace Pticefabrica
             string pas = textBox2.Text.ToString();
             
             ApplicationContext context = new ApplicationContext(ApplicationContext.GetDb());
+            
             LogPas logPas1 = new LogPas { login = "Maksim", password = "1234", role = "Admin" };
             LogPas logPas2 = new LogPas { login = "Ivan", password = "1234", role = "Admin" };
             LogPas logPas3 = new LogPas { login = "Alexey", password = "1234", role = "Руководитель" };

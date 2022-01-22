@@ -1,8 +1,12 @@
-﻿namespace WinFormsLibrary1.Entity
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WinFormsLibrary1.Entity
 {
     public class CehProizvMelanja
     {
-        public int Nceha { get; set; } = 1;
+        [Key]
+        [Required]
+        public int Nceha { get; set; }
         public void Vskritie()
         {
 

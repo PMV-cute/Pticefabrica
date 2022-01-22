@@ -1,9 +1,18 @@
-﻿namespace WinFormsLibrary1.Entity
+﻿using System.ComponentModel.DataAnnotations;
+using System;
+
+namespace WinFormsLibrary1.Entity
 {
     public class Fabrikat
     {
-        public int Nfabricata;
-        public string TypeFabr;
-        public string DateUp;
+        [Key]
+        [Required]
+        public int ID { get; set; }
+        [Required]
+        public int Nfabricata { get; set; }
+        [Required]
+        public string TypeFabr { get; set; }
+        [Required]
+        public DateTime DateUp { get; set; }
     }
 }

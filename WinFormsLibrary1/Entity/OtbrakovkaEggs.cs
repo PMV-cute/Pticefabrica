@@ -1,7 +1,12 @@
-﻿namespace WinFormsLibrary1.Entity
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WinFormsLibrary1.Entity
 {
     public class OtbrakovkaEggs
     {
-        public int kolvo;
+        [Key] // Первичный ключ
+        public int ID { get; set; }
+        [Required]
+        public int kolvo { get; set; }
     }
 }

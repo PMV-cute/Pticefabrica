@@ -1,7 +1,10 @@
-﻿namespace WinFormsLibrary1.Entity
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WinFormsLibrary1.Entity
 {
     public class Othodi
     {
+        
         public string Type;
     }
 }

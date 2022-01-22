@@ -1,10 +1,23 @@
-﻿namespace WinFormsLibrary1.Entity
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace WinFormsLibrary1.Entity
 {
     public class CehSortEggs
     {
-        public int NIncubator;
-        public int Kolvo;
-        public int Npart;
+        
+        [Key]
+        [Required]
+        public int ID { get; set; }
+        [Required]
+        [MaxLength(10)]
+        public int NCeha { get; set; }
+        /*
+        [Required]
+        
+        public int Kolvo { get; set; }
+        [Required]
+        public int Npart { get; set; }
+        */
         public void Otbracovka() { }
         public void FormPartii() { }
         public void Upacovca() { }
