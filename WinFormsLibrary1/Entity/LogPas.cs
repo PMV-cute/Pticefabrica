@@ -7,11 +7,12 @@ namespace WinFormsLibrary1.Entity
 {
     public class LogPas
     {
-        [Key]
+        [Required]
+        public int ID { get; set; }
         [Required]
         public string login { get; set; }
         [Required]
-        public string passaword { get; set; }
+        public string password { get; set; }
         [Required]
         public string role { get; set; } 
     }

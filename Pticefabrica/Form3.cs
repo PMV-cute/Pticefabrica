@@ -1,5 +1,12 @@
-﻿using System;
+﻿using Npgsql;
+using System;
+using System.Data;
 using System.Windows.Forms;
+using WinFormsLibrary1;
+using WinFormsLibrary1.Entity;
+using ApplicationContext = WinFormsLibrary1.ApplicationContext;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Pticefabrica
 {
