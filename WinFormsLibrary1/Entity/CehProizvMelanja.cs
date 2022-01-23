@@ -7,10 +7,7 @@ namespace WinFormsLibrary1.Entity
         [Key]
         [Required]
         public int Nceha { get; set; }
-        public void Vskritie()
-        {
-
-        }
+        public void Vskritie() { }
         public void Separation() { }
         public void Rozliv() { }
         public void Vipusc() { }

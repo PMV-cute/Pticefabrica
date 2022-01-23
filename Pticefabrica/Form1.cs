@@ -16,7 +16,7 @@ namespace Pticefabrica
         Form f3 = new Form3();
         public Form1()
         {
-            new ApplicationContext(ApplicationContext.GetDb());
+            new ApplicationContext();
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(MyForm_MouseDown);
         }
@@ -33,7 +33,7 @@ namespace Pticefabrica
             string log = textBox1.Text.ToString();
             string pas = textBox2.Text.ToString();
             
-            ApplicationContext context = new ApplicationContext(ApplicationContext.GetDb());
+            ApplicationContext context = new ApplicationContext();
             
             LogPas logPas1 = new LogPas { login = "Maksim", password = "1234", role = "Admin" };
             LogPas logPas2 = new LogPas { login = "Ivan", password = "1234", role = "Admin" };
