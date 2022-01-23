@@ -34,21 +34,14 @@ namespace Pticefabrica
             string pas = textBox2.Text.ToString();
             
             ApplicationContext context = new ApplicationContext();
-            /*
-            LogPas logPas1 = new LogPas {ID=1, login = "Maksim", password = "1234", role = "Admin" };
-            LogPas logPas2 = new LogPas {ID=2, login = "Ivan", password = "1234", role = "Admin" };
-            LogPas logPas3 = new LogPas {ID=3, login = "Alexey", password = "1234", role = "Руководитель" };
-            LogPas logPas4 = new LogPas {ID=4, login = "Dima", password = "1234", role = "Рабочий" };
-            LogPas logPas5 = new LogPas {ID=5, login = "Artem", password = "1234", role = "Рабочий" };
-            context.LogPas.AddRange(logPas1,logPas2,logPas3,logPas4,logPas5); // Добавление данных в бд (Оно не обязательно для создания бд) 
-            context.SaveChanges();
-            */
             LogPas logPas = new LogPas();
             logPas.LoadData();
             var users = context.LogPas.ToList();
+            int count = 0;
             foreach (var u in users)
             {
-                textBox3.Text += u.login +u.password + u.role;
+                count++;
+                //textBox3.Text += u.login +u.password + u.role;
                 if (u.login == log && u.password == pas)
                 {
                     if (u.role == "Руководитель") f2.Show();
@@ -58,9 +51,10 @@ namespace Pticefabrica
                         f2.Show();
                         f3.Show();
                     }
-                    //Hide();
+                    Hide();
+                    return;
                 }
-                else
+                if(count == users.Count)
                 {
                     label4.Text = "Неправильный логин или пароль";
                 }

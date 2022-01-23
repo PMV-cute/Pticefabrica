@@ -8,9 +8,6 @@ namespace WinFormsLibrary1.Entity
         [Required]
         public int ID { get; set; }
         [Required]
-        [MaxLength(10)]
-        public int NIncubator { get; set; }
-        [Required]
         public string Kolvo { get; set; }
         [Required]
         public bool Pfeed { get; set; }

@@ -4,9 +4,12 @@ namespace WinFormsLibrary1.Entity
 {
     public class PartiyaMolodnyaka
     {
-        public int Npart;
+        [Key]
+        public int ID { get; set; }
+        [Required]
+        public int Npart { get; set; }
 
-        public string TypeChiсken;
-        public int Kolvo;
+        public int KolvoB { get; set; }
+        public int KolvoN { get; set; }
     }
 }

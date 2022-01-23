@@ -8,11 +8,8 @@ namespace WinFormsLibrary1.Entity
         [Key]
         [Required]
         public int ID { get; set; }
-        [Required]
-        [MaxLength(10)]
-        public int NIncubator { get; set; }
-        [Required]
-        public string TypeChiсken { get; set; }
+        public int KolvoB { get; set; }
+        public int KolvoN { get; set; }
         [Required]
         public DateTime DatePostupleniya { get; set; }
         public int Temp; //Не нада метод

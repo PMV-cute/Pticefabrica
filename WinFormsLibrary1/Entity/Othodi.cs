@@ -4,7 +4,9 @@ namespace WinFormsLibrary1.Entity
 {
     public class Othodi
     {
+        [Key]
+        public int ID { get; set; }
         
-        public string Type;
+        public string kolvo { get; set; }
     }
 }

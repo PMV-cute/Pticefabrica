@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 using WinFormsLibrary1;
-
+using System.Linq;
 namespace WinFormsLibrary1.Entity
 {
     public class LogPas
@@ -18,7 +18,16 @@ namespace WinFormsLibrary1.Entity
         public string role { get; set; }
         public void LoadData() 
         {
-            ApplicationContext context = new ApplicationContext(); 
+            ApplicationContext context = new ApplicationContext();
+            var users = context.LogPas.ToList();
+            foreach (var u in users)
+            {
+                if(u.login == u.login)
+                {
+                    return;
+                }
+            }
+
             LogPas logPas1 = new LogPas { login = "Maksim", password = "1234", role = "Admin" };
             LogPas logPas2 = new LogPas { login = "Ivan", password = "1234", role = "Admin" };
             LogPas logPas3 = new LogPas { login = "Alexey", password = "1234", role = "Руководитель" };

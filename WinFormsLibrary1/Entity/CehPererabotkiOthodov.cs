@@ -8,9 +8,6 @@ namespace WinFormsLibrary1.Entity
         [Required]
         public int ID { get; set; }
         [Required]
-        [MaxLength(10)]
-        public int Nceha { get; set; }
-        [Required]
         [MaxLength(100)] 
         public string NormsPererab { get; set; }
         
