@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WinFormsLibrary1;
@@ -9,9 +10,10 @@ using WinFormsLibrary1;
 namespace WinFormsLibrary1.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220125155257_SixthMigration1")]
+    partial class SixthMigration1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -136,17 +138,13 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("DatePostupleniya")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<DateTime>("DatePostupleniya")
+                        .HasColumnType("timestamp without time zone");
 
-                    b.Property<int>("KolvoEggs")
+                    b.Property<int>("KolvoB")
                         .HasColumnType("integer");
 
-                    b.Property<double>("max")
-                        .HasColumnType("double precision");
-
-                    b.Property<int>("time")
+                    b.Property<int>("KolvoN")
                         .HasColumnType("integer");
 
                     b.HasKey("ID");

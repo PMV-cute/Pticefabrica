@@ -6,8 +6,6 @@ namespace WinFormsLibrary1.Entity
     {
         [Key]
         public int ID { get; set; }
-        [Required]
-        public int Npart { get; set; }
 
         public int Kolvo { get; set; }
         public int? RepID { get; set; }
