@@ -11,5 +11,8 @@ namespace WinFormsLibrary1.Entity
 
         public int KolvoB { get; set; }
         public int KolvoN { get; set; }
+
+        public int? IncID { get; set; }
+        public int? PtID { get; set; }
     }
 }

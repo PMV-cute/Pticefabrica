@@ -12,5 +12,6 @@ namespace WinFormsLibrary1.Entity
         public string TypeFabr { get; set; }
         [Required]
         public DateTime DateUp { get; set; }
+        public int UPKID2 { get; set; }
     }
 }

@@ -8,5 +8,8 @@ namespace WinFormsLibrary1.Entity
         public int ID { get; set; }
         [Required]
         public int kolvo { get; set; }
+        public int? CehSortID3 { get; set; }
+        public int? CehPrMID2 { get; set; }
+
     }
 }

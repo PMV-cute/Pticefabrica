@@ -12,5 +12,6 @@ namespace WinFormsLibrary1.Entity
         public string TypeMelanga { get; set; }
         [Required]
         public DateTime DateRosliva { get; set; }
+        public int? CehPrMID { get; set; }
     }
 }

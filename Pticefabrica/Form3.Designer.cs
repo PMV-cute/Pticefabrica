@@ -48,11 +48,11 @@ namespace Pticefabrica
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(316, 82);
+            this.label1.Location = new System.Drawing.Point(351, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 15);
+            this.label1.Size = new System.Drawing.Size(91, 15);
             this.label1.TabIndex = 11;
-            this.label1.Text = "FORM 3";
+            this.label1.Text = "Окно рабочего";
             // 
             // Form3
             // 

@@ -12,5 +12,6 @@ namespace WinFormsLibrary1.Entity
         public string Category { get; set; }
         [Required]
         public DateTime DateUp { get; set; }
+        public int? CehSortID2 { get; set; }
     }
 }
