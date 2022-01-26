@@ -31,38 +31,9 @@ namespace Pticefabrica
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ApplicationContext context = new ApplicationContext();
-            if (int.TryParse(textBox1.Text,out int value1) && int.TryParse(textBox2.Text, out int value2) && int.TryParse(textBox3.Text, out int value3) 
-                                                           && int.TryParse(textBox4.Text, out int value4) && int.TryParse(textBox5.Text, out int value5))
+            if (int.TryParse(textBox1.Text, out int value1) && int.TryParse(textBox2.Text, out int value2) && int.TryParse(textBox3.Text, out int value3))
             {
-                Reproductor reproductor = context.Reproductor.FirstOrDefault();
-                //Reproductor reproductor = context.Reproductor.Where(c => c.RepID == 1).FirstOrDefault();
-                reproductor.KolvoB = Convert.ToInt32(textBox1.Text);
-                reproductor.KolvoN = Convert.ToInt32(textBox2.Text);
-                
-                
-                //context.Reproductor.Add(reproductor);
-                var repr = context.Reproductor.ToList();
-                for (int i = 0; i < Convert.ToInt32(textBox5.Text) / 1000; i++)
-                {
-                    PartiyaEggsRodClass partiyaEggsRodClass = new PartiyaEggsRodClass { 
-                        Kolvo = 1000, 
-                        RepID = repr[repr.Count-1].RepID, 
-                        DatePostEggs = dateTimePicker1.Value 
-                    };
-                    context.PartiyaEggsRodClass.Add(partiyaEggsRodClass);
-                    context.SaveChanges();
-                }
-                context.SaveChanges();
-
-                //context.Reproductor.Update();
-                var partrod = context.PartiyaEggsRodClass.ToList();
-                var repr1 = context.Reproductor.ToList();
-                label8.Text = $"{repr1[repr1.Count - 1].RepID};" +
-                    $"{repr1[repr1.Count - 1].KolvoB};" +
-                    $"{repr1[repr1.Count - 1].KolvoN};" +
-                    $"{ partrod[partrod.Count - 1].DatePostEggs};";
-                //label8.Text += reproductor.FormirovPartEggs();
+                label8.Text = new Logical().ReproductorLog(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), dateTimePicker1.Value);
             }
             else
             {
@@ -70,27 +41,52 @@ namespace Pticefabrica
                     label8.Text = "Проверьте провильность введенных данных.";
                 else label8.Text += ".";
             }
-            
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Reload();  
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem == null || listBox2.SelectedItem == null) { label9.Text = "выберите партию и/или инкубатор "; }
+            else 
+            {
+                label9.Text = new Logical().IncubatorLog(listBox1.SelectedItem.ToString(), listBox2.SelectedItem.ToString());
+            }
+            Reload();
+
+        }
+        public void Reload() 
+        {
             listBox1.Items.Clear();
+            listBox2.Items.Clear();
             ApplicationContext context = new ApplicationContext();
             var parteggs = context.PartiyaEggsRodClass.ToList();
-
+            var incub = context.Incubator.ToList();
             foreach (var parteg in parteggs)
             {
                 DateTime date = parteg.DatePostEggs;
                 DateTime date1 = DateTime.Now;
                 date1 = date1.AddDays(-3);
-                if (DateTime.Compare(date,date1) >= 0) 
+                if (DateTime.Compare(date, date1) >= 0 && parteg.FreeOrNotFree)
                 {
-                    listBox1.Items.Add($"{parteg.ID};        {parteg.DatePostEggs};        {parteg.Kolvo};");
+                    listBox1.Items.Add($"{parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo};");
                 }
-                    
+            }
+            foreach (var inc in incub)
+            {
+                if (inc.FreeOrNotFree)
+                {
+                    listBox2.Items.Add($"{inc.ID}; Дата: {inc.DatePost}; Дней до вылупления {inc.DaysBeforeHatching};     Свободен;");
+                }
+                else
+                {
+                    listBox2.Items.Add($"{inc.ID}; Дата: {inc.DatePost}; Дней до вылупления {inc.DaysBeforeHatching};     Заполнен;");
+                }
             }
         }
-
     }
 }

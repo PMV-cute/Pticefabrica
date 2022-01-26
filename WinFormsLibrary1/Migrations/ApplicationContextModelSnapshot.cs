@@ -144,6 +144,11 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer")
                         .HasDefaultValue(21);
 
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
                     b.Property<int>("KolvoEggs")
                         .HasColumnType("integer");
 
@@ -151,9 +156,6 @@ namespace WinFormsLibrary1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("double precision")
                         .HasDefaultValue(1000.0);
-
-                    b.Property<int>("time")
-                        .HasColumnType("integer");
 
                     b.HasKey("ID");
 
@@ -384,6 +386,11 @@ namespace WinFormsLibrary1.Migrations
                     b.Property<DateTime>("DatePostEggs")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
                     b.Property<int?>("IncID2")
                         .HasColumnType("integer");
 
@@ -588,15 +595,11 @@ namespace WinFormsLibrary1.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("KolvoB")
-                        .HasColumnType("integer");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(1300);
 
                     b.Property<int>("KolvoN")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("feed")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("water")
                         .HasColumnType("integer");
 
                     b.HasKey("RepID");

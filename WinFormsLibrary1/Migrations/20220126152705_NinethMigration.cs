@@ -12,8 +12,29 @@ namespace WinFormsLibrary1.Migrations
                 table: "Reproductor");
 
             migrationBuilder.DropColumn(
+                name: "feed",
+                table: "Reproductor");
+
+            migrationBuilder.DropColumn(
+                name: "water",
+                table: "Reproductor");
+
+            migrationBuilder.DropColumn(
                 name: "DatePostupleniya",
                 table: "Incubator");
+
+            migrationBuilder.DropColumn(
+                name: "time",
+                table: "Incubator");
+
+            migrationBuilder.AlterColumn<int>(
+                name: "KolvoB",
+                table: "Reproductor",
+                type: "integer",
+                nullable: false,
+                defaultValue: 1300,
+                oldClrType: typeof(int),
+                oldType: "integer");
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "DatePostEggs",
@@ -21,6 +42,13 @@ namespace WinFormsLibrary1.Migrations
                 type: "timestamp without time zone",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+
+            migrationBuilder.AddColumn<bool>(
+                name: "FreeOrNotFree",
+                table: "PartiyaEggsRodClass",
+                type: "boolean",
+                nullable: false,
+                defaultValue: true);
 
             migrationBuilder.AlterColumn<double>(
                 name: "max",
@@ -45,12 +73,23 @@ namespace WinFormsLibrary1.Migrations
                 type: "integer",
                 nullable: false,
                 defaultValue: 21);
+
+            migrationBuilder.AddColumn<bool>(
+                name: "FreeOrNotFree",
+                table: "Incubator",
+                type: "boolean",
+                nullable: false,
+                defaultValue: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
                 name: "DatePostEggs",
+                table: "PartiyaEggsRodClass");
+
+            migrationBuilder.DropColumn(
+                name: "FreeOrNotFree",
                 table: "PartiyaEggsRodClass");
 
             migrationBuilder.DropColumn(
@@ -61,12 +100,39 @@ namespace WinFormsLibrary1.Migrations
                 name: "DaysBeforeHatching",
                 table: "Incubator");
 
+            migrationBuilder.DropColumn(
+                name: "FreeOrNotFree",
+                table: "Incubator");
+
+            migrationBuilder.AlterColumn<int>(
+                name: "KolvoB",
+                table: "Reproductor",
+                type: "integer",
+                nullable: false,
+                oldClrType: typeof(int),
+                oldType: "integer",
+                oldDefaultValue: 1300);
+
             migrationBuilder.AddColumn<string>(
                 name: "DateP",
                 table: "Reproductor",
                 type: "text",
                 nullable: false,
                 defaultValue: "");
+
+            migrationBuilder.AddColumn<int>(
+                name: "feed",
+                table: "Reproductor",
+                type: "integer",
+                nullable: false,
+                defaultValue: 0);
+
+            migrationBuilder.AddColumn<int>(
+                name: "water",
+                table: "Reproductor",
+                type: "integer",
+                nullable: false,
+                defaultValue: 0);
 
             migrationBuilder.AlterColumn<double>(
                 name: "max",
@@ -84,6 +150,13 @@ namespace WinFormsLibrary1.Migrations
                 type: "text",
                 nullable: false,
                 defaultValue: "");
+
+            migrationBuilder.AddColumn<int>(
+                name: "time",
+                table: "Incubator",
+                type: "integer",
+                nullable: false,
+                defaultValue: 0);
         }
     }
 }

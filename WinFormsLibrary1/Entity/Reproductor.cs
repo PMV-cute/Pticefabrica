@@ -24,9 +24,8 @@ namespace WinFormsLibrary1.Entity
             var repr = context.Reproductor.ToList();
             var PER = context.PartiyaEggsRodClass.ToList();
             
-            return $"Количество партий{PER[PER.Count-1].Kolvo/10000}: количество произведенных яиц: {PER[PER.Count - 1].Kolvo}. Дата: {PER[PER.Count-1].DatePostEggs}";
+            return $"Количество партий{PER[PER.Count-1].Kolvo/1000}: количество произведенных яиц: {PER[PER.Count - 1].Kolvo}. Дата: {PER[PER.Count-1].DatePostEggs}";
         }
-        public void VipuscPartii() { }
 
     }
 }

@@ -17,16 +17,10 @@ namespace WinFormsLibrary1.Entity
         [Required]
         public double max { get; set; }
         public int DaysBeforeHatching { get; set; }
+        public bool FreeOrNotFree { get; set; }
         //public int Temp; //Не нада метод
         //public int vlagnost; //Не нада метод
-        public void Perecladka() 
-        {
-            
-        }
-        public void Viderjka() { }
-        public void OtborzdorovChiken() { }
-        public void Vakcinaciya() { }
-        public void VipuscPartii() { }
+        
         [ForeignKey("IncID2")]
         //public int PartiyaEggsRodID { get; set;}
         public ICollection<PartiyaEggsRodClass> PartiyaEggsRodClass { get; set; }

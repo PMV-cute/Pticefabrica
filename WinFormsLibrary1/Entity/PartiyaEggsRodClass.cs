@@ -10,6 +10,7 @@ namespace WinFormsLibrary1.Entity
 
         public int Kolvo { get; set; }
         public DateTime DatePostEggs { get; set; }
+        public bool FreeOrNotFree { get; set; }
         public int? RepID { get; set; }
         public int? IncID2 { get; set; }
 
