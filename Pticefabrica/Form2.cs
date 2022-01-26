@@ -35,37 +35,33 @@ namespace Pticefabrica
             if (int.TryParse(textBox1.Text,out int value1) && int.TryParse(textBox2.Text, out int value2) && int.TryParse(textBox3.Text, out int value3) 
                                                            && int.TryParse(textBox4.Text, out int value4) && int.TryParse(textBox5.Text, out int value5))
             {
-                Reproductor reproductor = new Reproductor
-                {
-                    KolvoB = Convert.ToInt32(textBox1.Text),
-                    KolvoN = Convert.ToInt32(textBox2.Text),
-                    feed = Convert.ToInt32(textBox3.Text),
-                    water = Convert.ToInt32(textBox4.Text),
-                    DateP = dateTimePicker1.Text
-                };
+                Reproductor reproductor = context.Reproductor.FirstOrDefault();
+                //Reproductor reproductor = context.Reproductor.Where(c => c.RepID == 1).FirstOrDefault();
+                reproductor.KolvoB = Convert.ToInt32(textBox1.Text);
+                reproductor.KolvoN = Convert.ToInt32(textBox2.Text);
                 
-                context.Reproductor.Add(reproductor);
+                
+                //context.Reproductor.Add(reproductor);
                 var repr = context.Reproductor.ToList();
-                for (int i = 0; i < Convert.ToInt32(textBox5.Text) / 10000 - 1; i++)
+                for (int i = 0; i < Convert.ToInt32(textBox5.Text) / 1000; i++)
                 {
-                    PartiyaEggsRodClass partiyaEggsRodClass = new PartiyaEggsRodClass { Kolvo = 10000, RepID = repr[repr.Count].RepID };
+                    PartiyaEggsRodClass partiyaEggsRodClass = new PartiyaEggsRodClass { 
+                        Kolvo = 1000, 
+                        RepID = repr[repr.Count-1].RepID, 
+                        DatePostEggs = dateTimePicker1.Value 
+                    };
                     context.PartiyaEggsRodClass.Add(partiyaEggsRodClass);
+                    context.SaveChanges();
                 }
                 context.SaveChanges();
-                /*
-                using (var db = new ApplicationContext())
-                {
-                    var result = db.Reproductor.SingleOrDefault(b => b.KolvoB == 100);
-                    if (result != null)
-                    {
-                        result.KolvoB = 12;
-                        db.SaveChanges();
-                    }
-                }
-                */
+
                 //context.Reproductor.Update();
+                var partrod = context.PartiyaEggsRodClass.ToList();
                 var repr1 = context.Reproductor.ToList();
-                label8.Text = $"{repr1[repr1.Count-1].RepID};{repr1[repr1.Count-1].KolvoB};{repr1[repr1.Count-1].KolvoN};{ repr1[repr1.Count-1].DateP};{repr1[repr1.Count-1].feed};{repr1[repr1.Count-1].water};";
+                label8.Text = $"{repr1[repr1.Count - 1].RepID};" +
+                    $"{repr1[repr1.Count - 1].KolvoB};" +
+                    $"{repr1[repr1.Count - 1].KolvoN};" +
+                    $"{ partrod[partrod.Count - 1].DatePostEggs};";
                 //label8.Text += reproductor.FormirovPartEggs();
             }
             else
@@ -76,5 +72,25 @@ namespace Pticefabrica
             }
             
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            ApplicationContext context = new ApplicationContext();
+            var parteggs = context.PartiyaEggsRodClass.ToList();
+
+            foreach (var parteg in parteggs)
+            {
+                DateTime date = parteg.DatePostEggs;
+                DateTime date1 = DateTime.Now;
+                date1 = date1.AddDays(-3);
+                if (DateTime.Compare(date,date1) >= 0) 
+                {
+                    listBox1.Items.Add($"{parteg.ID};        {parteg.DatePostEggs};        {parteg.Kolvo};");
+                }
+                    
+            }
+        }
+
     }
 }

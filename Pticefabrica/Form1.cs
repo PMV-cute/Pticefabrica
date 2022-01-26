@@ -16,6 +16,7 @@ namespace Pticefabrica
         Form f3 = new Form3();
         public Form1()
         {
+            new Create().CreateAll();
             new ApplicationContext();
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(MyForm_MouseDown);

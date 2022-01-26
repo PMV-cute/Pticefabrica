@@ -13,12 +13,6 @@ namespace WinFormsLibrary1.Entity
 
         public int KolvoB { get; set; }
         public int KolvoN { get; set; }
-        [Required]
-        public string DateP { get; set; }
-        [Required]
-        public int feed { get; set; }
-        [Required]
-        public int water { get; set; }
 
         [ForeignKey("RepID")]
         public ICollection<PartiyaEggsRodClass> PartiyaEggsRodClasses { get; set; }
@@ -30,7 +24,7 @@ namespace WinFormsLibrary1.Entity
             var repr = context.Reproductor.ToList();
             var PER = context.PartiyaEggsRodClass.ToList();
             
-            return $"Партия №{repr[repr.Count - 1].RepID}: количество произведенных яиц: {PER[PER.Count - 1].Kolvo}. Дата: {repr[repr.Count-1].DateP}";
+            return $"Количество партий{PER[PER.Count-1].Kolvo/10000}: количество произведенных яиц: {PER[PER.Count - 1].Kolvo}. Дата: {PER[PER.Count-1].DatePostEggs}";
         }
         public void VipuscPartii() { }
 

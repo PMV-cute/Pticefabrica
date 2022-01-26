@@ -37,7 +37,8 @@ namespace WinFormsLibrary1
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
             //modelBuilder.Entity<Broyler>().HasIndex(s => s.TypeChiсken).IsUnique(); //Работает и делает поля уникальными
-            //modelBuilder.Entity<Melanj>().Property(s => s.Ntari).HasDefaultValue(123); // Значение по умолчанию, можно сделать и вызов функции но я хз как (getdate())
+            modelBuilder.Entity<Incubator>().Property(s => s.max).HasDefaultValue(10000); // Значение по умолчанию, можно сделать и вызов функции но я хз как (getdate())
+            modelBuilder.Entity<Incubator>().Property(s => s.DaysBeforeHatching).HasDefaultValue(21);
         }
 
         /*

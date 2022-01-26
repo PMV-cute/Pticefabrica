@@ -10,14 +10,15 @@ namespace WinFormsLibrary1.Entity
         [Key]
         [Required]
         public int ID { get; set; }
-        public double max { get; set; } = 10000;
+        
         public int KolvoEggs { get; set; }
         [Required]
-        public string DatePostupleniya { get; set; }
+        public DateTime DatePost { get; set; }
+        [Required]
+        public double max { get; set; }
+        public int DaysBeforeHatching { get; set; }
         //public int Temp; //Не нада метод
         //public int vlagnost; //Не нада метод
-        
-        public int time { get; set; } //Не нада метод
         public void Perecladka() 
         {
             

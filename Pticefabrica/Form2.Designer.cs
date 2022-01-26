@@ -47,17 +47,7 @@ namespace Pticefabrica
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -198,7 +188,7 @@ namespace Pticefabrica
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "dd:MM:yy HH:MM:ss ";
+            this.dateTimePicker1.CustomFormat = "dd:MM:yy HH:MM";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(13, 201);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -218,18 +208,18 @@ namespace Pticefabrica
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(13, 46);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 15);
+            this.label3.Size = new System.Drawing.Size(123, 15);
             this.label3.TabIndex = 16;
-            this.label3.Text = "Добавление несушек";
+            this.label3.Text = "Количество несушек";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(13, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 15);
+            this.label2.Size = new System.Drawing.Size(136, 15);
             this.label2.TabIndex = 15;
-            this.label2.Text = "Добавление бройлеров";
+            this.label2.Text = "Количество бройлеров";
             // 
             // textBox1
             // 
@@ -240,17 +230,7 @@ namespace Pticefabrica
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.textBox6);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.textBox7);
-            this.tabPage2.Controls.Add(this.textBox8);
-            this.tabPage2.Controls.Add(this.dateTimePicker2);
-            this.tabPage2.Controls.Add(this.textBox9);
-            this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Controls.Add(this.label13);
-            this.tabPage2.Controls.Add(this.textBox10);
+            this.tabPage2.Controls.Add(this.listBox1);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
@@ -260,104 +240,24 @@ namespace Pticefabrica
             this.tabPage2.Text = "Инкубаторий";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label9
+            // listBox1
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(15, 165);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(158, 15);
-            this.label9.TabIndex = 36;
-            this.label9.Text = "Количество снесенных яиц";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(195, 165);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 23);
-            this.textBox6.TabIndex = 35;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(15, 129);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(175, 15);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Количество поданой воды (Л.)";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 87);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(172, 15);
-            this.label11.TabIndex = 33;
-            this.label11.Text = "Количество поданой еды (Кг.)";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(195, 126);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 23);
-            this.textBox7.TabIndex = 32;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(195, 87);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 23);
-            this.textBox8.TabIndex = 31;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.CustomFormat = "HH:MM:ss dd:MM:yy";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(15, 203);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(280, 23);
-            this.dateTimePicker2.TabIndex = 30;
-            this.dateTimePicker2.Value = new System.DateTime(2022, 1, 25, 21, 1, 0, 0);
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(195, 48);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 23);
-            this.textBox9.TabIndex = 29;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 48);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(125, 15);
-            this.label12.TabIndex = 28;
-            this.label12.Text = "Добавление несушек";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(15, 16);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(138, 15);
-            this.label13.TabIndex = 27;
-            this.label13.Text = "Добавление бройлеров";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(195, 13);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 23);
-            this.textBox10.TabIndex = 26;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(3, 3);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(476, 214);
+            this.listBox1.TabIndex = 37;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(141, 241);
+            this.button2.Location = new System.Drawing.Point(5, 232);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(154, 23);
             this.button2.TabIndex = 25;
             this.button2.Text = "Сформировать отчет";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // tabPage3
             // 
@@ -428,7 +328,6 @@ namespace Pticefabrica
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -460,17 +359,7 @@ namespace Pticefabrica
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

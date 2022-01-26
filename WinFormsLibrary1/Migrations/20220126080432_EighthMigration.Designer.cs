@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WinFormsLibrary1;
@@ -9,9 +10,10 @@ using WinFormsLibrary1;
 namespace WinFormsLibrary1.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220126080432_EighthMigration")]
+    partial class EighthMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -136,13 +138,9 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<DateTime>("DatePost")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<int>("DaysBeforeHatching")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasDefaultValue(21);
+                    b.Property<string>("DatePostupleniya")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("KolvoEggs")
                         .HasColumnType("integer");
@@ -150,7 +148,7 @@ namespace WinFormsLibrary1.Migrations
                     b.Property<double>("max")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("double precision")
-                        .HasDefaultValue(1000.0);
+                        .HasDefaultValue(10000.0);
 
                     b.Property<int>("time")
                         .HasColumnType("integer");
@@ -381,9 +379,6 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<DateTime>("DatePostEggs")
-                        .HasColumnType("timestamp without time zone");
-
                     b.Property<int?>("IncID2")
                         .HasColumnType("integer");
 
@@ -586,6 +581,10 @@ namespace WinFormsLibrary1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("DateP")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("KolvoB")
                         .HasColumnType("integer");
