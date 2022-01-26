@@ -12,18 +12,18 @@ namespace WinFormsLibrary1
 {
     public class Logical
     {
-        public string ReproductorLog(int a, int b, int c, DateTime date) 
+        public string ReproductorLog(int a, int b, int c, DateTime date)
         {
             ApplicationContext context = new ApplicationContext();
-            
+
             Reproductor reproductor = context.Reproductor.FirstOrDefault();
             reproductor.KolvoB = a;
             reproductor.KolvoN = b;
-            int count = c%1000;
+            int count = c % 1000;
 
             var repr = context.Reproductor.ToList();
-            if(c > 0) 
-            { 
+            if (c > 0)
+            {
                 for (int i = 0; i < c / 1000; i++)
                 {
                     PartiyaEggsRodClass partiyaEggsRodClass = new PartiyaEggsRodClass
@@ -34,15 +34,18 @@ namespace WinFormsLibrary1
                     };
                     context.PartiyaEggsRodClass.Add(partiyaEggsRodClass);
                     context.SaveChanges();
-
                 }
-                PartiyaEggsRodClass partiyaEggsRodClass1 = new PartiyaEggsRodClass
-                {
-                    Kolvo = count,
-                    RepID = repr[repr.Count - 1].RepID,
-                    DatePostEggs = date
-                };
-                context.PartiyaEggsRodClass.Add(partiyaEggsRodClass1);
+                if (c != 0) 
+                { 
+                        PartiyaEggsRodClass partiyaEggsRodClass1 = new PartiyaEggsRodClass
+                    {
+                        Kolvo = count,
+                        RepID = repr[repr.Count - 1].RepID,
+                        DatePostEggs = date
+                    };
+                    context.PartiyaEggsRodClass.Add(partiyaEggsRodClass1);
+                }
+                
                 //PartiyaEggsRodClass partiyaEggsRodClass = context.PartiyaEggsRodClass.Where(h => h.ID == 1).FirstOrDefault(); //Удаление сущности из таблицы
                 //context.PartiyaEggsRodClass.Remove(partiyaEggsRodClass);
                 context.SaveChanges();
@@ -55,7 +58,7 @@ namespace WinFormsLibrary1
                 $"{repr1[repr1.Count - 1].KolvoN};" +
                 $"{ partrod[partrod.Count - 1].DatePostEggs};";
         }
-        public string IncubatorLog(string a, string b)
+        public string IncubatorLoad(string a, string b)
         {
             ApplicationContext context = new ApplicationContext();
             int k = 0;
@@ -70,8 +73,10 @@ namespace WinFormsLibrary1
             if (incubator.FreeOrNotFree)
             {
                 incubator.KolvoEggs = partiyaEggsRodClass.Kolvo;
+                partiyaEggsRodClass.Kolvo = 9;
                 partiyaEggsRodClass.FreeOrNotFree = false;
                 incubator.DatePost = DateTime.Now;
+                incubator.DayOfBorn = DateTime.Now.AddDays(21);
                 incubator.FreeOrNotFree = false;
                 partiyaEggsRodClass.IncID2 = incubator.ID;
                 context.SaveChanges();
@@ -79,6 +84,32 @@ namespace WinFormsLibrary1
             }
             else { return "Инкубатор заполнен"; }
         }
+        public string IncubatorMolod(string a, int b, int c)
+        {
+            ApplicationContext context = new ApplicationContext();
             
+            int k = a.IndexOf(";");
+            a = a.Substring(0, k);
+            int IDb = Convert.ToInt32(a);
+            Incubator incubator = context.Incubator.Where(c => c.ID == IDb).FirstOrDefault();
+            if (DateTime.Compare(DateTime.Now, incubator.DayOfBorn) > 0)
+            {
+                PartiyaMolodnyaka partiyaMolodnyaka = new PartiyaMolodnyaka
+                {
+                    KolvoB = b,
+                    KolvoN = c,
+                    IncID = incubator.ID
+                };
+                incubator.FreeOrNotFree = true;
+                incubator.DayOfBorn = DateTime.Now.AddYears(100);
+                incubator.KolvoEggs = 0;
+                context.PartiyaMolodnyaka.Add(partiyaMolodnyaka);
+                context.SaveChanges();
+                return "";
+            }
+            else { return "Яйца не вылупились"; }
+                
+        }
+        
     }
 }

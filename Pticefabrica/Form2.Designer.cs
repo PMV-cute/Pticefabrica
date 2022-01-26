@@ -43,6 +43,10 @@ namespace Pticefabrica
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -54,7 +58,6 @@ namespace Pticefabrica
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -198,6 +201,9 @@ namespace Pticefabrica
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button5);
+            this.tabPage2.Controls.Add(this.textBox5);
+            this.tabPage2.Controls.Add(this.textBox4);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.listBox2);
@@ -212,26 +218,61 @@ namespace Pticefabrica
             this.tabPage2.Text = "Инкубаторий";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(494, 104);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(154, 23);
+            this.button5.TabIndex = 44;
+            this.button5.Text = "Отправка в птичник";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(494, 176);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 23);
+            this.textBox5.TabIndex = 43;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(494, 147);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 23);
+            this.textBox4.TabIndex = 42;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(494, 73);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(154, 23);
+            this.button4.TabIndex = 41;
+            this.button4.Text = "Утилизация партии яиц";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(188, 288);
+            this.label9.Location = new System.Drawing.Point(3, 297);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(0, 15);
+            this.label9.Size = new System.Drawing.Size(43, 15);
             this.label9.TabIndex = 40;
+            this.label9.Text = "123415";
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 15;
-            this.listBox2.Location = new System.Drawing.Point(345, 3);
+            this.listBox2.Location = new System.Drawing.Point(3, 133);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(323, 214);
+            this.listBox2.Size = new System.Drawing.Size(463, 124);
             this.listBox2.TabIndex = 39;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(172, 232);
+            this.button3.Location = new System.Drawing.Point(494, 44);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(154, 23);
             this.button3.TabIndex = 38;
@@ -245,12 +286,12 @@ namespace Pticefabrica
             this.listBox1.ItemHeight = 15;
             this.listBox1.Location = new System.Drawing.Point(3, 3);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(323, 214);
+            this.listBox1.Size = new System.Drawing.Size(463, 124);
             this.listBox1.TabIndex = 37;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(5, 232);
+            this.button2.Location = new System.Drawing.Point(494, 15);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(154, 23);
             this.button2.TabIndex = 25;
@@ -312,15 +353,6 @@ namespace Pticefabrica
             this.tabPage9.Text = "Цех производства меланджа";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(345, 232);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(154, 23);
-            this.button4.TabIndex = 41;
-            this.button4.Text = "Утилизация партии яиц";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -370,5 +402,8 @@ namespace Pticefabrica
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }

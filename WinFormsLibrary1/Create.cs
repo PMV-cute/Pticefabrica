@@ -31,6 +31,7 @@ namespace WinFormsLibrary1
                 {
                     DatePost = DateTime.Now,
                     KolvoEggs = 0,
+                    DayOfBorn = DateTime.Now.AddYears(100)
                 };
                 context.Incubator.Add(incubator);
                 context.SaveChanges();

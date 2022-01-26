@@ -54,7 +54,7 @@ namespace Pticefabrica
             if (listBox1.SelectedItem == null || listBox2.SelectedItem == null) { label9.Text = "выберите партию и/или инкубатор "; }
             else 
             {
-                label9.Text = new Logical().IncubatorLog(listBox1.SelectedItem.ToString(), listBox2.SelectedItem.ToString());
+                label9.Text = new Logical().IncubatorLoad(listBox1.SelectedItem.ToString(), listBox2.SelectedItem.ToString());
             }
             Reload();
 
@@ -80,13 +80,31 @@ namespace Pticefabrica
             {
                 if (inc.FreeOrNotFree)
                 {
-                    listBox2.Items.Add($"{inc.ID}; Дата: {inc.DatePost}; Дней до вылупления {inc.DaysBeforeHatching};     Свободен;");
+                    listBox2.Items.Add($"{inc.ID};   Свободен;");
                 }
                 else
                 {
-                    listBox2.Items.Add($"{inc.ID}; Дата: {inc.DatePost}; Дней до вылупления {inc.DaysBeforeHatching};     Заполнен;");
+                    if (DateTime.Compare(DateTime.Now, inc.DayOfBorn) >= 0)
+                        listBox2.Items.Add($"{inc.ID}; Дата: {inc.DatePost}; Дата вылупления {inc.DayOfBorn};     Цикл закончен;");       
+                    else
+                        listBox2.Items.Add($"{inc.ID}; Дата: {inc.DatePost}; Дата вылупления {inc.DayOfBorn};     Цикл в процессе;");
                 }
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(textBox4.Text, out int value4) && int.TryParse(textBox5.Text, out int value5) && listBox2.SelectedItem != null && Convert.ToInt32(textBox4.Text)+Convert.ToInt32(textBox5.Text)<1001)
+            {
+                label9.Text = new Logical().IncubatorMolod(listBox2.SelectedItem.ToString(), Convert.ToInt32(textBox4.Text), Convert.ToInt32(textBox5.Text));
+            }
+            else label9.Text = "Проверьте провильность введенных данных или выберите инкубатор";
+            Reload();
         }
     }
 }

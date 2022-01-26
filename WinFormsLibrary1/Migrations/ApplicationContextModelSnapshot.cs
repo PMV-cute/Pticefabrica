@@ -139,10 +139,8 @@ namespace WinFormsLibrary1.Migrations
                     b.Property<DateTime>("DatePost")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int>("DaysBeforeHatching")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasDefaultValue(21);
+                    b.Property<DateTime>("DayOfBorn")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<bool>("FreeOrNotFree")
                         .ValueGeneratedOnAdd()
@@ -151,6 +149,11 @@ namespace WinFormsLibrary1.Migrations
 
                     b.Property<int>("KolvoEggs")
                         .HasColumnType("integer");
+
+                    b.Property<bool>("ReadyOrNotReady")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
 
                     b.Property<double>("max")
                         .ValueGeneratedOnAdd()
@@ -423,9 +426,6 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer");
 
                     b.Property<int>("KolvoN")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Npart")
                         .HasColumnType("integer");
 
                     b.Property<int?>("PtID")

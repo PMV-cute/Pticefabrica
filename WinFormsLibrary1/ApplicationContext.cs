@@ -38,9 +38,10 @@ namespace WinFormsLibrary1
         {
             //modelBuilder.Entity<Broyler>().HasIndex(s => s.TypeChiсken).IsUnique(); //Работает и делает поля уникальными
             modelBuilder.Entity<Incubator>().Property(s => s.max).HasDefaultValue(1000); // Значение по умолчанию, можно сделать и вызов функции но я хз как (getdate())
-            modelBuilder.Entity<Incubator>().Property(s => s.DaysBeforeHatching).HasDefaultValue(21);
             modelBuilder.Entity<Incubator>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
+            modelBuilder.Entity<Incubator>().Property(s => s.ReadyOrNotReady).HasDefaultValue(false);
             modelBuilder.Entity<PartiyaEggsRodClass>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
+            
             modelBuilder.Entity<Reproductor>().Property(s => s.KolvoB).HasDefaultValue(70);
             modelBuilder.Entity<Reproductor>().Property(s => s.KolvoB).HasDefaultValue(1300);
         }

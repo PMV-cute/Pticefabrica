@@ -16,8 +16,9 @@ namespace WinFormsLibrary1.Entity
         public DateTime DatePost { get; set; }
         [Required]
         public double max { get; set; }
-        public int DaysBeforeHatching { get; set; }
+        public DateTime DayOfBorn { get; set; }
         public bool FreeOrNotFree { get; set; }
+        public bool ReadyOrNotReady { get; set; }
         //public int Temp; //Не нада метод
         //public int vlagnost; //Не нада метод
         

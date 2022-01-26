@@ -20,6 +20,10 @@ namespace WinFormsLibrary1.Migrations
                 table: "Reproductor");
 
             migrationBuilder.DropColumn(
+                name: "Npart",
+                table: "PartiyaMolodnyaka");
+
+            migrationBuilder.DropColumn(
                 name: "DatePostupleniya",
                 table: "Incubator");
 
@@ -67,12 +71,12 @@ namespace WinFormsLibrary1.Migrations
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
-            migrationBuilder.AddColumn<int>(
-                name: "DaysBeforeHatching",
+            migrationBuilder.AddColumn<DateTime>(
+                name: "DayOfBorn",
                 table: "Incubator",
-                type: "integer",
+                type: "timestamp without time zone",
                 nullable: false,
-                defaultValue: 21);
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
 
             migrationBuilder.AddColumn<bool>(
                 name: "FreeOrNotFree",
@@ -80,6 +84,13 @@ namespace WinFormsLibrary1.Migrations
                 type: "boolean",
                 nullable: false,
                 defaultValue: true);
+
+            migrationBuilder.AddColumn<bool>(
+                name: "ReadyOrNotReady",
+                table: "Incubator",
+                type: "boolean",
+                nullable: false,
+                defaultValue: false);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -97,11 +108,15 @@ namespace WinFormsLibrary1.Migrations
                 table: "Incubator");
 
             migrationBuilder.DropColumn(
-                name: "DaysBeforeHatching",
+                name: "DayOfBorn",
                 table: "Incubator");
 
             migrationBuilder.DropColumn(
                 name: "FreeOrNotFree",
+                table: "Incubator");
+
+            migrationBuilder.DropColumn(
+                name: "ReadyOrNotReady",
                 table: "Incubator");
 
             migrationBuilder.AlterColumn<int>(
@@ -130,6 +145,13 @@ namespace WinFormsLibrary1.Migrations
             migrationBuilder.AddColumn<int>(
                 name: "water",
                 table: "Reproductor",
+                type: "integer",
+                nullable: false,
+                defaultValue: 0);
+
+            migrationBuilder.AddColumn<int>(
+                name: "Npart",
+                table: "PartiyaMolodnyaka",
                 type: "integer",
                 nullable: false,
                 defaultValue: 0);
