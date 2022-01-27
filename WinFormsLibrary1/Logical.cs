@@ -12,7 +12,7 @@ namespace WinFormsLibrary1
 {
     public class Logical
     {
-        public string ReproductorLog(int a, int b, int c, DateTime date)
+        public string ReproductorLog(int a, int b, int c, DateTime date) // Загрузка данных в репродуктор и создание родительских партий
         {
             ApplicationContext context = new ApplicationContext();
 
@@ -58,7 +58,7 @@ namespace WinFormsLibrary1
                 $"{repr1[repr1.Count - 1].KolvoN};" +
                 $"{ partrod[partrod.Count - 1].DatePostEggs};";
         }
-        public string IncubatorLoad(string a, string b)
+        public string IncubatorLoad(string a, string b) //Загрузка данных в инкубатор
         {
             ApplicationContext context = new ApplicationContext();
             int k = 0;
@@ -73,18 +73,18 @@ namespace WinFormsLibrary1
             if (incubator.FreeOrNotFree)
             {
                 incubator.KolvoEggs = partiyaEggsRodClass.Kolvo;
-                partiyaEggsRodClass.Kolvo = 9;
-                partiyaEggsRodClass.FreeOrNotFree = false;
                 incubator.DatePost = DateTime.Now;
                 incubator.DayOfBorn = DateTime.Now.AddDays(21);
                 incubator.FreeOrNotFree = false;
+                partiyaEggsRodClass.Kolvo = 0;
+                partiyaEggsRodClass.FreeOrNotFree = false;
                 partiyaEggsRodClass.IncID2 = incubator.ID;
                 context.SaveChanges();
                 return "";
             }
             else { return "Инкубатор заполнен"; }
         }
-        public string IncubatorMolod(string a, int b, int c)
+        public string IncubatorMolod(string a, int b, int c) // Создание партии молодняка из вылупившихся яиц в инкубаторе
         {
             ApplicationContext context = new ApplicationContext();
             

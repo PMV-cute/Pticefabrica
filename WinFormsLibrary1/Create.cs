@@ -25,7 +25,7 @@ namespace WinFormsLibrary1
                 KolvoB = 0,
                 KolvoN = 0,
             };
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 21; i++)
             {
                 Incubator incubator = new Incubator
                 {

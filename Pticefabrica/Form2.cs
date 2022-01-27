@@ -24,37 +24,32 @@ namespace Pticefabrica
             this.WndProc(ref m);
         }
 
-        private void label6_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (int.TryParse(textBox1.Text, out int value1) && int.TryParse(textBox2.Text, out int value2) && int.TryParse(textBox3.Text, out int value3))
             {
-                label8.Text = new Logical().ReproductorLog(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), dateTimePicker1.Value);
+                ReproductorText.Text = new Logical().ReproductorLog(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), dateTimePicker1.Value);
             }
             else
             {
-                if (label8.Text == "")
-                    label8.Text = "Проверьте провильность введенных данных.";
-                else label8.Text += ".";
+                if (ReproductorText.Text == "")
+                    ReproductorText.Text = "Проверьте провильность введенных данных.";
+                else ReproductorText.Text += ".";
             }
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ReloadInc_Click(object sender, EventArgs e)
         {
-            Reload();  
+            Reload();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItem == null || listBox2.SelectedItem == null) { label9.Text = "выберите партию и/или инкубатор "; }
+            if (listBox1.SelectedItem == null || listBox2.SelectedItem == null) { IncubatorText.Text = "выберите партию и/или инкубатор "; }
             else 
             {
-                label9.Text = new Logical().IncubatorLoad(listBox1.SelectedItem.ToString(), listBox2.SelectedItem.ToString());
+                IncubatorText.Text = new Logical().IncubatorLoad(listBox1.SelectedItem.ToString(), listBox2.SelectedItem.ToString());
             }
             Reload();
 
@@ -75,6 +70,11 @@ namespace Pticefabrica
                 {
                     listBox1.Items.Add($"{parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo};");
                 }
+                else 
+                {
+                    context.Remove(context.PartiyaEggsRodClass.Single(s => s.ID == parteg.ID)); // Удаление сущности из таблицы
+                    context.SaveChanges();
+                }
             }
             foreach (var inc in incub)
             {
@@ -85,9 +85,9 @@ namespace Pticefabrica
                 else
                 {
                     if (DateTime.Compare(DateTime.Now, inc.DayOfBorn) >= 0)
-                        listBox2.Items.Add($"{inc.ID}; Дата: {inc.DatePost}; Дата вылупления {inc.DayOfBorn};     Цикл закончен;");       
+                        listBox2.Items.Add($"{inc.ID}; Дата поступления: {inc.DatePost}; Дата вылупления {inc.DayOfBorn};     Цикл закончен;");       
                     else
-                        listBox2.Items.Add($"{inc.ID}; Дата: {inc.DatePost}; Дата вылупления {inc.DayOfBorn};     Цикл в процессе;");
+                        listBox2.Items.Add($"{inc.ID}; Дата поступления: {inc.DatePost}; Дата вылупления {inc.DayOfBorn};     Цикл в процессе;");
                 }
             }
         }
@@ -101,10 +101,24 @@ namespace Pticefabrica
         {
             if (int.TryParse(textBox4.Text, out int value4) && int.TryParse(textBox5.Text, out int value5) && listBox2.SelectedItem != null && Convert.ToInt32(textBox4.Text)+Convert.ToInt32(textBox5.Text)<1001)
             {
-                label9.Text = new Logical().IncubatorMolod(listBox2.SelectedItem.ToString(), Convert.ToInt32(textBox4.Text), Convert.ToInt32(textBox5.Text));
+                IncubatorText.Text = new Logical().IncubatorMolod(listBox2.SelectedItem.ToString(), Convert.ToInt32(textBox4.Text), Convert.ToInt32(textBox5.Text));
             }
-            else label9.Text = "Проверьте провильность введенных данных или выберите инкубатор";
+            else IncubatorText.Text = "Проверьте провильность введенных данных или выберите инкубатор";
             Reload();
         }
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private bool flag = false;
+        private void FullSizeButton_Click(object sender, EventArgs e)
+        {
+            if (!flag)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+            flag = !flag;
+        }
+
     }
 }
