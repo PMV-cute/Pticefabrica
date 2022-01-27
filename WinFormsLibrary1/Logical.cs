@@ -12,7 +12,7 @@ namespace WinFormsLibrary1
 {
     public class Logical
     {
-        public string ReproductorLog(int a, int b, int c, DateTime date) // Загрузка данных в репродуктор и создание родительских партий
+        public void ReproductorLog(int a, int b, int c, DateTime date) // Загрузка данных в репродуктор и создание родительских партий
         {
             ApplicationContext context = new ApplicationContext();
 
@@ -51,12 +51,6 @@ namespace WinFormsLibrary1
                 context.SaveChanges();
             }
             //context.Reproductor.Update();
-            var partrod = context.PartiyaEggsRodClass.ToList();
-            var repr1 = context.Reproductor.ToList();
-            return $"{repr1[repr1.Count - 1].RepID};" +
-                $"{repr1[repr1.Count - 1].KolvoB};" +
-                $"{repr1[repr1.Count - 1].KolvoN};" +
-                $"{ partrod[partrod.Count - 1].DatePostEggs};";
         }
         public string IncubatorLoad(string a, string b) //Загрузка данных в инкубатор
         {
@@ -64,7 +58,7 @@ namespace WinFormsLibrary1
             int k = 0;
             k = a.IndexOf(";");
             a = a.Substring(0, k);
-            k = b.IndexOf(";");
+            k = b.IndexOf(";");                                                      
             b = b.Substring(0, k);
             int IDa = Convert.ToInt32(a);
             int IDb = Convert.ToInt32(b);
@@ -74,7 +68,7 @@ namespace WinFormsLibrary1
             {
                 incubator.KolvoEggs = partiyaEggsRodClass.Kolvo;
                 incubator.DatePost = DateTime.Now;
-                incubator.DayOfBorn = DateTime.Now.AddDays(21);
+                incubator.DayOfBorn = partiyaEggsRodClass.DatePostEggs.AddDays(21);
                 incubator.FreeOrNotFree = false;
                 partiyaEggsRodClass.Kolvo = 0;
                 partiyaEggsRodClass.FreeOrNotFree = false;
@@ -92,24 +86,90 @@ namespace WinFormsLibrary1
             a = a.Substring(0, k);
             int IDb = Convert.ToInt32(a);
             Incubator incubator = context.Incubator.Where(c => c.ID == IDb).FirstOrDefault();
-            if (DateTime.Compare(DateTime.Now, incubator.DayOfBorn) > 0)
+            if (DateTime.Compare(DateTime.Now, incubator.DayOfBorn) < 0)
             {
                 PartiyaMolodnyaka partiyaMolodnyaka = new PartiyaMolodnyaka
                 {
-                    KolvoB = b,
-                    KolvoN = c,
-                    IncID = incubator.ID
+                    TypeChicken = "Бройлер",
+                    Kolvo = b,
+                    IncID = incubator.ID,
+                    DataForm = DateTime.Now,
                 };
+                PartiyaMolodnyaka partiyaMolodnyaka1 = new PartiyaMolodnyaka
+                {
+                    TypeChicken = "Несушка",
+                    Kolvo = c,
+                    IncID = incubator.ID,
+                    DataForm = DateTime.Now,
+                };
+                context.PartiyaMolodnyaka.AddRange(partiyaMolodnyaka,partiyaMolodnyaka1);
                 incubator.FreeOrNotFree = true;
                 incubator.DayOfBorn = DateTime.Now.AddYears(100);
                 incubator.KolvoEggs = 0;
-                context.PartiyaMolodnyaka.Add(partiyaMolodnyaka);
                 context.SaveChanges();
                 return "";
             }
-            else { return "Яйца не вылупились"; }
-                
+            else { return "Яйца не вылупились"; } 
         }
-        
+        public string PtichnicLoad(string a, string b)
+        {
+            ApplicationContext context = new ApplicationContext();
+            int k = 0;
+            k = a.IndexOf(";");
+            a = a.Substring(0, k);
+            k = b.IndexOf(";");
+            b = b.Substring(0, k);
+            int IDa = Convert.ToInt32(a);
+            int IDb = Convert.ToInt32(b);
+            PartiyaMolodnyaka partiyaMolodnyaka= context.PartiyaMolodnyaka.Where(h => h.ID == IDa).FirstOrDefault();
+            Ptichnic ptichnic = context.Ptichnic.Where(c => c.ID == IDb).FirstOrDefault();
+            int days = 60;
+            if (partiyaMolodnyaka.TypeChicken == "Бройлер")
+                days = 20;
+            else 
+                days = 60;
+            if (ptichnic.FreeOrNotFree)
+            {
+                ptichnic.Kolvo = partiyaMolodnyaka.Kolvo;
+                ptichnic.DatePost = DateTime.Now;
+                ptichnic.DateGrow = partiyaMolodnyaka.DataForm.AddDays(days);
+                ptichnic.FreeOrNotFree = false;
+                ptichnic.TypeChicken = partiyaMolodnyaka.TypeChicken;
+                partiyaMolodnyaka.Kolvo = 0;
+                partiyaMolodnyaka.FreeOrNotFree = false;
+                partiyaMolodnyaka.PtID = ptichnic.ID;
+                context.SaveChanges();
+                return "";
+            }
+            else { return "Птичник заполнен"; }
+        }
+
+        public string PtichnicFormPart(string a) // Создание партии взрослой птицы из птенцов птичника
+        {
+            ApplicationContext context = new ApplicationContext();
+
+            int k = a.IndexOf(";");
+            a = a.Substring(0, k);
+            int IDb = Convert.ToInt32(a);
+            Ptichnic ptichnic = context.Ptichnic.Where(c => c.ID == IDb).FirstOrDefault();
+            if (DateTime.Compare(DateTime.Now, ptichnic.DateGrow) < 0)
+            {
+                PartiyaVzrosloyChicken partiyaVzrosloyChicken = new PartiyaVzrosloyChicken
+                {
+                    TypeChiсken = ptichnic.TypeChicken,
+                    Kolvo = ptichnic.Kolvo,
+                    PtID2 = ptichnic.ID,
+                    DateForm = DateTime.Now,
+                };
+                context.PartiyaVzrosloyChicken.Add(partiyaVzrosloyChicken);
+                ptichnic.FreeOrNotFree = true;
+                ptichnic.DateGrow = DateTime.Now.AddYears(100);
+                ptichnic.Kolvo = 0;
+                ptichnic.TypeChicken = "";
+                context.SaveChanges();
+                return "";
+            }
+            else { return "Пиздюки не выросли"; }
+        }
     }
 }

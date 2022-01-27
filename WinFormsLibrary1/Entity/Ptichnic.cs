@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System;
 
 namespace WinFormsLibrary1.Entity
 {
@@ -8,12 +9,15 @@ namespace WinFormsLibrary1.Entity
     {
         [Key]
         public int ID { get; set; }
-        public int KolvoB { get; set; }
-        public int KolvoN { get; set; }
+        public int Kolvo { get; set; }
         [Required]
-        public bool Pfeed { get; set; }
+        public string TypeChicken { get; set; }
         [Required]
-        public bool Pwater { get; set; }
+        public DateTime DatePost { get; set; }
+        [Required]
+        public DateTime DateGrow { get; set; }
+        [Required]
+        public bool FreeOrNotFree { get; set; }
         [ForeignKey("PtID")]
         public ICollection<PartiyaMolodnyaka> PartiyaMolodnyakas { get; set; }
         [ForeignKey("PtID2")]

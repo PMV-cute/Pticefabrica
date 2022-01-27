@@ -15,11 +15,5 @@ namespace WinFormsLibrary1.Entity
         [Required]
         public string TypeChiсken { get; set; }
         public int Kolvo { get; set; }
-        [ForeignKey("PartiyaVzrosloyChicken1")]
-        public int PaVzChID { get; set; }
-
-        public PartiyaVzrosloyChicken PartiyaVzrosloyChicken { get; set; }
-
-        public int CoPrID { get; set; }
     }
 }

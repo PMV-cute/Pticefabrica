@@ -16,7 +16,7 @@ namespace WinFormsLibrary1.Entity
         [Required]
         public bool Pwater { get; set; }
         [ForeignKey("CoPrID")]
-        public ICollection<PartiyaNes> PartiyaNeses { get; set; }
+        public ICollection<PartiyaVzrosloyChicken> PartiyaVzrosloyChickens { get; set; }
         [ForeignKey("CoPrID2")]
         public ICollection<PartiyaEggs> PartiyaEggses { get; set; }
         [ForeignKey("CoPrID3")]

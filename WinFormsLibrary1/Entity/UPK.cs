@@ -11,7 +11,7 @@ namespace WinFormsLibrary1.Entity
         
         public int KolvoB { get; set; }
         [ForeignKey("UPKID")]
-        public ICollection<PartiyaBr> PartiyaBres { get; set; }
+        public ICollection<PartiyaVzrosloyChicken> PartiyaVzrosloyChickens { get; set; }
         [ForeignKey("UPKID2")]
         public ICollection<Fabrikat> Fabrikats { get; set; }
         [ForeignKey("UPKID3")]

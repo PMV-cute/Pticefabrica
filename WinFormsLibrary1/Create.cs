@@ -36,6 +36,18 @@ namespace WinFormsLibrary1
                 context.Incubator.Add(incubator);
                 context.SaveChanges();
             }
+            for (int i = 0; i < 21; i++)
+            {
+                Ptichnic ptichnic = new Ptichnic
+                {
+                    DatePost = DateTime.Now,
+                    Kolvo = 0,
+                    DateGrow = DateTime.Now.AddYears(100),
+                    TypeChicken = "",
+                };
+                context.Ptichnic.Add(ptichnic);
+                context.SaveChanges();
+            }
             context.Reproductor.Add(reproductor);
             context.SaveChanges();
         }

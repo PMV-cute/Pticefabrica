@@ -28,7 +28,8 @@ namespace Pticefabrica
         {
             if (int.TryParse(textBox1.Text, out int value1) && int.TryParse(textBox2.Text, out int value2) && int.TryParse(textBox3.Text, out int value3))
             {
-                ReproductorText.Text = new Logical().ReproductorLog(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), dateTimePicker1.Value);
+                new Logical().ReproductorLog(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), dateTimePicker1.Value);
+                ReproductorText.Text = "Готово!";
             }
             else
             {
@@ -38,6 +39,9 @@ namespace Pticefabrica
             }
 
         }
+
+
+        //--------------------------------------------------------------------------------------------------
 
         private void ReloadInc_Click(object sender, EventArgs e)
         {
@@ -54,7 +58,72 @@ namespace Pticefabrica
             Reload();
 
         }
-        public void Reload() 
+        
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ApplicationContext context = new ApplicationContext();
+            
+            if (int.TryParse(textBox4.Text, out int value4) && int.TryParse(textBox5.Text, out int value5) && listBox2.SelectedItem != null && Convert.ToInt32(textBox4.Text) + Convert.ToInt32(textBox5.Text) < 1001)
+            {
+                int k = listBox2.SelectedItem.ToString().IndexOf(";");
+                int IDb = Convert.ToInt32(listBox2.SelectedItem.ToString().Substring(0,k));
+                Incubator incubator = context.Incubator.Where(c => c.ID == IDb).FirstOrDefault();
+                if (incubator.KolvoEggs >= Convert.ToInt32(textBox4.Text) + Convert.ToInt32(textBox5.Text))
+                {
+                    IncubatorText.Text = new Logical().IncubatorMolod(listBox2.SelectedItem.ToString(), Convert.ToInt32(textBox4.Text), Convert.ToInt32(textBox5.Text));
+                }
+            }
+            else IncubatorText.Text = "Проверьте провильность введенных данных или выберите инкубатор";
+            Reload();
+        }
+        //-----------------------------------------------------------------------------------------------
+        private void ReloadPtichnic_Click(object sender, EventArgs e)
+        {
+            Reload2();
+        }
+        private void LoadPtichnic_Click(object sender, EventArgs e)
+        {
+            if (listBox3.SelectedItem == null || listBox4.SelectedItem == null) { PtichnicText.Text = "выберите партию и/или птичник "; }
+            else
+            {
+                PtichnicText.Text = new Logical().PtichnicLoad(listBox3.SelectedItem.ToString(), listBox4.SelectedItem.ToString());
+            }
+            Reload2();
+        }
+        private void FormVzroslChicken_Click(object sender, EventArgs e)
+        {
+            new Logical().PtichnicFormPart(listBox4.SelectedItem.ToString());
+            Reload2();
+        }
+
+        //----------------------------------------------------------------------------------------------
+
+
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private bool flag = false;
+        private void FullSizeButton_Click(object sender, EventArgs e)
+        {
+            if (!flag)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+            flag = !flag;
+        }
+        
+
+        //----------------------------------------------------------------------------------------------
+
+
+        public void Reload()
         {
             listBox1.Items.Clear();
             listBox2.Items.Clear();
@@ -70,7 +139,7 @@ namespace Pticefabrica
                 {
                     listBox1.Items.Add($"{parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo};");
                 }
-                else 
+                else
                 {
                     context.Remove(context.PartiyaEggsRodClass.Single(s => s.ID == parteg.ID)); // Удаление сущности из таблицы
                     context.SaveChanges();
@@ -85,40 +154,59 @@ namespace Pticefabrica
                 else
                 {
                     if (DateTime.Compare(DateTime.Now, inc.DayOfBorn) >= 0)
-                        listBox2.Items.Add($"{inc.ID}; Дата поступления: {inc.DatePost}; Дата вылупления {inc.DayOfBorn};     Цикл закончен;");       
+                        listBox2.Items.Add($"{inc.ID}; Дата поступления: {inc.DatePost}; Дата вылупления {inc.DayOfBorn};     Цикл закончен;");
                     else
                         listBox2.Items.Add($"{inc.ID}; Дата поступления: {inc.DatePost}; Дата вылупления {inc.DayOfBorn};     Цикл в процессе;");
                 }
             }
         }
-
-        private void button4_Click(object sender, EventArgs e)
+        public void Reload2()
         {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            if (int.TryParse(textBox4.Text, out int value4) && int.TryParse(textBox5.Text, out int value5) && listBox2.SelectedItem != null && Convert.ToInt32(textBox4.Text)+Convert.ToInt32(textBox5.Text)<1001)
+            listBox3.Items.Clear();
+            listBox4.Items.Clear();
+            ApplicationContext context = new ApplicationContext();
+            var partms = context.PartiyaMolodnyaka.ToList();
+            var pt = context.Ptichnic.ToList();
+            foreach (var partm in partms)
             {
-                IncubatorText.Text = new Logical().IncubatorMolod(listBox2.SelectedItem.ToString(), Convert.ToInt32(textBox4.Text), Convert.ToInt32(textBox5.Text));
+                DateTime date = partm.DataForm;
+                DateTime date1 = DateTime.Now;
+                date1 = date1.AddDays(-1);
+                if (DateTime.Compare(date, date1) >= 0 && partm.FreeOrNotFree && partm.TypeChicken == "Бройлер")
+                {
+                    listBox3.Items.Add($"{partm.ID}; Дата: {partm.DataForm}; Количество: {partm.Kolvo}; Бройлеры");
+                }
+                else
+                {
+                    if (DateTime.Compare(date, date1) >= 0 && partm.FreeOrNotFree && partm.TypeChicken == "Несушка")
+                    {
+                        listBox3.Items.Add($"{partm.ID}; Дата: {partm.DataForm}; Количество: {partm.Kolvo}; Несушки");
+                    }
+                    else
+                    {
+                        context.Remove(context.PartiyaMolodnyaka.Single(s => s.ID == partm.ID)); // Удаление сущности из таблицы
+                        context.SaveChanges();
+                    }
+                }
             }
-            else IncubatorText.Text = "Проверьте провильность введенных данных или выберите инкубатор";
-            Reload();
-        }
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-        private bool flag = false;
-        private void FullSizeButton_Click(object sender, EventArgs e)
-        {
-            if (!flag)
-                WindowState = FormWindowState.Maximized;
-            else
-                WindowState = FormWindowState.Normal;
-            flag = !flag;
+            
+            foreach (var p in pt)
+            {
+                if (p.FreeOrNotFree)
+                {
+                    listBox4.Items.Add($"{p.ID};   Свободен;");
+                }
+                else
+                {
+                    if (DateTime.Compare(DateTime.Now, p.DateGrow) >= 0)
+                        listBox4.Items.Add($"{p.ID}; Дата поступления: {p.DatePost}; Дата готовности {p.DateGrow}; {p.TypeChicken} - Взращивание закончено;");
+                    else
+                        listBox4.Items.Add($"{p.ID}; Дата поступления: {p.DatePost}; Дата готовности {p.DateGrow}; {p.TypeChicken} - Взращивание в процессе;");
+                }
+            }
+            
         }
 
+        
     }
 }

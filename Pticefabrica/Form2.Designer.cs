@@ -53,13 +53,11 @@ namespace Pticefabrica
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.ReloadInc = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.PtichnicText = new System.Windows.Forms.Label();
+            this.FormVzroslChicken = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.listBox4 = new System.Windows.Forms.ListBox();
-            this.button8 = new System.Windows.Forms.Button();
+            this.LoadPtichnic = new System.Windows.Forms.Button();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.ReloadPtichnic = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -76,6 +74,7 @@ namespace Pticefabrica
             // 
             // CloseButton
             // 
+            this.CloseButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.CloseButton.AutoSize = true;
             this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseButton.Location = new System.Drawing.Point(673, 9);
@@ -107,6 +106,7 @@ namespace Pticefabrica
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -311,13 +311,11 @@ namespace Pticefabrica
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.label5);
-            this.tabPage3.Controls.Add(this.button6);
-            this.tabPage3.Controls.Add(this.textBox6);
-            this.tabPage3.Controls.Add(this.textBox7);
+            this.tabPage3.Controls.Add(this.PtichnicText);
+            this.tabPage3.Controls.Add(this.FormVzroslChicken);
             this.tabPage3.Controls.Add(this.button7);
             this.tabPage3.Controls.Add(this.listBox4);
-            this.tabPage3.Controls.Add(this.button8);
+            this.tabPage3.Controls.Add(this.LoadPtichnic);
             this.tabPage3.Controls.Add(this.listBox3);
             this.tabPage3.Controls.Add(this.ReloadPtichnic);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
@@ -327,36 +325,23 @@ namespace Pticefabrica
             this.tabPage3.Text = "Птичник";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // PtichnicText
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(263, 322);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(0, 15);
-            this.label5.TabIndex = 54;
+            this.PtichnicText.AutoSize = true;
+            this.PtichnicText.Location = new System.Drawing.Point(263, 322);
+            this.PtichnicText.Name = "PtichnicText";
+            this.PtichnicText.Size = new System.Drawing.Size(0, 15);
+            this.PtichnicText.TabIndex = 54;
             // 
-            // button6
+            // FormVzroslChicken
             // 
-            this.button6.Location = new System.Drawing.Point(3, 322);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(154, 23);
-            this.button6.TabIndex = 53;
-            this.button6.Text = "Отправка в птичник";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(118, 293);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 23);
-            this.textBox6.TabIndex = 52;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(3, 293);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 23);
-            this.textBox7.TabIndex = 51;
+            this.FormVzroslChicken.Location = new System.Drawing.Point(3, 322);
+            this.FormVzroslChicken.Name = "FormVzroslChicken";
+            this.FormVzroslChicken.Size = new System.Drawing.Size(154, 23);
+            this.FormVzroslChicken.TabIndex = 53;
+            this.FormVzroslChicken.Text = "Формирование взрослой партии";
+            this.FormVzroslChicken.UseVisualStyleBackColor = true;
+            this.FormVzroslChicken.Click += new System.EventHandler(this.FormVzroslChicken_Click);
             // 
             // button7
             // 
@@ -376,14 +361,15 @@ namespace Pticefabrica
             this.listBox4.Size = new System.Drawing.Size(665, 124);
             this.listBox4.TabIndex = 49;
             // 
-            // button8
+            // LoadPtichnic
             // 
-            this.button8.Location = new System.Drawing.Point(494, 45);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(154, 23);
-            this.button8.TabIndex = 48;
-            this.button8.Text = "Добавление в партию взрослой птицы";
-            this.button8.UseVisualStyleBackColor = true;
+            this.LoadPtichnic.Location = new System.Drawing.Point(494, 45);
+            this.LoadPtichnic.Name = "LoadPtichnic";
+            this.LoadPtichnic.Size = new System.Drawing.Size(154, 23);
+            this.LoadPtichnic.TabIndex = 48;
+            this.LoadPtichnic.Text = "Добавление в птичник";
+            this.LoadPtichnic.UseVisualStyleBackColor = true;
+            this.LoadPtichnic.Click += new System.EventHandler(this.LoadPtichnic_Click);
             // 
             // listBox3
             // 
@@ -402,6 +388,7 @@ namespace Pticefabrica
             this.ReloadPtichnic.TabIndex = 46;
             this.ReloadPtichnic.Text = "Обновить";
             this.ReloadPtichnic.UseVisualStyleBackColor = true;
+            this.ReloadPtichnic.Click += new System.EventHandler(this.ReloadPtichnic_Click);
             // 
             // tabPage4
             // 
@@ -450,6 +437,7 @@ namespace Pticefabrica
             // 
             // FullSizeButton
             // 
+            this.FullSizeButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.FullSizeButton.AutoSize = true;
             this.FullSizeButton.Location = new System.Drawing.Point(642, 9);
             this.FullSizeButton.Name = "FullSizeButton";
@@ -514,13 +502,11 @@ namespace Pticefabrica
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label FullSizeButton;
         private System.Windows.Forms.Label IncubatorText;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label PtichnicText;
+        private System.Windows.Forms.Button FormVzroslChicken;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ListBox listBox4;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button LoadPtichnic;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Button ReloadPtichnic;
     }

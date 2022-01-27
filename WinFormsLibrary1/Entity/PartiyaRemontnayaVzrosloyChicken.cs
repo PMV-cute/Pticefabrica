@@ -7,10 +7,8 @@ namespace WinFormsLibrary1.Entity
     {
         [Key]
         public int ID { get; set; }
-        [Required]
-        public int Npart { get; set; }
-        public int KolvoB { get; set; }
-        public int KolvoN { get; set; }
+        public string TypeChiсken { get; set; }
+        public int Kolvo { get; set; }
         [ForeignKey("PartiyaVzrosloyChicken")]
         public int PaVzChID { get; set; }
 
