@@ -19,7 +19,6 @@ namespace WinFormsLibrary1
             Reproductor reproductor = context.Reproductor.FirstOrDefault();
             reproductor.KolvoB = a;
             reproductor.KolvoN = b;
-            int count = c % 1000;
 
             var repr = context.Reproductor.ToList();
             if (c > 0)
@@ -35,11 +34,11 @@ namespace WinFormsLibrary1
                     context.PartiyaEggsRodClass.Add(partiyaEggsRodClass);
                     context.SaveChanges();
                 }
-                if (c != 0) 
-                { 
-                        PartiyaEggsRodClass partiyaEggsRodClass1 = new PartiyaEggsRodClass
+                if (c%1000 != 0)
+                {
+                    PartiyaEggsRodClass partiyaEggsRodClass1 = new PartiyaEggsRodClass
                     {
-                        Kolvo = count,
+                        Kolvo = c %1000,
                         RepID = repr[repr.Count - 1].RepID,
                         DatePostEggs = date
                     };
@@ -52,13 +51,53 @@ namespace WinFormsLibrary1
             }
             //context.Reproductor.Update();
         }
+        public string ReprLoad(string a, string b, string e, string f)
+        {
+            ApplicationContext context = new ApplicationContext();
+            int k = 0;
+            k = a.IndexOf(";");
+            a = a.Substring(0, k);
+
+            k = b.IndexOf(";");
+            b = b.Substring(0, k);
+
+            k = e.IndexOf(":");
+
+            e = e.Substring(k + 2);
+            k = f.IndexOf(":");
+            f = f.Substring(k + 2);
+
+            int IDb = Convert.ToInt32(a);
+            int IDn = Convert.ToInt32(b);
+            int kolvob = Convert.ToInt32(e);
+            int kolvon = Convert.ToInt32(f);
+            PartiyaVzrosloyChicken partiyaVzrosloyChickenB = context.PartiyaVzrosloyChicken.Where(h => h.ID == IDb).FirstOrDefault();
+            PartiyaVzrosloyChicken partiyaVzrosloyChickenN = context.PartiyaVzrosloyChicken.Where(h => h.ID == IDn).FirstOrDefault();
+
+            Reproductor reproductor = context.Reproductor.FirstOrDefault();
+            if (reproductor.KolvoB < kolvob || reproductor.KolvoN < kolvon)
+            {
+                partiyaVzrosloyChickenB.Kolvo += -(kolvob - reproductor.KolvoB);
+                reproductor.KolvoB += (kolvob - reproductor.KolvoB);
+                partiyaVzrosloyChickenN.Kolvo += -(kolvon - reproductor.KolvoN);
+                reproductor.KolvoN += (kolvon - reproductor.KolvoN);
+                context.SaveChanges();
+                return "";
+            }
+            else 
+            {
+                return "Проверьте корректность выбора"; 
+            }
+        }
+        
+
         public string IncubatorLoad(string a, string b) //Загрузка данных в инкубатор
         {
             ApplicationContext context = new ApplicationContext();
             int k = 0;
             k = a.IndexOf(";");
             a = a.Substring(0, k);
-            k = b.IndexOf(";");                                                      
+            k = b.IndexOf(";");
             b = b.Substring(0, k);
             int IDa = Convert.ToInt32(a);
             int IDb = Convert.ToInt32(b);
@@ -81,12 +120,12 @@ namespace WinFormsLibrary1
         public string IncubatorMolod(string a, int b, int c) // Создание партии молодняка из вылупившихся яиц в инкубаторе
         {
             ApplicationContext context = new ApplicationContext();
-            
+
             int k = a.IndexOf(";");
             a = a.Substring(0, k);
             int IDb = Convert.ToInt32(a);
             Incubator incubator = context.Incubator.Where(c => c.ID == IDb).FirstOrDefault();
-            if (DateTime.Compare(DateTime.Now, incubator.DayOfBorn) < 0)
+            if (DateTime.Compare(DateTime.Now, incubator.DayOfBorn) > 0)
             {
                 PartiyaMolodnyaka partiyaMolodnyaka = new PartiyaMolodnyaka
                 {
@@ -102,14 +141,14 @@ namespace WinFormsLibrary1
                     IncID = incubator.ID,
                     DataForm = DateTime.Now,
                 };
-                context.PartiyaMolodnyaka.AddRange(partiyaMolodnyaka,partiyaMolodnyaka1);
+                context.PartiyaMolodnyaka.AddRange(partiyaMolodnyaka, partiyaMolodnyaka1);
                 incubator.FreeOrNotFree = true;
                 incubator.DayOfBorn = DateTime.Now.AddYears(100);
                 incubator.KolvoEggs = 0;
                 context.SaveChanges();
                 return "";
             }
-            else { return "Яйца не вылупились"; } 
+            else { return "Яйца не вылупились"; }
         }
         public string PtichnicLoad(string a, string b)
         {
@@ -121,12 +160,12 @@ namespace WinFormsLibrary1
             b = b.Substring(0, k);
             int IDa = Convert.ToInt32(a);
             int IDb = Convert.ToInt32(b);
-            PartiyaMolodnyaka partiyaMolodnyaka= context.PartiyaMolodnyaka.Where(h => h.ID == IDa).FirstOrDefault();
+            PartiyaMolodnyaka partiyaMolodnyaka = context.PartiyaMolodnyaka.Where(h => h.ID == IDa).FirstOrDefault();
             Ptichnic ptichnic = context.Ptichnic.Where(c => c.ID == IDb).FirstOrDefault();
             int days = 60;
             if (partiyaMolodnyaka.TypeChicken == "Бройлер")
                 days = 20;
-            else 
+            else
                 days = 60;
             if (ptichnic.FreeOrNotFree)
             {
@@ -152,7 +191,7 @@ namespace WinFormsLibrary1
             a = a.Substring(0, k);
             int IDb = Convert.ToInt32(a);
             Ptichnic ptichnic = context.Ptichnic.Where(c => c.ID == IDb).FirstOrDefault();
-            if (DateTime.Compare(DateTime.Now, ptichnic.DateGrow) < 0)
+            if (DateTime.Compare(DateTime.Now, ptichnic.DateGrow) > 0)
             {
                 PartiyaVzrosloyChicken partiyaVzrosloyChicken = new PartiyaVzrosloyChicken
                 {
@@ -169,7 +208,7 @@ namespace WinFormsLibrary1
                 context.SaveChanges();
                 return "";
             }
-            else { return "Пиздюки не выросли"; }
+            else { return "Птицы не выросли"; }
         }
     }
 }

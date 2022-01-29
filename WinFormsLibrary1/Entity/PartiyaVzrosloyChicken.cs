@@ -9,6 +9,7 @@ namespace WinFormsLibrary1.Entity
         public string TypeChiсken { get; set; }
         public int Kolvo { get; set; }
         public DateTime DateForm { get; set; }
+        public bool FreeOrNotFree { get; set; }
         public int? PtID2 { get; set; }
 
         public int? CoPrID { get; set; }

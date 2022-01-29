@@ -472,6 +472,11 @@ namespace WinFormsLibrary1.Migrations
                     b.Property<DateTime>("DateForm")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
                     b.Property<int>("Kolvo")
                         .HasColumnType("integer");
 
@@ -535,10 +540,12 @@ namespace WinFormsLibrary1.Migrations
                     b.Property<int>("KolvoB")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasDefaultValue(1300);
+                        .HasDefaultValue(200);
 
                     b.Property<int>("KolvoN")
-                        .HasColumnType("integer");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(1000);
 
                     b.HasKey("RepID");
 

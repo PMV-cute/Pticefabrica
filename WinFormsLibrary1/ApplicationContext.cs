@@ -42,12 +42,14 @@ namespace WinFormsLibrary1
 
             modelBuilder.Entity<PartiyaEggsRodClass>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
 
-            modelBuilder.Entity<Reproductor>().Property(s => s.KolvoB).HasDefaultValue(70);
-            modelBuilder.Entity<Reproductor>().Property(s => s.KolvoB).HasDefaultValue(1300);
+            modelBuilder.Entity<Reproductor>().Property(s => s.KolvoB).HasDefaultValue(200);
+            modelBuilder.Entity<Reproductor>().Property(s => s.KolvoN).HasDefaultValue(1000);
 
             modelBuilder.Entity<PartiyaMolodnyaka>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
 
             modelBuilder.Entity<Ptichnic>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
+
+            modelBuilder.Entity<PartiyaVzrosloyChicken>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
         }
 
         /*

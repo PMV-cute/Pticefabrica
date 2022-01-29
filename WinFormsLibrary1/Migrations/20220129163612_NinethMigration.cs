@@ -95,11 +95,20 @@ namespace WinFormsLibrary1.Migrations
                 newName: "Kolvo");
 
             migrationBuilder.AlterColumn<int>(
+                name: "KolvoN",
+                table: "Reproductor",
+                type: "integer",
+                nullable: false,
+                defaultValue: 1000,
+                oldClrType: typeof(int),
+                oldType: "integer");
+
+            migrationBuilder.AlterColumn<int>(
                 name: "KolvoB",
                 table: "Reproductor",
                 type: "integer",
                 nullable: false,
-                defaultValue: 1300,
+                defaultValue: 200,
                 oldClrType: typeof(int),
                 oldType: "integer");
 
@@ -151,6 +160,13 @@ namespace WinFormsLibrary1.Migrations
                 type: "timestamp without time zone",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+
+            migrationBuilder.AddColumn<bool>(
+                name: "FreeOrNotFree",
+                table: "PartiyaVzrosloyChicken",
+                type: "boolean",
+                nullable: false,
+                defaultValue: true);
 
             migrationBuilder.AddColumn<int>(
                 name: "UPKID",
@@ -290,6 +306,10 @@ namespace WinFormsLibrary1.Migrations
                 table: "PartiyaVzrosloyChicken");
 
             migrationBuilder.DropColumn(
+                name: "FreeOrNotFree",
+                table: "PartiyaVzrosloyChicken");
+
+            migrationBuilder.DropColumn(
                 name: "UPKID",
                 table: "PartiyaVzrosloyChicken");
 
@@ -350,13 +370,22 @@ namespace WinFormsLibrary1.Migrations
                 newName: "Npart");
 
             migrationBuilder.AlterColumn<int>(
+                name: "KolvoN",
+                table: "Reproductor",
+                type: "integer",
+                nullable: false,
+                oldClrType: typeof(int),
+                oldType: "integer",
+                oldDefaultValue: 1000);
+
+            migrationBuilder.AlterColumn<int>(
                 name: "KolvoB",
                 table: "Reproductor",
                 type: "integer",
                 nullable: false,
                 oldClrType: typeof(int),
                 oldType: "integer",
-                oldDefaultValue: 1300);
+                oldDefaultValue: 200);
 
             migrationBuilder.AddColumn<string>(
                 name: "DateP",

@@ -39,7 +39,25 @@ namespace Pticefabrica
             }
 
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            {
+                Reload3();
+            }
+        }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (listBox5.SelectedItem != null && listBox6.SelectedItem != null)
+            {
+                ReproductorText.Text = new Logical().ReprLoad(listBox5.SelectedItem.ToString(), listBox6.SelectedItem.ToString(), label5.Text, label6.Text);
+            }
+            else
+            {
+                ReproductorText.Text = "выберите партии";
+            }
+            Reload3();
+        }
 
         //--------------------------------------------------------------------------------------------------
 
@@ -51,14 +69,14 @@ namespace Pticefabrica
         private void button3_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedItem == null || listBox2.SelectedItem == null) { IncubatorText.Text = "выберите партию и/или инкубатор "; }
-            else 
+            else
             {
                 IncubatorText.Text = new Logical().IncubatorLoad(listBox1.SelectedItem.ToString(), listBox2.SelectedItem.ToString());
             }
             Reload();
 
         }
-        
+
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -68,11 +86,11 @@ namespace Pticefabrica
         private void button5_Click(object sender, EventArgs e)
         {
             ApplicationContext context = new ApplicationContext();
-            
+
             if (int.TryParse(textBox4.Text, out int value4) && int.TryParse(textBox5.Text, out int value5) && listBox2.SelectedItem != null && Convert.ToInt32(textBox4.Text) + Convert.ToInt32(textBox5.Text) < 1001)
             {
                 int k = listBox2.SelectedItem.ToString().IndexOf(";");
-                int IDb = Convert.ToInt32(listBox2.SelectedItem.ToString().Substring(0,k));
+                int IDb = Convert.ToInt32(listBox2.SelectedItem.ToString().Substring(0, k));
                 Incubator incubator = context.Incubator.Where(c => c.ID == IDb).FirstOrDefault();
                 if (incubator.KolvoEggs >= Convert.ToInt32(textBox4.Text) + Convert.ToInt32(textBox5.Text))
                 {
@@ -118,7 +136,7 @@ namespace Pticefabrica
                 WindowState = FormWindowState.Normal;
             flag = !flag;
         }
-        
+
 
         //----------------------------------------------------------------------------------------------
 
@@ -189,7 +207,7 @@ namespace Pticefabrica
                     }
                 }
             }
-            
+
             foreach (var p in pt)
             {
                 if (p.FreeOrNotFree)
@@ -204,9 +222,41 @@ namespace Pticefabrica
                         listBox4.Items.Add($"{p.ID}; Дата поступления: {p.DatePost}; Дата готовности {p.DateGrow}; {p.TypeChicken} - Взращивание в процессе;");
                 }
             }
-            
+
+        }
+        public void Reload3()
+        {
+            listBox5.Items.Clear();
+            listBox6.Items.Clear();
+
+            ApplicationContext context = new ApplicationContext();
+            Reproductor reproductor = context.Reproductor.FirstOrDefault();
+            textBox1.Text = reproductor.KolvoB.ToString();
+            textBox2.Text = reproductor.KolvoN.ToString();
+            var parts = context.PartiyaVzrosloyChicken.ToList();
+            foreach (var part in parts)
+            {
+                DateTime date = part.DateForm;
+                DateTime date1 = DateTime.Now;
+                date1 = date1.AddDays(-7);
+                if (DateTime.Compare(date, date1) >= 0 && part.FreeOrNotFree && part.TypeChiсken == "Бройлер")
+                {
+                    listBox5.Items.Add($"{part.ID}; Количество: {part.Kolvo}; Бройлеры");
+                }
+                else
+                {
+                    if (DateTime.Compare(date, date1) >= 0 && part.FreeOrNotFree && part.TypeChiсken == "Несушка")
+                    {
+                        listBox6.Items.Add($"{part.ID}; Количество: {part.Kolvo}; Несушки");
+                    }
+                    else
+                    {
+                        context.SaveChanges();
+                    }
+                }
+            }
         }
 
-        
+
     }
 }
