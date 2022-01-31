@@ -8,7 +8,7 @@ using ApplicationContext = WinFormsLibrary1.ApplicationContext;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Pticefabrica
+namespace Pticefabrica  // Репродуктор
 {
     public partial class Form2 : Form
     {
@@ -127,15 +127,7 @@ namespace Pticefabrica
         {
             Application.Exit();
         }
-        private bool flag = false;
-        private void FullSizeButton_Click(object sender, EventArgs e)
-        {
-            if (!flag)
-                WindowState = FormWindowState.Maximized;
-            else
-                WindowState = FormWindowState.Normal;
-            flag = !flag;
-        }
+
 
 
         //----------------------------------------------------------------------------------------------

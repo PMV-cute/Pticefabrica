@@ -14,6 +14,7 @@ namespace Pticefabrica
     {   
         Form f2 = new Form2();
         Form f3 = new Form3();
+        Form f4 = new Form4();
         public Form1()
         {
             new Create().CreateAll();
@@ -35,8 +36,6 @@ namespace Pticefabrica
             string pas = textBox2.Text.ToString();
             
             ApplicationContext context = new ApplicationContext();
-            LogPas logPas = new LogPas();
-            logPas.LoadData();
             var users = context.LogPas.ToList();
             int count = 0;
             foreach (var u in users)
@@ -45,12 +44,14 @@ namespace Pticefabrica
                 //textBox3.Text += u.login +u.password + u.role;
                 if (u.login == log && u.password == pas)
                 {
-                    if (u.role == "Руководитель") f2.Show();
-                    if (u.role == "Рабочий") f3.Show();
+                    if (u.role == "Репродуктор") f2.Show();
+                    if (u.role == "Инкубатор") f3.Show();
+                    if (u.role == "Птичник") f4.Show();
                     if (u.role == "Admin")
                     {
                         f2.Show();
                         f3.Show();
+                        f4.Show();
                     }
                     Hide();
                     return;
@@ -60,44 +61,6 @@ namespace Pticefabrica
                     label4.Text = "Неправильный логин или пароль";
                 }
             }
-            
-
-            /*
-            string log = textBox1.Text.ToString();
-            string pas = textBox2.Text.ToString();
-            ConnectionBD connect = new ConnectionBD();
-            connect.OpenConn();
-
-            if (connect.GetConnect().State == ConnectionState.Open) //Проверка подключения к бд
-                label5.Text = "Подключено";
-
-            string role = "";
-            using (NpgsqlCommand command = new NpgsqlCommand($"select role from users where login = '{log}' and password = '{pas}' ", connect.GetConnect()))
-            {
-                NpgsqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    role = reader.GetString(0);
-                }
-            }
-            connect.CloseConn();
-            if (role != "")
-            {
-                if (role == "Руководитель") f2.Show();
-                if (role == "Рабочий") f3.Show();
-                if (role == "Admin")
-                {
-                    f2.Show();
-                    f3.Show();
-                }
-
-                Hide();
-            }
-            else
-            {
-                label4.Text = "Неправильный логин или пароль";
-            }
-            */
         }
 
         private void label6_Click(object sender, EventArgs e)

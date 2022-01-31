@@ -106,6 +106,20 @@ namespace WinFormsLibrary1
             }
             context.Reproductor.Add(reproductor);
             context.SaveChanges();
+            LogPas logPas1 = new LogPas { login = "Maksim", password = "1234", role = "Admin" };
+            LogPas logPas2 = new LogPas { login = "Ivan", password = "1234", role = "Admin" };
+            LogPas logPas3 = new LogPas { login = "Alexey", password = "1234", role = "Руководитель" };
+            LogPas logPas4 = new LogPas { login = "1", password = "1234", role = "Репродуктор" };
+            LogPas logPas5 = new LogPas { login = "2", password = "1234", role = "Инкубатор" };
+            LogPas logPas6 = new LogPas { login = "3", password = "1234", role = "Птичник" };
+            LogPas logPas7 = new LogPas { login = "4", password = "1234", role = "КомплексПЯ" };
+            LogPas logPas8 = new LogPas { login = "5", password = "1234", role = "КомплексСЯ" };
+            LogPas logPas9 = new LogPas { login = "6", password = "1234", role = "УПК" };
+            LogPas logPas10 = new LogPas { login = "7", password = "1234", role = "ЦехПО" };
+            LogPas logPas11 = new LogPas { login = "8", password = "1234", role = "ЦехПМ" };
+
+            context.LogPas.AddRange(logPas1, logPas2, logPas3, logPas4, logPas5, logPas6, logPas7, logPas8, logPas9, logPas10, logPas11); // Добавление данных в бд (Оно не обязательно для создания бд) 
+            context.SaveChanges();
         }
     }
 }

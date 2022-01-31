@@ -71,7 +71,6 @@ namespace Pticefabrica
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.FullSizeButton = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -83,7 +82,7 @@ namespace Pticefabrica
             this.CloseButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.CloseButton.AutoSize = true;
             this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CloseButton.Location = new System.Drawing.Point(673, 9);
+            this.CloseButton.Location = new System.Drawing.Point(770, 9);
             this.CloseButton.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(14, 15);
@@ -94,11 +93,11 @@ namespace Pticefabrica
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(302, 9);
+            this.label1.Location = new System.Drawing.Point(360, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 15);
+            this.label1.Size = new System.Drawing.Size(78, 15);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Окно рабочего";
+            this.label1.Text = "Репродуктор";
             // 
             // button1
             // 
@@ -121,10 +120,10 @@ namespace Pticefabrica
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage9);
-            this.tabControl1.Location = new System.Drawing.Point(12, 32);
+            this.tabControl1.Location = new System.Drawing.Point(12, 38);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(679, 406);
+            this.tabControl1.Size = new System.Drawing.Size(772, 406);
             this.tabControl1.TabIndex = 14;
             // 
             // tabPage1
@@ -147,7 +146,7 @@ namespace Pticefabrica
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(671, 378);
+            this.tabPage1.Size = new System.Drawing.Size(764, 378);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Репродуктор";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -499,23 +498,11 @@ namespace Pticefabrica
             this.tabPage9.Text = "Цех производства меланджа";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
-            // FullSizeButton
-            // 
-            this.FullSizeButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.FullSizeButton.AutoSize = true;
-            this.FullSizeButton.Location = new System.Drawing.Point(642, 9);
-            this.FullSizeButton.Name = "FullSizeButton";
-            this.FullSizeButton.Size = new System.Drawing.Size(22, 15);
-            this.FullSizeButton.TabIndex = 45;
-            this.FullSizeButton.Text = " ▱";
-            this.FullSizeButton.Click += new System.EventHandler(this.FullSizeButton_Click);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(703, 450);
-            this.Controls.Add(this.FullSizeButton);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CloseButton);
@@ -564,7 +551,6 @@ namespace Pticefabrica
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label FullSizeButton;
         private System.Windows.Forms.Label IncubatorText;
         private System.Windows.Forms.Label PtichnicText;
         private System.Windows.Forms.Button FormVzroslChicken;
