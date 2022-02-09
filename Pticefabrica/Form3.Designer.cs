@@ -40,6 +40,8 @@ namespace Pticefabrica
             this.button3 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.ReloadInc = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label6
@@ -73,7 +75,7 @@ namespace Pticefabrica
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(12, 358);
+            this.button5.Location = new System.Drawing.Point(12, 415);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(154, 23);
             this.button5.TabIndex = 53;
@@ -83,14 +85,14 @@ namespace Pticefabrica
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(122, 329);
+            this.textBox5.Location = new System.Drawing.Point(82, 374);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 23);
             this.textBox5.TabIndex = 52;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(12, 329);
+            this.textBox4.Location = new System.Drawing.Point(82, 334);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 23);
             this.textBox4.TabIndex = 51;
@@ -101,7 +103,7 @@ namespace Pticefabrica
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(154, 23);
             this.button4.TabIndex = 50;
-            this.button4.Text = "Утилизация партии яиц";
+            this.button4.Text = "Утилизация";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -143,11 +145,31 @@ namespace Pticefabrica
             this.ReloadInc.UseVisualStyleBackColor = true;
             this.ReloadInc.Click += new System.EventHandler(this.ReloadInc_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 337);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 15);
+            this.label2.TabIndex = 55;
+            this.label2.Text = "Бройлеры";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 377);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 15);
+            this.label3.TabIndex = 56;
+            this.label3.Text = "Несушки";
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.IncubatorText);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.textBox5);
@@ -180,5 +202,7 @@ namespace Pticefabrica
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button ReloadInc;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -7,8 +7,7 @@ namespace WinFormsLibrary1.Entity
         [Key]
         [Required]
         public int ID { get; set; }
-        public int KolvoB { get; set; }
-        public int KolvoN { get; set; }
+        public int Kolvo { get; set; }
         public int? CePerOID { get; set; }
         public int? CoPrID3 { get; set; }
     }

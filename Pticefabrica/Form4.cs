@@ -16,7 +16,7 @@ namespace Pticefabrica  // Птичник
         {
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(MyForm_MouseDown);
-
+            Reload();
         }
         private void MyForm_MouseDown(object sender, MouseEventArgs e)
         {
@@ -47,9 +47,9 @@ namespace Pticefabrica  // Птичник
         {
             if (listBox4.SelectedItem != null)
             {
-                new Logical().PtichnicFormPart(listBox4.SelectedItem.ToString());
+                PtichnicText.Text = new Logical().PtichnicFormPart(listBox4.SelectedItem.ToString());
             }
-           
+            else { PtichnicText.Text = "Выберите птичник"; }
             Reload();
         }
         public void Reload()

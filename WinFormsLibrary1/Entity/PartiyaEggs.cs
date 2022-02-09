@@ -13,6 +13,7 @@ namespace WinFormsLibrary1.Entity
         public int Npart { get; set; }
 
         public int Kolvo { get; set; }
+        public DateTime DateForm { get; set; }
 
         public int? CoPrID2 { get; set; }
         public int? CehSortID { get; set; }

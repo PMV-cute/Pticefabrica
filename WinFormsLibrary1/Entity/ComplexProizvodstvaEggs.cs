@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System;
 
 namespace WinFormsLibrary1.Entity
 {
@@ -10,7 +11,10 @@ namespace WinFormsLibrary1.Entity
         [Required]
         public int ID { get; set; }
         [Required]
-        public string Kolvo { get; set; }
+        public int KolvoN { get; set; }
+        public bool FreeOrNotFree { get; set; }
+        public DateTime DateForm { get; set; }
+
         [Required]
         public bool Pfeed { get; set; }
         [Required]
@@ -21,6 +25,5 @@ namespace WinFormsLibrary1.Entity
         public ICollection<PartiyaEggs> PartiyaEggses { get; set; }
         [ForeignKey("CoPrID3")]
         public ICollection<NegodnayaChicken> NegodnayaChickens { get; set; }
-        public void OtbracovcaPartii() { }
     }
 }

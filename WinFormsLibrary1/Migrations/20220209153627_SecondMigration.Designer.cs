@@ -10,8 +10,8 @@ using WinFormsLibrary1;
 namespace WinFormsLibrary1.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220125155257_SixthMigration1")]
-    partial class SixthMigration1
+    [Migration("20220209153627_SecondMigration")]
+    partial class SecondMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -92,15 +92,26 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Kolvo")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<DateTime>("DateForm")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
+                    b.Property<int>("KolvoN")
+                        .HasColumnType("integer");
 
                     b.Property<bool>("Pfeed")
-                        .HasColumnType("boolean");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
 
                     b.Property<bool>("Pwater")
-                        .HasColumnType("boolean");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
 
                     b.HasKey("ID");
 
@@ -116,10 +127,6 @@ namespace WinFormsLibrary1.Migrations
 
                     b.Property<DateTime>("DateUp")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("TypeFabr")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<int>("UPKID2")
                         .HasColumnType("integer");
@@ -138,13 +145,18 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<DateTime>("DatePostupleniya")
+                    b.Property<DateTime>("DatePost")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int>("KolvoB")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("DayOfBorn")
+                        .HasColumnType("timestamp without time zone");
 
-                    b.Property<int>("KolvoN")
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
+                    b.Property<int>("KolvoEggs")
                         .HasColumnType("integer");
 
                     b.HasKey("ID");
@@ -213,10 +225,7 @@ namespace WinFormsLibrary1.Migrations
                     b.Property<int?>("CoPrID3")
                         .HasColumnType("integer");
 
-                    b.Property<int>("KolvoB")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("KolvoN")
+                    b.Property<int>("Kolvo")
                         .HasColumnType("integer");
 
                     b.HasKey("ID");
@@ -303,41 +312,6 @@ namespace WinFormsLibrary1.Migrations
                     b.ToTable("Othodi");
                 });
 
-            modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaBr", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int>("Kolvo")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Npart")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("PaVzChID")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("PartiyaVzrosloyChickenID")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("TypeChiсken")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("UPKID")
-                        .HasColumnType("integer");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("PartiyaVzrosloyChickenID");
-
-                    b.HasIndex("UPKID");
-
-                    b.ToTable("PartiyaBr");
-                });
-
             modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaEggs", b =>
                 {
                     b.Property<int>("ID")
@@ -350,6 +324,9 @@ namespace WinFormsLibrary1.Migrations
 
                     b.Property<int?>("CoPrID2")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("DateForm")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("Kolvo")
                         .HasColumnType("integer");
@@ -372,6 +349,14 @@ namespace WinFormsLibrary1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("DatePostEggs")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
 
                     b.Property<int?>("IncID2")
                         .HasColumnType("integer");
@@ -398,20 +383,26 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
+                    b.Property<DateTime>("DataForm")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
                     b.Property<int?>("IncID")
                         .HasColumnType("integer");
 
-                    b.Property<int>("KolvoB")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("KolvoN")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Npart")
+                    b.Property<int>("Kolvo")
                         .HasColumnType("integer");
 
                     b.Property<int?>("PtID")
                         .HasColumnType("integer");
+
+                    b.Property<string>("TypeChicken")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("ID");
 
@@ -422,41 +413,6 @@ namespace WinFormsLibrary1.Migrations
                     b.ToTable("PartiyaMolodnyaka");
                 });
 
-            modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaNes", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int>("CoPrID")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Kolvo")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Npart")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("PaVzChID")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("PartiyaVzrosloyChickenID")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("TypeChiсken")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CoPrID");
-
-                    b.HasIndex("PartiyaVzrosloyChickenID");
-
-                    b.ToTable("PartiyaNes");
-                });
-
             modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaRemontnayaVzrosloyChicken", b =>
                 {
                     b.Property<int>("ID")
@@ -464,13 +420,7 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("KolvoB")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("KolvoN")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Npart")
+                    b.Property<int>("Kolvo")
                         .HasColumnType("integer");
 
                     b.Property<int>("PaVzChID")
@@ -478,6 +428,9 @@ namespace WinFormsLibrary1.Migrations
 
                     b.Property<int?>("RepID2")
                         .HasColumnType("integer");
+
+                    b.Property<string>("TypeChiсken")
+                        .HasColumnType("text");
 
                     b.HasKey("ID");
 
@@ -522,25 +475,36 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("KolvoB")
+                    b.Property<int?>("CoPrID")
                         .HasColumnType("integer");
 
-                    b.Property<int>("KolvoN")
-                        .HasColumnType("integer");
+                    b.Property<DateTime>("DateForm")
+                        .HasColumnType("timestamp without time zone");
 
-                    b.Property<int>("Npart")
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
+                    b.Property<int>("Kolvo")
                         .HasColumnType("integer");
 
                     b.Property<int?>("PtID2")
                         .HasColumnType("integer");
 
                     b.Property<string>("TypeChiсken")
-                        .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int?>("UPKID")
+                        .HasColumnType("integer");
 
                     b.HasKey("ID");
 
+                    b.HasIndex("CoPrID");
+
                     b.HasIndex("PtID2");
+
+                    b.HasIndex("UPKID");
 
                     b.ToTable("PartiyaVzrosloyChicken");
                 });
@@ -552,17 +516,23 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("KolvoB")
+                    b.Property<DateTime>("DateGrow")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateTime>("DatePost")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
+                    b.Property<int>("Kolvo")
                         .HasColumnType("integer");
 
-                    b.Property<int>("KolvoN")
-                        .HasColumnType("integer");
-
-                    b.Property<bool>("Pfeed")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("Pwater")
-                        .HasColumnType("boolean");
+                    b.Property<string>("TypeChicken")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("ID");
 
@@ -576,21 +546,15 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("DateP")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<int>("KolvoB")
-                        .HasColumnType("integer");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(200);
 
                     b.Property<int>("KolvoN")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("feed")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("water")
-                        .HasColumnType("integer");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(1000);
 
                     b.HasKey("RepID");
 
@@ -603,6 +567,14 @@ namespace WinFormsLibrary1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("Dateform")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("KolvoB")
                         .HasColumnType("integer");
@@ -672,21 +644,6 @@ namespace WinFormsLibrary1.Migrations
                         .HasForeignKey("CehPrMID3");
                 });
 
-            modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaBr", b =>
-                {
-                    b.HasOne("WinFormsLibrary1.Entity.PartiyaVzrosloyChicken", "PartiyaVzrosloyChicken")
-                        .WithMany()
-                        .HasForeignKey("PartiyaVzrosloyChickenID");
-
-                    b.HasOne("WinFormsLibrary1.Entity.UPK", null)
-                        .WithMany("PartiyaBres")
-                        .HasForeignKey("UPKID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PartiyaVzrosloyChicken");
-                });
-
             modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaEggs", b =>
                 {
                     b.HasOne("WinFormsLibrary1.Entity.CehSortEggs", null)
@@ -722,21 +679,6 @@ namespace WinFormsLibrary1.Migrations
                         .HasForeignKey("PtID");
                 });
 
-            modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaNes", b =>
-                {
-                    b.HasOne("WinFormsLibrary1.Entity.ComplexProizvodstvaEggs", null)
-                        .WithMany("PartiyaNeses")
-                        .HasForeignKey("CoPrID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WinFormsLibrary1.Entity.PartiyaVzrosloyChicken", "PartiyaVzrosloyChicken")
-                        .WithMany()
-                        .HasForeignKey("PartiyaVzrosloyChickenID");
-
-                    b.Navigation("PartiyaVzrosloyChicken");
-                });
-
             modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaRemontnayaVzrosloyChicken", b =>
                 {
                     b.HasOne("WinFormsLibrary1.Entity.PartiyaVzrosloyChicken", "PartiyaVzrosloyChicken")
@@ -761,9 +703,17 @@ namespace WinFormsLibrary1.Migrations
 
             modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaVzrosloyChicken", b =>
                 {
+                    b.HasOne("WinFormsLibrary1.Entity.ComplexProizvodstvaEggs", null)
+                        .WithMany("PartiyaVzrosloyChickens")
+                        .HasForeignKey("CoPrID");
+
                     b.HasOne("WinFormsLibrary1.Entity.Ptichnic", null)
                         .WithMany("PartiyaVzrosloyChickens")
                         .HasForeignKey("PtID2");
+
+                    b.HasOne("WinFormsLibrary1.Entity.UPK", null)
+                        .WithMany("PartiyaVzrosloyChickens")
+                        .HasForeignKey("UPKID");
                 });
 
             modelBuilder.Entity("WinFormsLibrary1.Entity.CehPererabotkiOthodov", b =>
@@ -799,7 +749,7 @@ namespace WinFormsLibrary1.Migrations
 
                     b.Navigation("PartiyaEggses");
 
-                    b.Navigation("PartiyaNeses");
+                    b.Navigation("PartiyaVzrosloyChickens");
                 });
 
             modelBuilder.Entity("WinFormsLibrary1.Entity.Incubator", b =>
@@ -829,7 +779,7 @@ namespace WinFormsLibrary1.Migrations
 
                     b.Navigation("Otbrakovkas");
 
-                    b.Navigation("PartiyaBres");
+                    b.Navigation("PartiyaVzrosloyChickens");
                 });
 #pragma warning restore 612, 618
         }

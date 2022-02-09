@@ -15,9 +15,5 @@ namespace WinFormsLibrary1.Entity
         public int? CoPrID { get; set; }
         public int? UPKID { get; set; }
 
-        // public PartiyaRemontnayaVzrosloyChicken PartiyaRemontnayaVzrosloyChicken { get; set; }
-        // public PartiyaBr PartiyaBr { get; set; }
-        // public PartiyaNes PartiyaNes { get; set; }
-
     }
 }

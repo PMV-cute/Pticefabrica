@@ -90,15 +90,26 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Kolvo")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<DateTime>("DateForm")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
+                    b.Property<int>("KolvoN")
+                        .HasColumnType("integer");
 
                     b.Property<bool>("Pfeed")
-                        .HasColumnType("boolean");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
 
                     b.Property<bool>("Pwater")
-                        .HasColumnType("boolean");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
 
                     b.HasKey("ID");
 
@@ -114,10 +125,6 @@ namespace WinFormsLibrary1.Migrations
 
                     b.Property<DateTime>("DateUp")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("TypeFabr")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<int>("UPKID2")
                         .HasColumnType("integer");
@@ -216,10 +223,7 @@ namespace WinFormsLibrary1.Migrations
                     b.Property<int?>("CoPrID3")
                         .HasColumnType("integer");
 
-                    b.Property<int>("KolvoB")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("KolvoN")
+                    b.Property<int>("Kolvo")
                         .HasColumnType("integer");
 
                     b.HasKey("ID");
@@ -318,6 +322,9 @@ namespace WinFormsLibrary1.Migrations
 
                     b.Property<int?>("CoPrID2")
                         .HasColumnType("integer");
+
+                    b.Property<DateTime>("DateForm")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("Kolvo")
                         .HasColumnType("integer");
@@ -558,6 +565,14 @@ namespace WinFormsLibrary1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<DateTime>("Dateform")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("KolvoB")
                         .HasColumnType("integer");

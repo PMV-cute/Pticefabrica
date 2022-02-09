@@ -85,7 +85,7 @@ namespace Pticefabrica
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(154, 23);
             this.button7.TabIndex = 59;
-            this.button7.Text = "Утилизация партии яиц";
+            this.button7.Text = "Утилизация";
             this.button7.UseVisualStyleBackColor = true;
             // 
             // listBox4

@@ -24,6 +24,7 @@ namespace WinFormsLibrary1
         public DbSet<PartiyaRemontnayaVzrosloyChicken> PartiyaRemontnayaVzrosloyChicken { get; set; }
         public DbSet<PartiyaTovarnEggs> PartiyaTovarnEggs { get; set; }
         public DbSet<PartiyaVzrosloyChicken> PartiyaVzrosloyChicken { get; set; }
+        public DbSet<PartiyaEggs> PartiyaEggs { get; set; }
         public DbSet<Ptichnic> Ptichnic { get; set; }
         public DbSet<Reproductor> Reproductor { get; set; }
         public DbSet<UPK> UPK { get; set; }
@@ -50,6 +51,15 @@ namespace WinFormsLibrary1
             modelBuilder.Entity<Ptichnic>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
 
             modelBuilder.Entity<PartiyaVzrosloyChicken>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
+
+            modelBuilder.Entity<UPK>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
+
+            modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
+            modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.Pfeed).HasDefaultValue(false);
+            modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.Pwater).HasDefaultValue(false);
+
+
+
         }
 
         /*

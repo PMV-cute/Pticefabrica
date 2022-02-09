@@ -113,7 +113,7 @@ namespace WinFormsLibrary1
                 partiyaEggsRodClass.FreeOrNotFree = false;
                 partiyaEggsRodClass.IncID2 = incubator.ID;
                 context.SaveChanges();
-                return "";
+                return "Готово!";
             }
             else { return "Инкубатор заполнен"; }
         }
@@ -146,7 +146,7 @@ namespace WinFormsLibrary1
                 incubator.DayOfBorn = DateTime.Now.AddYears(100);
                 incubator.KolvoEggs = 0;
                 context.SaveChanges();
-                return "";
+                return "Готово!";
             }
             else { return "Яйца не вылупились"; }
         }
@@ -178,7 +178,7 @@ namespace WinFormsLibrary1
                 partiyaMolodnyaka.FreeOrNotFree = false;
                 partiyaMolodnyaka.PtID = ptichnic.ID;
                 context.SaveChanges();
-                return "";
+                return "Готово!";
             }
             else { return "Птичник заполнен"; }
         }
@@ -199,6 +199,7 @@ namespace WinFormsLibrary1
                     Kolvo = ptichnic.Kolvo,
                     PtID2 = ptichnic.ID,
                     DateForm = DateTime.Now,
+                    
                 };
                 context.PartiyaVzrosloyChicken.Add(partiyaVzrosloyChicken);
                 ptichnic.FreeOrNotFree = true;
@@ -206,9 +207,112 @@ namespace WinFormsLibrary1
                 ptichnic.Kolvo = 0;
                 ptichnic.TypeChicken = "";
                 context.SaveChanges();
-                return "";
+                return "Готово!";
             }
             else { return "Птицы не выросли"; }
+        }
+        public string UPKLoad(string a)
+        {
+            ApplicationContext context = new ApplicationContext();
+            int k = 0;
+            k = a.IndexOf(";");
+            a = a.Substring(0, k);
+
+            int IDa = Convert.ToInt32(a);
+            PartiyaVzrosloyChicken partiyaVzrosloyChicken = context.PartiyaVzrosloyChicken.Where(h => h.ID == IDa).FirstOrDefault();
+            UPK upk = context.UPK.FirstOrDefault();
+            if (upk.FreeOrNotFree)
+            {
+                upk.KolvoB = partiyaVzrosloyChicken.Kolvo;
+                upk.FreeOrNotFree = false;
+                upk.Dateform = DateTime.Now;
+                partiyaVzrosloyChicken.UPKID = upk.ID;
+                partiyaVzrosloyChicken.FreeOrNotFree = false;
+                context.SaveChanges();
+                return "Готово!";
+            }
+            else { return "УПК заполнен"; }
+        
+        }
+        public string UPKFormFabricat(int b)
+        {
+            ApplicationContext context = new ApplicationContext();
+            UPK upk = context.UPK.FirstOrDefault();
+            Otbrakovka otbrakovka = new Otbrakovka
+            {
+                UPKID3 = upk.ID,
+                Weight = b,
+            };
+            context.Otbrakovka.Add(otbrakovka);
+            context.SaveChanges();
+            if (upk.FreeOrNotFree == false)
+            {
+                Fabrikat fabrikat = new Fabrikat
+                {
+                    UPKID2 = upk.ID,
+                    DateUp = DateTime.Now
+                };
+                context.Fabrikat.Add(fabrikat);
+                upk.KolvoB = 0;
+                upk.FreeOrNotFree = true;
+                context.SaveChanges();
+                return "Готово!";
+            }
+            else { return "Птиц нет"; }
+        }
+        public string CPYLoad(string a, string b)
+        {
+            ApplicationContext context = new ApplicationContext();
+            int k = 0;
+            k = a.IndexOf(";");
+            a = a.Substring(0, k);
+            k = b.IndexOf(";");
+            a = b.Substring(0, k);
+            int IDa = Convert.ToInt32(a);
+            int IDb = Convert.ToInt32(b);
+            PartiyaVzrosloyChicken partiyaVzrosloyChicken = context.PartiyaVzrosloyChicken.Where(h => h.ID == IDa).FirstOrDefault();
+            ComplexProizvodstvaEggs cpy = context.ComplexProizvodstvaEggs.Where(h => h.ID == IDb).FirstOrDefault();
+            if (cpy.FreeOrNotFree)
+            {
+                cpy.KolvoN = partiyaVzrosloyChicken.Kolvo;
+                cpy.FreeOrNotFree = false;
+                cpy.DateForm = DateTime.Now;
+                partiyaVzrosloyChicken.CoPrID = cpy.ID;
+                partiyaVzrosloyChicken.FreeOrNotFree = false;
+                context.SaveChanges();
+                return "Готово!";
+            }
+            else { return "КПЯ заполнен"; }
+
+        }
+        public string CPYFormEgg(int b, string a)
+        {
+            ApplicationContext context = new ApplicationContext();
+            int k = a.IndexOf(";");
+            a = a.Substring(0, k);
+            int IDb = Convert.ToInt32(a);
+            ComplexProizvodstvaEggs cpy = context.ComplexProizvodstvaEggs.Where(h => h.ID == IDb).FirstOrDefault();
+            NegodnayaChicken negodnayaChicken = new NegodnayaChicken
+            {
+                CePerOID = cpy.ID,
+                Kolvo = b,
+            };
+            context.NegodnayaChicken.Add(negodnayaChicken);
+            context.SaveChanges();
+            if (cpy.FreeOrNotFree == false)
+            {
+                PartiyaEggs partiyaEggs = new PartiyaEggs
+                {
+                    CoPrID2 = cpy.ID,
+                    DateForm = DateTime.Now
+                };
+                context.PartiyaEggs.Add(partiyaEggs);
+                cpy.KolvoN = 0;
+                cpy.FreeOrNotFree = true;
+                context.SaveChanges();
+                return "Готово!";
+            }
+            else { return "Птиц нет"; }
         }
     }
 }

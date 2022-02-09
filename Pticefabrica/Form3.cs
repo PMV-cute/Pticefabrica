@@ -16,7 +16,7 @@ namespace Pticefabrica // Инкубатор
         {
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(MyForm_MouseDown);
-
+            Reload();
         }
         private void MyForm_MouseDown(object sender, MouseEventArgs e)
         {

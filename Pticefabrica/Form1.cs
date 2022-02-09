@@ -15,6 +15,8 @@ namespace Pticefabrica
         Form f2 = new Form2();
         Form f3 = new Form3();
         Form f4 = new Form4();
+        Form f5 = new Form5();
+        Form f6 = new Form6();
         public Form1()
         {
             new Create().CreateAll();
@@ -47,11 +49,14 @@ namespace Pticefabrica
                     if (u.role == "Репродуктор") f2.Show();
                     if (u.role == "Инкубатор") f3.Show();
                     if (u.role == "Птичник") f4.Show();
+                    if (u.role == "УПК") f5.Show();
+                    if (u.role == "КПЯ") f6.Show();
                     if (u.role == "Admin")
                     {
                         f2.Show();
                         f3.Show();
                         f4.Show();
+                        f5.Show();
                     }
                     Hide();
                     return;
