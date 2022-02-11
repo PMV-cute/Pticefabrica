@@ -50,7 +50,7 @@ namespace Pticefabrica
                     if (u.role == "Инкубатор") f3.Show();
                     if (u.role == "Птичник") f4.Show();
                     if (u.role == "УПК") f5.Show();
-                    if (u.role == "КПЯ") f6.Show();
+                    if (u.role == "КомплексПЯ") f6.Show();
                     if (u.role == "Admin")
                     {
                         f2.Show();

@@ -32,6 +32,27 @@ namespace Pticefabrica
         {
             Reload();
         }
+        private void LoadUPK_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem == null && listBox2.SelectedItem == null) { KPEText.Text = "выберите партию и/или комплекс"; }
+            else
+            {
+                KPEText.Text = new Logical().CPYLoad(listBox1.SelectedItem.ToString(), listBox2.SelectedItem.ToString());
+            }
+            Reload();
+        }
+
+        private void FormKPE_Click(object sender, EventArgs e)
+        {
+            ApplicationContext context = new ApplicationContext();
+
+            if (int.TryParse(textBox1.Text, out int value1))
+            {
+                KPEText.Text = new Logical().CPYFormEgg(Convert.ToInt32(textBox1.Text), listBox2.SelectedItem.ToString());
+            }
+            else KPEText.Text = "Проверьте провильность введенных данных";
+            Reload();
+        }
         public void Reload()
         {
             listBox1.Items.Clear();
@@ -47,12 +68,15 @@ namespace Pticefabrica
                 }
                 else
                 {
+                    /*
                     if (parteg.TypeChiсken == "Несушка")
                     {
                         context.Remove(context.PartiyaVzrosloyChicken.Single(s => s.ID == parteg.ID)); // Удаление сущности из таблицы
                         context.SaveChanges();
                     }
-                    else { break; }
+                    */
+
+                    
                 }
             }
             foreach (var u in cpy)

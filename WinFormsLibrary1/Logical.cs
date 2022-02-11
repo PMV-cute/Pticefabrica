@@ -267,7 +267,7 @@ namespace WinFormsLibrary1
             k = a.IndexOf(";");
             a = a.Substring(0, k);
             k = b.IndexOf(";");
-            a = b.Substring(0, k);
+            b = b.Substring(0, k);
             int IDa = Convert.ToInt32(a);
             int IDb = Convert.ToInt32(b);
             PartiyaVzrosloyChicken partiyaVzrosloyChicken = context.PartiyaVzrosloyChicken.Where(h => h.ID == IDa).FirstOrDefault();
@@ -292,6 +292,8 @@ namespace WinFormsLibrary1
             a = a.Substring(0, k);
             int IDb = Convert.ToInt32(a);
             ComplexProizvodstvaEggs cpy = context.ComplexProizvodstvaEggs.Where(h => h.ID == IDb).FirstOrDefault();
+
+            /*
             NegodnayaChicken negodnayaChicken = new NegodnayaChicken
             {
                 CePerOID = cpy.ID,
@@ -299,12 +301,15 @@ namespace WinFormsLibrary1
             };
             context.NegodnayaChicken.Add(negodnayaChicken);
             context.SaveChanges();
+            */
+
             if (cpy.FreeOrNotFree == false)
             {
                 PartiyaEggs partiyaEggs = new PartiyaEggs
                 {
                     CoPrID2 = cpy.ID,
-                    DateForm = DateTime.Now
+                    DateForm = DateTime.Now,
+                    Kolvo = b
                 };
                 context.PartiyaEggs.Add(partiyaEggs);
                 cpy.KolvoN = 0;

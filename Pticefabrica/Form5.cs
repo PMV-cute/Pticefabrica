@@ -73,12 +73,14 @@ namespace Pticefabrica
                 }
                 else
                 {
+                    /*
                     if (parteg.TypeChiсken == "Бройлер")
                     {
                         context.Remove(context.PartiyaVzrosloyChicken.Single(s => s.ID == parteg.ID)); // Удаление сущности из таблицы
                         context.SaveChanges();
                     }
                     else { break; }
+                    */
                 }
             }
             foreach (var u in upk)

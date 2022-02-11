@@ -150,11 +150,13 @@ namespace Pticefabrica  // Репродуктор
                 {
                     listBox1.Items.Add($"{parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo};");
                 }
+                /*
                 else
                 {
                     context.Remove(context.PartiyaEggsRodClass.Single(s => s.ID == parteg.ID)); // Удаление сущности из таблицы
                     context.SaveChanges();
                 }
+                */
             }
             foreach (var inc in incub)
             {
@@ -193,11 +195,13 @@ namespace Pticefabrica  // Репродуктор
                     {
                         listBox3.Items.Add($"{partm.ID}; Дата: {partm.DataForm}; Количество: {partm.Kolvo}; Несушки");
                     }
+                    /*
                     else
                     {
                         context.Remove(context.PartiyaMolodnyaka.Single(s => s.ID == partm.ID)); // Удаление сущности из таблицы
                         context.SaveChanges();
                     }
+                    */
                 }
             }
 

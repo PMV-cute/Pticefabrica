@@ -74,11 +74,13 @@ namespace Pticefabrica  // Птичник
                     {
                         listBox3.Items.Add($"{partm.ID}; Дата: {partm.DataForm}; Количество: {partm.Kolvo}; Несушки");
                     }
+                    /*
                     else
                     {
                         context.Remove(context.PartiyaMolodnyaka.Single(s => s.ID == partm.ID)); // Удаление сущности из таблицы
                         context.SaveChanges();
                     }
+                    */
                 }
             }
 

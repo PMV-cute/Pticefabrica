@@ -82,11 +82,13 @@ namespace Pticefabrica // Инкубатор
                 {
                     listBox1.Items.Add($"{parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo};");
                 }
+                /*
                 else
                 {
                     context.Remove(context.PartiyaEggsRodClass.Single(s => s.ID == parteg.ID)); // Удаление сущности из таблицы
                     context.SaveChanges();
                 }
+                */
             }
             foreach (var inc in incub)
             {

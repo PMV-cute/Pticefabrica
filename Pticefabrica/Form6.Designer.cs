@@ -44,7 +44,7 @@ namespace Pticefabrica
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 329);
+            this.textBox1.Location = new System.Drawing.Point(113, 333);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 23);
             this.textBox1.TabIndex = 81;
@@ -61,10 +61,11 @@ namespace Pticefabrica
             // 
             this.FormKPE.Location = new System.Drawing.Point(12, 362);
             this.FormKPE.Name = "FormKPE";
-            this.FormKPE.Size = new System.Drawing.Size(154, 23);
+            this.FormKPE.Size = new System.Drawing.Size(201, 23);
             this.FormKPE.TabIndex = 79;
-            this.FormKPE.Text = "Формирование взрослой партии";
+            this.FormKPE.Text = "Отправка на сортировку";
             this.FormKPE.UseVisualStyleBackColor = true;
+            this.FormKPE.Click += new System.EventHandler(this.FormKPE_Click);
             // 
             // button1
             // 
@@ -90,8 +91,9 @@ namespace Pticefabrica
             this.LoadUPK.Name = "LoadUPK";
             this.LoadUPK.Size = new System.Drawing.Size(154, 23);
             this.LoadUPK.TabIndex = 76;
-            this.LoadUPK.Text = "Отправка в УП";
+            this.LoadUPK.Text = "Отправка в комплекс";
             this.LoadUPK.UseVisualStyleBackColor = true;
+            this.LoadUPK.Click += new System.EventHandler(this.LoadUPK_Click);
             // 
             // listBox1
             // 
@@ -136,11 +138,11 @@ namespace Pticefabrica
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(119, 334);
+            this.label2.Location = new System.Drawing.Point(12, 337);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 15);
+            this.label2.Size = new System.Drawing.Size(95, 15);
             this.label2.TabIndex = 82;
-            this.label2.Text = "label2";
+            this.label2.Text = "Количество яиц";
             // 
             // Form6
             // 
