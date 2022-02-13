@@ -14,7 +14,7 @@ namespace WinFormsLibrary1.Entity
         public int KolvoN { get; set; }
         public bool FreeOrNotFree { get; set; }
         public DateTime DateForm { get; set; }
-
+        public int Cikl { get; set; }
         [Required]
         public bool Pfeed { get; set; }
         [Required]

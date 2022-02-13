@@ -16,7 +16,6 @@ namespace Pticefabrica  // Репродуктор
         {
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(MyForm_MouseDown);
-            Reload();
         }
         private void MyForm_MouseDown(object sender, MouseEventArgs e)
         {
@@ -51,7 +50,7 @@ namespace Pticefabrica  // Репродуктор
         {
             if (listBox5.SelectedItem != null && listBox6.SelectedItem != null)
             {
-                ReproductorText.Text = new Logical().ReprLoad(listBox5.SelectedItem.ToString(), listBox6.SelectedItem.ToString(), label5.Text, label6.Text);
+                ReproductorText.Text = new Logical().ReprLoad(listBox5.SelectedItem.ToString(), listBox6.SelectedItem.ToString());
             }
             else
             {
@@ -138,6 +137,7 @@ namespace Pticefabrica  // Репродуктор
         {
             listBox1.Items.Clear();
             listBox2.Items.Clear();
+            
             ApplicationContext context = new ApplicationContext();
             var parteggs = context.PartiyaEggsRodClass.ToList();
             var incub = context.Incubator.ToList();
@@ -228,6 +228,8 @@ namespace Pticefabrica  // Репродуктор
 
             ApplicationContext context = new ApplicationContext();
             Reproductor reproductor = context.Reproductor.FirstOrDefault();
+            label5.Text = "Должно быть: " + reproductor.maxB;
+            label6.Text = "Должно быть: " + reproductor.maxN;
             textBox1.Text = reproductor.KolvoB.ToString();
             textBox2.Text = reproductor.KolvoN.ToString();
             var parts = context.PartiyaVzrosloyChicken.ToList();
@@ -253,7 +255,5 @@ namespace Pticefabrica  // Репродуктор
                 }
             }
         }
-
-
     }
 }

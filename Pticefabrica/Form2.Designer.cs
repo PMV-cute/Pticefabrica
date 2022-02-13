@@ -166,18 +166,16 @@ namespace Pticefabrica
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(329, 46);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(112, 15);
+            this.label6.Size = new System.Drawing.Size(0, 15);
             this.label6.TabIndex = 30;
-            this.label6.Text = "Должно быть: 1000";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(329, 14);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 15);
+            this.label5.Size = new System.Drawing.Size(0, 15);
             this.label5.TabIndex = 29;
-            this.label5.Text = "Должно быть: 200";
             // 
             // button2
             // 
@@ -287,7 +285,7 @@ namespace Pticefabrica
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(671, 378);
+            this.tabPage2.Size = new System.Drawing.Size(764, 378);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Инкубаторий";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -383,7 +381,7 @@ namespace Pticefabrica
             this.tabPage3.Controls.Add(this.ReloadPtichnic);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(671, 378);
+            this.tabPage3.Size = new System.Drawing.Size(764, 378);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Птичник";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -457,7 +455,7 @@ namespace Pticefabrica
             // 
             this.tabPage4.Location = new System.Drawing.Point(4, 24);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(671, 378);
+            this.tabPage4.Size = new System.Drawing.Size(764, 378);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Комплекс производства яиц";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -466,7 +464,7 @@ namespace Pticefabrica
             // 
             this.tabPage8.Location = new System.Drawing.Point(4, 24);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(671, 378);
+            this.tabPage8.Size = new System.Drawing.Size(764, 378);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "Цех сортировки яиц";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -475,7 +473,7 @@ namespace Pticefabrica
             // 
             this.tabPage5.Location = new System.Drawing.Point(4, 24);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(671, 378);
+            this.tabPage5.Size = new System.Drawing.Size(764, 378);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "УПК";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -484,7 +482,7 @@ namespace Pticefabrica
             // 
             this.tabPage6.Location = new System.Drawing.Point(4, 24);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(671, 378);
+            this.tabPage6.Size = new System.Drawing.Size(764, 378);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Цех переработки отходов";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -493,7 +491,7 @@ namespace Pticefabrica
             // 
             this.tabPage9.Location = new System.Drawing.Point(4, 24);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(671, 378);
+            this.tabPage9.Size = new System.Drawing.Size(764, 378);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Цех производства меланджа";
             this.tabPage9.UseVisualStyleBackColor = true;

@@ -13,6 +13,8 @@ namespace WinFormsLibrary1.Entity
 
         public int KolvoB { get; set; }
         public int KolvoN { get; set; }
+        public int maxB { get; set; }
+        public int maxN { get; set; }
 
         [ForeignKey("RepID")]
         public ICollection<PartiyaEggsRodClass> PartiyaEggsRodClasses { get; set; }

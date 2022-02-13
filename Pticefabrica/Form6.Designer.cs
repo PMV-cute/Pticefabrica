@@ -40,6 +40,7 @@ namespace Pticefabrica
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
@@ -144,11 +145,21 @@ namespace Pticefabrica
             this.label2.TabIndex = 82;
             this.label2.Text = "Количество яиц";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 392);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(133, 15);
+            this.label3.TabIndex = 83;
+            this.label3.Text = "Количество циклов: 10";
+            // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.KPEText);
@@ -181,5 +192,6 @@ namespace Pticefabrica
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

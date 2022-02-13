@@ -10,8 +10,8 @@ using WinFormsLibrary1;
 namespace WinFormsLibrary1.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220211145800_ThirdMigration")]
-    partial class ThirdMigration
+    [Migration("20220213172135_4Migration")]
+    partial class _4Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -91,6 +91,11 @@ namespace WinFormsLibrary1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("Cikl")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(1);
 
                     b.Property<DateTime>("DateForm")
                         .HasColumnType("timestamp without time zone");
@@ -546,9 +551,19 @@ namespace WinFormsLibrary1.Migrations
                     b.Property<int>("KolvoB")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasDefaultValue(200);
+                        .HasDefaultValue(0);
 
                     b.Property<int>("KolvoN")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0);
+
+                    b.Property<int>("maxB")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(200);
+
+                    b.Property<int>("maxN")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasDefaultValue(1000);

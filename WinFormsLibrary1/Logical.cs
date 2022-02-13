@@ -51,7 +51,7 @@ namespace WinFormsLibrary1
             }
             //context.Reproductor.Update();
         }
-        public string ReprLoad(string a, string b, string e, string f)
+        public string ReprLoad(string a, string b)
         {
             ApplicationContext context = new ApplicationContext();
             int k = 0;
@@ -60,21 +60,15 @@ namespace WinFormsLibrary1
 
             k = b.IndexOf(";");
             b = b.Substring(0, k);
-
-            k = e.IndexOf(":");
-
-            e = e.Substring(k + 2);
-            k = f.IndexOf(":");
-            f = f.Substring(k + 2);
-
             int IDb = Convert.ToInt32(a);
             int IDn = Convert.ToInt32(b);
-            int kolvob = Convert.ToInt32(e);
-            int kolvon = Convert.ToInt32(f);
+            
             PartiyaVzrosloyChicken partiyaVzrosloyChickenB = context.PartiyaVzrosloyChicken.Where(h => h.ID == IDb).FirstOrDefault();
             PartiyaVzrosloyChicken partiyaVzrosloyChickenN = context.PartiyaVzrosloyChicken.Where(h => h.ID == IDn).FirstOrDefault();
 
             Reproductor reproductor = context.Reproductor.FirstOrDefault();
+            int kolvob = reproductor.maxB;
+            int kolvon = reproductor.maxN;
             if (reproductor.KolvoB < kolvob || reproductor.KolvoN < kolvon)
             {
                 partiyaVzrosloyChickenB.Kolvo += -(kolvob - reproductor.KolvoB);
@@ -277,6 +271,8 @@ namespace WinFormsLibrary1
                 cpy.KolvoN = partiyaVzrosloyChicken.Kolvo;
                 cpy.FreeOrNotFree = false;
                 cpy.DateForm = DateTime.Now;
+                cpy.Pfeed = true;
+                cpy.Pwater = true;
                 partiyaVzrosloyChicken.CoPrID = cpy.ID;
                 partiyaVzrosloyChicken.FreeOrNotFree = false;
                 context.SaveChanges();
@@ -285,25 +281,31 @@ namespace WinFormsLibrary1
             else { return "КПЯ заполнен"; }
 
         }
-        public string CPYFormEgg(int b, string a)
+        public string CPYFormEgg(int b, string a, string e)
         {
             ApplicationContext context = new ApplicationContext();
             int k = a.IndexOf(";");
             a = a.Substring(0, k);
+            k = e.IndexOf(":");
+            e = e.Substring(k + 2);
+            int Cikl = Convert.ToInt32(e);
             int IDb = Convert.ToInt32(a);
             ComplexProizvodstvaEggs cpy = context.ComplexProizvodstvaEggs.Where(h => h.ID == IDb).FirstOrDefault();
-
-            /*
-            NegodnayaChicken negodnayaChicken = new NegodnayaChicken
+            if (cpy.FreeOrNotFree == true)
             {
-                CePerOID = cpy.ID,
-                Kolvo = b,
-            };
-            context.NegodnayaChicken.Add(negodnayaChicken);
-            context.SaveChanges();
-            */
-
-            if (cpy.FreeOrNotFree == false)
+                return "Птиц нет";
+            }
+            if(cpy.Cikl >= Cikl && cpy.FreeOrNotFree == false)
+            {
+                cpy.KolvoN = 0;
+                cpy.FreeOrNotFree = true;
+                cpy.Pfeed = false;
+                cpy.Pwater = false;
+                cpy.Cikl = 0;
+                context.SaveChanges();
+                return "Курицы слишком стары и были отправлены на убой";
+            }
+            else
             {
                 PartiyaEggs partiyaEggs = new PartiyaEggs
                 {
@@ -311,13 +313,11 @@ namespace WinFormsLibrary1
                     DateForm = DateTime.Now,
                     Kolvo = b
                 };
+                cpy.Cikl++;
                 context.PartiyaEggs.Add(partiyaEggs);
-                cpy.KolvoN = 0;
-                cpy.FreeOrNotFree = true;
                 context.SaveChanges();
                 return "Готово!";
             }
-            else { return "Птиц нет"; }
         }
     }
 }

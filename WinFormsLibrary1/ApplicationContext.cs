@@ -43,8 +43,12 @@ namespace WinFormsLibrary1
 
             modelBuilder.Entity<PartiyaEggsRodClass>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
 
-            modelBuilder.Entity<Reproductor>().Property(s => s.KolvoB).HasDefaultValue(200);
-            modelBuilder.Entity<Reproductor>().Property(s => s.KolvoN).HasDefaultValue(1000);
+            modelBuilder.Entity<Reproductor>().Property(s => s.KolvoB).HasDefaultValue(0);
+            modelBuilder.Entity<Reproductor>().Property(s => s.KolvoN).HasDefaultValue(0);
+            modelBuilder.Entity<Reproductor>().Property(s => s.maxB).HasDefaultValue(200);
+            modelBuilder.Entity<Reproductor>().Property(s => s.maxN).HasDefaultValue(1000);
+
+
 
             modelBuilder.Entity<PartiyaMolodnyaka>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
 
@@ -57,6 +61,8 @@ namespace WinFormsLibrary1
             modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
             modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.Pfeed).HasDefaultValue(false);
             modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.Pwater).HasDefaultValue(false);
+            modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.Cikl).HasDefaultValue(1);
+
 
 
 

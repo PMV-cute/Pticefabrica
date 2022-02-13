@@ -46,17 +46,18 @@ namespace Pticefabrica
         {
             ApplicationContext context = new ApplicationContext();
 
-            if (int.TryParse(textBox1.Text, out int value1))
+            if (int.TryParse(textBox1.Text, out int value1) && listBox2.SelectedItem != null)
             {
-                KPEText.Text = new Logical().CPYFormEgg(Convert.ToInt32(textBox1.Text), listBox2.SelectedItem.ToString());
+                KPEText.Text = new Logical().CPYFormEgg(Convert.ToInt32(textBox1.Text), listBox2.SelectedItem.ToString(), label3.Text);
             }
             else KPEText.Text = "Проверьте провильность введенных данных";
             Reload();
         }
-        public void Reload()
+        private void Reload()
         {
             listBox1.Items.Clear();
             listBox2.Items.Clear();
+
             ApplicationContext context = new ApplicationContext();
             var part = context.PartiyaVzrosloyChicken.ToList();
             var cpy = context.ComplexProizvodstvaEggs.ToList();
@@ -87,11 +88,9 @@ namespace Pticefabrica
                 }
                 else
                 {
-                    listBox2.Items.Add($"{u.ID}; Дата поступления: {u.DateForm}; Количество: {u.KolvoN}");
+                    listBox2.Items.Add($"{u.ID}; Дата поступления: {u.DateForm}; Количество: {u.KolvoN}; Цикл: №{u.Cikl}");
                 }
             }
         }
-
-        
     }
 }
