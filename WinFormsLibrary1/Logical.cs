@@ -29,7 +29,7 @@ namespace WinFormsLibrary1
                     {
                         Kolvo = 1000,
                         RepID = repr[repr.Count - 1].RepID,
-                        DatePostEggs = date
+                        DatePostEggs = date,
                     };
                     context.PartiyaEggsRodClass.Add(partiyaEggsRodClass);
                     context.SaveChanges();
@@ -228,25 +228,22 @@ namespace WinFormsLibrary1
             else { return "УПК заполнен"; }
         
         }
-        public string UPKFormFabricat(int b)
+        public string UPKFormFabricat()
         {
             ApplicationContext context = new ApplicationContext();
             UPK upk = context.UPK.FirstOrDefault();
-            Otbrakovka otbrakovka = new Otbrakovka
-            {
-                UPKID3 = upk.ID,
-                Weight = b,
-            };
-            context.Otbrakovka.Add(otbrakovka);
-            context.SaveChanges();
             if (upk.FreeOrNotFree == false)
             {
-                Fabrikat fabrikat = new Fabrikat
+                for (int i = 0; i < upk.KolvoB; i++)
                 {
-                    UPKID2 = upk.ID,
-                    DateUp = DateTime.Now
-                };
-                context.Fabrikat.Add(fabrikat);
+                    Fabrikat fabrikat = new Fabrikat
+                    {
+                        UPKID2 = upk.ID,
+                        DateUp = DateTime.Now
+                    };
+                    context.Fabrikat.Add(fabrikat);
+                    context.SaveChanges();
+                }
                 upk.KolvoB = 0;
                 upk.FreeOrNotFree = true;
                 context.SaveChanges();
@@ -311,7 +308,8 @@ namespace WinFormsLibrary1
                 {
                     CoPrID2 = cpy.ID,
                     DateForm = DateTime.Now,
-                    Kolvo = b
+                    Kolvo = b,
+                    FreeOrNotFree = true
                 };
                 cpy.Cikl++;
                 context.PartiyaEggs.Add(partiyaEggs);
@@ -319,5 +317,76 @@ namespace WinFormsLibrary1
                 return "Готово!";
             }
         }
+        
+        public string CSEFormEgg(int b, string a, int[] cat)
+        {
+            ApplicationContext context = new ApplicationContext();
+            int k = a.IndexOf(";");
+            a = a.Substring(0, k);
+            int IDb = Convert.ToInt32(a);
+            PartiyaEggs partiyaEggs = context.PartiyaEggs.Where(h => h.ID == IDb).FirstOrDefault();
+            CehSortEggs cse = context.CehSortEggs.FirstOrDefault();
+            if (partiyaEggs.FreeOrNotFree == true)
+            {
+                partiyaEggs.CehSortID = cse.ID;
+                partiyaEggs.FreeOrNotFree = false;
+                context.SaveChanges();
+                for (int i = 0; i < cat.Length; i++ )
+                {
+                    PartiyaTovarnEggs partiyaTovarnEggs = new PartiyaTovarnEggs
+                    {
+                        CehSortID2 = cse.ID,
+                        DateUp = partiyaEggs.DateForm,
+                        Kolvo = cat[i],
+                        Categori = i,
+                    };
+                    context.PartiyaTovarnEggs.Add(partiyaTovarnEggs);
+                    context.SaveChanges();
+                    
+                }
+                OtbrakovkaEggs otbrakovkaEggs = new OtbrakovkaEggs
+                {
+                    CehSortID3 = cse.ID,
+                    kolvo = b,
+                };
+                context.OtbrakovkaEggs.Add(otbrakovkaEggs);
+                context.SaveChanges();
+                return "Готово";
+            }
+            else
+            {
+                return "Проверьте правильность выбранных данных";
+            }
+        }
+        
+
+/*
+        public string CSELoad(string a, string b)
+        {
+            ApplicationContext context = new ApplicationContext();
+            int k = 0;
+            k = a.IndexOf(";");
+            a = a.Substring(0, k);
+            k = b.IndexOf(";");
+            b = b.Substring(0, k);
+            int IDa = Convert.ToInt32(a);
+            int IDb = Convert.ToInt32(b);
+            PartiyaEggs partiyaEggs = context.PartiyaEggs.Where(h => h.ID == IDa).FirstOrDefault();
+            CehSortEggs cse = context.CehSortEggs.Where(h => h.ID == IDb).FirstOrDefault();
+            if (cse.FreeOrNotFree)
+            {
+                cse.Kolvo = partiyaEggs.Kolvo;
+                cse.FreeOrNotFree = false;
+                cse.DateForm = DateTime.Now;
+                partiyaEggs.CehSortID = cse.ID;
+                partiyaEggs.FreeOrNotFree = false;
+                context.SaveChanges();
+                return "Готово!";
+            }
+            else { return "ЦСЯ заполнен"; }
+
+        }
+*/
+
     }
 }

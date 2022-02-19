@@ -45,17 +45,7 @@ namespace Pticefabrica
         private void FormUPK_Click(object sender, EventArgs e)
         {
             ApplicationContext context = new ApplicationContext();
-
-            if (int.TryParse(textBox1.Text, out int value1))
-            {
-                UPK upk = context.UPK.FirstOrDefault();
-                if (upk.KolvoB >= Convert.ToInt32(textBox1.Text))
-                {
-                    UPKText.Text = new Logical().UPKFormFabricat(Convert.ToInt32(textBox1.Text));
-                }
-                else { UPKText.Text = "Проверьте провильность введенных данных"; }
-            }
-            else UPKText.Text = "Проверьте провильность введенных данных";
+            UPKText.Text = new Logical().UPKFormFabricat();
             Reload();
         }
         public void Reload()

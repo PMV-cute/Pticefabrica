@@ -33,14 +33,14 @@ namespace Pticefabrica
             this.KPEText = new System.Windows.Forms.Label();
             this.FormKPE = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
             this.LoadUPK = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.ReloadKPE = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // textBox1
@@ -77,15 +77,6 @@ namespace Pticefabrica
             this.button1.Text = "Утилизация";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 15;
-            this.listBox2.Location = new System.Drawing.Point(12, 203);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(775, 124);
-            this.listBox2.TabIndex = 77;
-            // 
             // LoadUPK
             // 
             this.LoadUPK.Location = new System.Drawing.Point(559, 126);
@@ -95,15 +86,6 @@ namespace Pticefabrica
             this.LoadUPK.Text = "Отправка в комплекс";
             this.LoadUPK.UseVisualStyleBackColor = true;
             this.LoadUPK.Click += new System.EventHandler(this.LoadUPK_Click);
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(12, 73);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(519, 124);
-            this.listBox1.TabIndex = 75;
             // 
             // ReloadKPE
             // 
@@ -154,6 +136,24 @@ namespace Pticefabrica
             this.label3.TabIndex = 83;
             this.label3.Text = "Количество циклов: 10";
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(12, 73);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(519, 124);
+            this.listBox1.TabIndex = 75;
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.ItemHeight = 15;
+            this.listBox2.Location = new System.Drawing.Point(12, 203);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(775, 124);
+            this.listBox2.TabIndex = 77;
+            // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -185,13 +185,13 @@ namespace Pticefabrica
         private System.Windows.Forms.Label KPEText;
         private System.Windows.Forms.Button FormKPE;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Button LoadUPK;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button ReloadKPE;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBox2;
     }
 }

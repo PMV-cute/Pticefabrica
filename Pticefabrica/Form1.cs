@@ -11,18 +11,20 @@ using System.Linq;
 namespace Pticefabrica
 {
     public partial class Form1 : Form
-    {   
+    {
+        Form f2 = new Form2();
+        Form f3 = new Form3();
+        Form f4 = new Form4();
+        Form f5 = new Form5();
+        Form f6 = new Form6();
+        Form f7 = new Form7();
         public Form1()
         {
             new Create().CreateAll();
             new ApplicationContext();
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(MyForm_MouseDown);
-            Form f2 = new Form2();
-            Form f3 = new Form3();
-            Form f4 = new Form4();
-            Form f5 = new Form5();
-            Form f6 = new Form6();
+           
         }
         
         private void Form1_Load(object sender, EventArgs e) { }
@@ -51,6 +53,7 @@ namespace Pticefabrica
                     if (u.role == "Птичник") f4.Show();
                     if (u.role == "УПК") f5.Show();
                     if (u.role == "КомплексПЯ") f6.Show();
+                    if (u.role == "КомплексСЯ") f7.Show();
                     if (u.role == "Admin")
                     {
                        
@@ -59,6 +62,7 @@ namespace Pticefabrica
                         f4.Show();
                         f5.Show();
                         f6.Show();
+                        f7.Show();
                     }
                     Hide();
                     return;

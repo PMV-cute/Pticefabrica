@@ -63,6 +63,7 @@ namespace WinFormsLibrary1
             modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.Pwater).HasDefaultValue(false);
             modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.Cikl).HasDefaultValue(1);
 
+            modelBuilder.Entity<PartiyaEggs>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
 
 
 

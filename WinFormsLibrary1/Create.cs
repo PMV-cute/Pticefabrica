@@ -25,6 +25,8 @@ namespace WinFormsLibrary1
                 KolvoB = 0,
                 KolvoN = 0,
             };
+            context.Reproductor.Add(reproductor);
+            context.SaveChanges();
             for (int i = 0; i < 21; i++)
             {
                 Incubator incubator = new Incubator
@@ -118,9 +120,28 @@ namespace WinFormsLibrary1
                 context.ComplexProizvodstvaEggs.Add(complexProizvodstvaEggs);
                 context.SaveChanges();
             }
-
-            context.Reproductor.Add(reproductor);
-            context.SaveChanges();
+            for (int i = 0; i < 100; i++)
+            {
+                CehSortEggs cehSortEggs = new CehSortEggs
+                {
+                    Kolvo = 0,
+                    FreeOrNotFree = false,
+                    DateForm = DateTime.Now
+                };
+                context.CehSortEggs.Add(cehSortEggs);
+                context.SaveChanges();
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                PartiyaEggs partiyaEggs = new PartiyaEggs
+                {
+                    DateForm = DateTime.Now,
+                    Kolvo = 500,
+                };
+                context.PartiyaEggs.Add(partiyaEggs);
+                context.SaveChanges();
+            }
+            
             LogPas logPas1 = new LogPas { login = "Maksim", password = "1234", role = "Admin" };
             LogPas logPas2 = new LogPas { login = "Ivan", password = "1234", role = "Admin" };
             LogPas logPas3 = new LogPas { login = "Alexey", password = "1234", role = "Руководитель" };

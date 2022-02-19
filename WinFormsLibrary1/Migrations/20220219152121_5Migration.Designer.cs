@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WinFormsLibrary1;
@@ -9,9 +10,10 @@ using WinFormsLibrary1;
 namespace WinFormsLibrary1.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220219152121_5Migration")]
+    partial class _5Migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -335,9 +337,7 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<bool>("FreeOrNotFree")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("boolean")
-                        .HasDefaultValue(true);
+                        .HasColumnType("boolean");
 
                     b.Property<int>("Kolvo")
                         .HasColumnType("integer");
@@ -456,17 +456,15 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int>("Categori")
-                        .HasColumnType("integer");
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int?>("CehSortID2")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("DateUp")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<int>("Kolvo")
-                        .HasColumnType("integer");
 
                     b.HasKey("ID");
 

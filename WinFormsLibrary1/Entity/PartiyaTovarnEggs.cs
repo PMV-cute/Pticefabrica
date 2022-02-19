@@ -6,12 +6,12 @@ namespace WinFormsLibrary1.Entity
     {
         [Key]
         public int ID { get; set; }
+        
         [Required]
-        public int Npart { get; set; }
-        [Required]
-        public string Category { get; set; }
+        public int Categori { get; set; }
         [Required]
         public DateTime DateUp { get; set; }
+        public int Kolvo { get; set; }
         public int? CehSortID2 { get; set; }
     }
 }
