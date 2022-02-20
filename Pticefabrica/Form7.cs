@@ -38,7 +38,7 @@ namespace Pticefabrica
 
             ApplicationContext context = new ApplicationContext();
             var part = context.PartiyaEggs.ToList();
-            foreach(var p in part)
+            foreach (var p in part)
             {
                 if (p.FreeOrNotFree)
                 {
@@ -55,9 +55,15 @@ namespace Pticefabrica
         private void FormCSE_Click(object sender, EventArgs e)
         {
             ApplicationContext context = new ApplicationContext();
-            int[] a = new int[4] { Convert.ToInt32(Category0.Text), Convert.ToInt32(Category1.Text), Convert.ToInt32(Category2.Text), Convert.ToInt32(Category3.Text) };
-            
-            CSEText.Text = new Logical().CSEFormEgg(Convert.ToInt32(Melanjtextbox.Text), listBox1.SelectedItem.ToString(), a); 
+            if (listBox1.SelectedItem != null && int.TryParse(Category0.Text, out int value0) && int.TryParse(Category1.Text, out int value1) && int.TryParse(Category2.Text, out int value2) && int.TryParse(Category3.Text, out int value3) && int.TryParse(OtbrakovkaTextBox.Text, out int value4))
+            {
+                int[] a = new int[4] { Convert.ToInt32(Category0.Text), Convert.ToInt32(Category1.Text), Convert.ToInt32(Category2.Text), Convert.ToInt32(Category3.Text) };
+
+                CSEText.Text = new Logical().CSEFormEgg(Convert.ToInt32(OtbrakovkaTextBox.Text), listBox1.SelectedItem.ToString(), a);
+
+            }
+            else { CSEText.Text = "Проверьте правильность введенных данных и/или выберите партию"; }
+            Reload();
         }
     }
 }

@@ -33,7 +33,6 @@ namespace Pticefabrica
             this.label6 = new System.Windows.Forms.Label();
             this.PtichnicText = new System.Windows.Forms.Label();
             this.FormVzroslChicken = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.listBox4 = new System.Windows.Forms.ListBox();
             this.LoadPtichnic = new System.Windows.Forms.Button();
             this.listBox3 = new System.Windows.Forms.ListBox();
@@ -78,15 +77,6 @@ namespace Pticefabrica
             this.FormVzroslChicken.Text = "Формирование взрослой партии";
             this.FormVzroslChicken.UseVisualStyleBackColor = true;
             this.FormVzroslChicken.Click += new System.EventHandler(this.FormVzroslChicken_Click);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(559, 160);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(154, 23);
-            this.button7.TabIndex = 59;
-            this.button7.Text = "Утилизация";
-            this.button7.UseVisualStyleBackColor = true;
             // 
             // listBox4
             // 
@@ -133,7 +123,6 @@ namespace Pticefabrica
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.PtichnicText);
             this.Controls.Add(this.FormVzroslChicken);
-            this.Controls.Add(this.button7);
             this.Controls.Add(this.listBox4);
             this.Controls.Add(this.LoadPtichnic);
             this.Controls.Add(this.listBox3);
@@ -154,7 +143,6 @@ namespace Pticefabrica
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label PtichnicText;
         private System.Windows.Forms.Button FormVzroslChicken;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.Button LoadPtichnic;
         private System.Windows.Forms.ListBox listBox3;

@@ -18,6 +18,7 @@ namespace Pticefabrica
         Form f5 = new Form5();
         Form f6 = new Form6();
         Form f7 = new Form7();
+        Form f8 = new Form8();
         public Form1()
         {
             new Create().CreateAll();
@@ -54,15 +55,16 @@ namespace Pticefabrica
                     if (u.role == "УПК") f5.Show();
                     if (u.role == "КомплексПЯ") f6.Show();
                     if (u.role == "КомплексСЯ") f7.Show();
+                    if (u.role == "ЦехПМ") f8.Show();
                     if (u.role == "Admin")
                     {
-                       
                         f2.Show();
                         f3.Show();
                         f4.Show();
                         f5.Show();
                         f6.Show();
                         f7.Show();
+                        f8.Show();
                     }
                     Hide();
                     return;

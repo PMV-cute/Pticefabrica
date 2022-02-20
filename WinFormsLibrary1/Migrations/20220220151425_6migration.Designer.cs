@@ -10,8 +10,8 @@ using WinFormsLibrary1;
 namespace WinFormsLibrary1.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220219162003_6Migration")]
-    partial class _6Migration
+    [Migration("20220220151425_6migration")]
+    partial class _6migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -282,6 +282,14 @@ namespace WinFormsLibrary1.Migrations
 
                     b.Property<int?>("CehSortID3")
                         .HasColumnType("integer");
+
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
+                    b.Property<DateTime>("dateTime")
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("kolvo")
                         .HasColumnType("integer");

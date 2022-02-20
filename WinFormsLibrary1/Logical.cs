@@ -347,6 +347,7 @@ namespace WinFormsLibrary1
                 OtbrakovkaEggs otbrakovkaEggs = new OtbrakovkaEggs
                 {
                     CehSortID3 = cse.ID,
+                    dateTime = partiyaEggs.DateForm,
                     kolvo = b,
                 };
                 context.OtbrakovkaEggs.Add(otbrakovkaEggs);
@@ -358,35 +359,51 @@ namespace WinFormsLibrary1
                 return "Проверьте правильность выбранных данных";
             }
         }
-        
 
-/*
-        public string CSELoad(string a, string b)
+
+        public string CPMFormMelanj(int b,  int j, string a)
         {
             ApplicationContext context = new ApplicationContext();
-            int k = 0;
-            k = a.IndexOf(";");
+            int k = a.IndexOf(";");
             a = a.Substring(0, k);
-            k = b.IndexOf(";");
-            b = b.Substring(0, k);
-            int IDa = Convert.ToInt32(a);
-            int IDb = Convert.ToInt32(b);
-            PartiyaEggs partiyaEggs = context.PartiyaEggs.Where(h => h.ID == IDa).FirstOrDefault();
-            CehSortEggs cse = context.CehSortEggs.Where(h => h.ID == IDb).FirstOrDefault();
-            if (cse.FreeOrNotFree)
+            int IDb = Convert.ToInt32(a);
+            OtbrakovkaEggs otbrakovkaEggs = context.OtbrakovkaEggs.Where(h => h.ID == IDb).FirstOrDefault();
+            CehProizvMelanja cpm = context.CehProizvMelanja.FirstOrDefault();
+            if (otbrakovkaEggs.FreeOrNotFree == true)
             {
-                cse.Kolvo = partiyaEggs.Kolvo;
-                cse.FreeOrNotFree = false;
-                cse.DateForm = DateTime.Now;
-                partiyaEggs.CehSortID = cse.ID;
-                partiyaEggs.FreeOrNotFree = false;
+                otbrakovkaEggs.CehPrMID2 = cpm.ID;
+                otbrakovkaEggs.FreeOrNotFree = false;
                 context.SaveChanges();
-                return "Готово!";
-            }
-            else { return "ЦСЯ заполнен"; }
+                for (int i = 0; i < b; i++)
+                {
+                    Melanj melanj = new Melanj
+                    {
+                        CehPrMID = cpm.ID,
+                        DateRosliva = otbrakovkaEggs.dateTime,
+                        TypeMelanga = "Белок",
+                    };
+                    context.Melanj.Add(melanj);
+                    context.SaveChanges();
 
+                }
+                for (int i = 0; i < j; i++)
+                {
+                    Melanj melanj = new Melanj
+                    {
+                        CehPrMID = cpm.ID,
+                        DateRosliva = otbrakovkaEggs.dateTime,
+                        TypeMelanga = "Желток",
+                    };
+                    context.Melanj.Add(melanj);
+                    context.SaveChanges();
+                }
+                return "Готово";
+            }
+            else
+            {
+                return "Проверьте правильность выбранных данных";
+            }
         }
-*/
 
     }
 }

@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WinFormsLibrary1.Migrations
 {
-    public partial class _6Migration : Migration
+    public partial class _6migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,6 +33,20 @@ namespace WinFormsLibrary1.Migrations
                 defaultValue: true,
                 oldClrType: typeof(bool),
                 oldType: "boolean");
+
+            migrationBuilder.AddColumn<bool>(
+                name: "FreeOrNotFree",
+                table: "OtbrakovkaEggs",
+                type: "boolean",
+                nullable: false,
+                defaultValue: true);
+
+            migrationBuilder.AddColumn<DateTime>(
+                name: "dateTime",
+                table: "OtbrakovkaEggs",
+                type: "timestamp without time zone",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -43,6 +58,14 @@ namespace WinFormsLibrary1.Migrations
             migrationBuilder.DropColumn(
                 name: "Kolvo",
                 table: "PartiyaTovarnEggs");
+
+            migrationBuilder.DropColumn(
+                name: "FreeOrNotFree",
+                table: "OtbrakovkaEggs");
+
+            migrationBuilder.DropColumn(
+                name: "dateTime",
+                table: "OtbrakovkaEggs");
 
             migrationBuilder.AddColumn<string>(
                 name: "Category",

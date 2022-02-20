@@ -9,7 +9,7 @@ namespace WinFormsLibrary1
 {
     public class Create
     {
-        public void CreateAll() 
+        public void CreateAll()
         {
             ApplicationContext context = new ApplicationContext();
             var users = context.Reproductor.ToList();
@@ -120,17 +120,15 @@ namespace WinFormsLibrary1
                 context.ComplexProizvodstvaEggs.Add(complexProizvodstvaEggs);
                 context.SaveChanges();
             }
-            for (int i = 0; i < 100; i++)
+            CehSortEggs cehSortEggs = new CehSortEggs
             {
-                CehSortEggs cehSortEggs = new CehSortEggs
-                {
-                    Kolvo = 0,
-                    FreeOrNotFree = false,
-                    DateForm = DateTime.Now
-                };
-                context.CehSortEggs.Add(cehSortEggs);
-                context.SaveChanges();
-            }
+                Kolvo = 0,
+                FreeOrNotFree = false,
+                DateForm = DateTime.Now
+            };
+            context.CehSortEggs.Add(cehSortEggs);
+            context.SaveChanges();
+
             for (int i = 0; i < 10; i++)
             {
                 PartiyaEggs partiyaEggs = new PartiyaEggs
@@ -141,7 +139,12 @@ namespace WinFormsLibrary1
                 context.PartiyaEggs.Add(partiyaEggs);
                 context.SaveChanges();
             }
-            
+            CehProizvMelanja cehProizvMelanja = new CehProizvMelanja
+            {
+
+            };
+            context.CehProizvMelanja.Add(cehProizvMelanja);
+            context.SaveChanges();
             LogPas logPas1 = new LogPas { login = "Maksim", password = "1234", role = "Admin" };
             LogPas logPas2 = new LogPas { login = "Ivan", password = "1234", role = "Admin" };
             LogPas logPas3 = new LogPas { login = "Alexey", password = "1234", role = "Руководитель" };
@@ -151,10 +154,9 @@ namespace WinFormsLibrary1
             LogPas logPas7 = new LogPas { login = "КПЯ", password = "1234", role = "КомплексПЯ" };
             LogPas logPas8 = new LogPas { login = "КСЯ", password = "1234", role = "КомплексСЯ" };
             LogPas logPas9 = new LogPas { login = "УПК", password = "1234", role = "УПК" };
-            LogPas logPas10 = new LogPas { login = "7", password = "1234", role = "ЦехПО" };
-            LogPas logPas11 = new LogPas { login = "8", password = "1234", role = "ЦехПМ" };
+            LogPas logPas10 = new LogPas { login = "ЦПМ", password = "1234", role = "ЦехПМ" };
 
-            context.LogPas.AddRange(logPas1, logPas2, logPas3, logPas4, logPas5, logPas6, logPas7, logPas8, logPas9, logPas10, logPas11); // Добавление данных в бд (Оно не обязательно для создания бд) 
+            context.LogPas.AddRange(logPas1, logPas2, logPas3, logPas4, logPas5, logPas6, logPas7, logPas8, logPas9, logPas10); // Добавление данных в бд (Оно не обязательно для создания бд) 
             context.SaveChanges();
         }
     }

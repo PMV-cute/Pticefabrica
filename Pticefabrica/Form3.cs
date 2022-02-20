@@ -61,6 +61,7 @@ namespace Pticefabrica // Инкубатор
                 {
                     IncubatorText.Text = new Logical().IncubatorMolod(listBox2.SelectedItem.ToString(), Convert.ToInt32(textBox4.Text), Convert.ToInt32(textBox5.Text));
                 }
+                else { IncubatorText.Text = "Проверьте правильность введенных данных"; }
             }
             else IncubatorText.Text = "Проверьте провильность введенных данных или выберите инкубатор";
             Reload();

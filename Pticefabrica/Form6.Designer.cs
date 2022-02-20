@@ -32,7 +32,6 @@ namespace Pticefabrica
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.KPEText = new System.Windows.Forms.Label();
             this.FormKPE = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.LoadUPK = new System.Windows.Forms.Button();
             this.ReloadKPE = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -67,15 +66,6 @@ namespace Pticefabrica
             this.FormKPE.Text = "Отправка на сортировку";
             this.FormKPE.UseVisualStyleBackColor = true;
             this.FormKPE.Click += new System.EventHandler(this.FormKPE_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(559, 164);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 23);
-            this.button1.TabIndex = 78;
-            this.button1.Text = "Утилизация";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // LoadUPK
             // 
@@ -164,7 +154,6 @@ namespace Pticefabrica
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.KPEText);
             this.Controls.Add(this.FormKPE);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.LoadUPK);
             this.Controls.Add(this.listBox1);
@@ -184,7 +173,6 @@ namespace Pticefabrica
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label KPEText;
         private System.Windows.Forms.Button FormKPE;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button LoadUPK;
         private System.Windows.Forms.Button ReloadKPE;
         private System.Windows.Forms.Label label6;

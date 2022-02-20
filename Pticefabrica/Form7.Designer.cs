@@ -40,21 +40,25 @@ namespace Pticefabrica
             this.Category2 = new System.Windows.Forms.TextBox();
             this.Category3 = new System.Windows.Forms.TextBox();
             this.Category0 = new System.Windows.Forms.TextBox();
-            this.Melanjtextbox = new System.Windows.Forms.TextBox();
+            this.OtbrakovkaTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 352);
+            this.label2.Location = new System.Drawing.Point(13, 242);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 15);
+            this.label2.Size = new System.Drawing.Size(72, 15);
             this.label2.TabIndex = 94;
-            this.label2.Text = "Категории";
+            this.label2.Text = "Категория 0";
             // 
             // Category1
             // 
-            this.Category1.Location = new System.Drawing.Point(180, 348);
+            this.Category1.Location = new System.Drawing.Point(119, 269);
             this.Category1.Name = "Category1";
             this.Category1.Size = new System.Drawing.Size(100, 23);
             this.Category1.TabIndex = 93;
@@ -64,9 +68,8 @@ namespace Pticefabrica
             this.CSEText.AutoSize = true;
             this.CSEText.Location = new System.Drawing.Point(257, 381);
             this.CSEText.Name = "CSEText";
-            this.CSEText.Size = new System.Drawing.Size(43, 15);
+            this.CSEText.Size = new System.Drawing.Size(0, 15);
             this.CSEText.TabIndex = 92;
-            this.CSEText.Text = "asdasd";
             // 
             // FormCSE
             // 
@@ -120,38 +123,78 @@ namespace Pticefabrica
             // 
             // Category2
             // 
-            this.Category2.Location = new System.Drawing.Point(286, 349);
+            this.Category2.Location = new System.Drawing.Point(225, 269);
             this.Category2.Name = "Category2";
             this.Category2.Size = new System.Drawing.Size(100, 23);
             this.Category2.TabIndex = 96;
             // 
             // Category3
             // 
-            this.Category3.Location = new System.Drawing.Point(392, 349);
+            this.Category3.Location = new System.Drawing.Point(331, 269);
             this.Category3.Name = "Category3";
             this.Category3.Size = new System.Drawing.Size(100, 23);
             this.Category3.TabIndex = 97;
             // 
             // Category0
             // 
-            this.Category0.Location = new System.Drawing.Point(74, 348);
+            this.Category0.Location = new System.Drawing.Point(13, 269);
             this.Category0.Name = "Category0";
             this.Category0.Size = new System.Drawing.Size(100, 23);
             this.Category0.TabIndex = 98;
             // 
-            // Melanjtextbox
+            // OtbrakovkaTextBox
             // 
-            this.Melanjtextbox.Location = new System.Drawing.Point(74, 289);
-            this.Melanjtextbox.Name = "Melanjtextbox";
-            this.Melanjtextbox.Size = new System.Drawing.Size(100, 23);
-            this.Melanjtextbox.TabIndex = 99;
+            this.OtbrakovkaTextBox.Location = new System.Drawing.Point(13, 324);
+            this.OtbrakovkaTextBox.Name = "OtbrakovkaTextBox";
+            this.OtbrakovkaTextBox.Size = new System.Drawing.Size(100, 23);
+            this.OtbrakovkaTextBox.TabIndex = 99;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(119, 242);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 15);
+            this.label3.TabIndex = 100;
+            this.label3.Text = "Категория 1";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(225, 242);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 15);
+            this.label4.TabIndex = 101;
+            this.label4.Text = "Категория 2";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(331, 242);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 15);
+            this.label5.TabIndex = 102;
+            this.label5.Text = "Категория 3";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(12, 306);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(33, 15);
+            this.label7.TabIndex = 103;
+            this.label7.Text = "Брак";
             // 
             // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Melanjtextbox);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.OtbrakovkaTextBox);
             this.Controls.Add(this.Category0);
             this.Controls.Add(this.Category3);
             this.Controls.Add(this.Category2);
@@ -183,6 +226,10 @@ namespace Pticefabrica
         private System.Windows.Forms.TextBox Category2;
         private System.Windows.Forms.TextBox Category3;
         private System.Windows.Forms.TextBox Category0;
-        private System.Windows.Forms.TextBox Melanjtextbox;
+        private System.Windows.Forms.TextBox OtbrakovkaTextBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
     }
 }

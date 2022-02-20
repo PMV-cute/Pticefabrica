@@ -65,7 +65,7 @@ namespace WinFormsLibrary1
 
             modelBuilder.Entity<PartiyaEggs>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
 
-
+            modelBuilder.Entity<OtbrakovkaEggs>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
 
         }
 

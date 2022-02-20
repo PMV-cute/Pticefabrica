@@ -281,6 +281,14 @@ namespace WinFormsLibrary1.Migrations
                     b.Property<int?>("CehSortID3")
                         .HasColumnType("integer");
 
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
+                    b.Property<DateTime>("dateTime")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<int>("kolvo")
                         .HasColumnType("integer");
 

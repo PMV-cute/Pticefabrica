@@ -16,9 +16,5 @@ namespace WinFormsLibrary1.Entity
         public ICollection<OtbrakovkaEggs> OtbrakovkaEggses { get; set; }
         [ForeignKey("CehPrMID3")]
         public ICollection<Othodi> Othodis { get; set; }
-        public void Vskritie() { }
-        public void Separation() { }
-        public void Rozliv() { }
-        public void Vipusc() { }
     }
 }

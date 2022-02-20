@@ -31,7 +31,6 @@ namespace Pticefabrica
         {
             this.UPKText = new System.Windows.Forms.Label();
             this.FormUPK = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.LoadUPK = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.ReloadUPK = new System.Windows.Forms.Button();
@@ -57,15 +56,6 @@ namespace Pticefabrica
             this.FormUPK.Text = "Формирование фабриката";
             this.FormUPK.UseVisualStyleBackColor = true;
             this.FormUPK.Click += new System.EventHandler(this.FormUPK_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(559, 164);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 23);
-            this.button1.TabIndex = 68;
-            this.button1.Text = "Утилизация";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // LoadUPK
             // 
@@ -133,7 +123,6 @@ namespace Pticefabrica
             this.Controls.Add(this.UPKLoad);
             this.Controls.Add(this.UPKText);
             this.Controls.Add(this.FormUPK);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.LoadUPK);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.ReloadUPK);
@@ -151,7 +140,6 @@ namespace Pticefabrica
 
         private System.Windows.Forms.Label UPKText;
         private System.Windows.Forms.Button FormUPK;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button LoadUPK;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button ReloadUPK;
