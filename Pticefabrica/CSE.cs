@@ -10,9 +10,9 @@ using System.Linq;
 
 namespace Pticefabrica
 {
-    public partial class Form7 : Form
+    public partial class CSE : Form
     {
-        public Form7()
+        public CSE()
         {
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(MyForm_MouseDown);
@@ -31,10 +31,6 @@ namespace Pticefabrica
         private void Reload()
         {
             listBox1.Items.Clear();
-            Category0.Text = "0";
-            Category1.Text = "0";
-            Category2.Text = "0";
-            Category3.Text = "0";
 
             ApplicationContext context = new ApplicationContext();
             var part = context.PartiyaEggs.ToList();

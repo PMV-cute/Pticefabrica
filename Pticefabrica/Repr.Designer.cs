@@ -1,7 +1,7 @@
 ﻿
 namespace Pticefabrica
 {
-    partial class Form2
+    partial class Repr
     {
         /// <summary>
         /// Required designer variable.
@@ -50,7 +50,6 @@ namespace Pticefabrica
             // 
             // CloseButton
             // 
-            this.CloseButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.CloseButton.AutoSize = true;
             this.CloseButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseButton.Location = new System.Drawing.Point(770, 9);
@@ -129,9 +128,8 @@ namespace Pticefabrica
             this.ReproductorText.AutoSize = true;
             this.ReproductorText.Location = new System.Drawing.Point(44, 341);
             this.ReproductorText.Name = "ReproductorText";
-            this.ReproductorText.Size = new System.Drawing.Size(40, 15);
+            this.ReproductorText.Size = new System.Drawing.Size(0, 15);
             this.ReproductorText.TabIndex = 40;
-            this.ReproductorText.Text = "фывф";
             // 
             // label4
             // 
@@ -201,7 +199,7 @@ namespace Pticefabrica
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form2
+            // Repr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -224,7 +222,7 @@ namespace Pticefabrica
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CloseButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form2";
+            this.Name = "Repr";
             this.Text = "Form2";
             this.ResumeLayout(false);
             this.PerformLayout();

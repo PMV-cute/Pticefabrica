@@ -10,9 +10,9 @@ using System.Linq;
 
 namespace Pticefabrica  // Птичник
 {
-    public partial class Form4 : Form
+    public partial class Ptichnik : Form
     {
-        public Form4()
+        public Ptichnik()
         {
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(MyForm_MouseDown);

@@ -1,7 +1,7 @@
 ﻿
 namespace Pticefabrica
 {
-    partial class Form6
+    partial class KPE
     {
         /// <summary>
         /// Required designer variable.
@@ -122,9 +122,8 @@ namespace Pticefabrica
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(13, 392);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 15);
+            this.label3.Size = new System.Drawing.Size(0, 15);
             this.label3.TabIndex = 83;
-            this.label3.Text = "Количество циклов: 10";
             // 
             // listBox1
             // 
@@ -144,7 +143,7 @@ namespace Pticefabrica
             this.listBox2.Size = new System.Drawing.Size(775, 124);
             this.listBox2.TabIndex = 77;
             // 
-            // Form6
+            // KPE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -161,7 +160,7 @@ namespace Pticefabrica
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form6";
+            this.Name = "KPE";
             this.Text = "Form6";
             this.ResumeLayout(false);
             this.PerformLayout();

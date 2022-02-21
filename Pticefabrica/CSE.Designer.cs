@@ -1,7 +1,7 @@
 ﻿
 namespace Pticefabrica
 {
-    partial class Form7
+    partial class CSE
     {
         /// <summary>
         /// Required designer variable.

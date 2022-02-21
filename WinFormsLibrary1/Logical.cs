@@ -251,7 +251,7 @@ namespace WinFormsLibrary1
             }
             else { return "Птиц нет"; }
         }
-        public string CPYLoad(string a, string b)
+        public string KPELoad(string a, string b)
         {
             ApplicationContext context = new ApplicationContext();
             int k = 0;
@@ -262,15 +262,15 @@ namespace WinFormsLibrary1
             int IDa = Convert.ToInt32(a);
             int IDb = Convert.ToInt32(b);
             PartiyaVzrosloyChicken partiyaVzrosloyChicken = context.PartiyaVzrosloyChicken.Where(h => h.ID == IDa).FirstOrDefault();
-            ComplexProizvodstvaEggs cpy = context.ComplexProizvodstvaEggs.Where(h => h.ID == IDb).FirstOrDefault();
-            if (cpy.FreeOrNotFree)
+            ComplexProizvodstvaEggs KPE = context.ComplexProizvodstvaEggs.Where(h => h.ID == IDb).FirstOrDefault();
+            if (KPE.FreeOrNotFree)
             {
-                cpy.KolvoN = partiyaVzrosloyChicken.Kolvo;
-                cpy.FreeOrNotFree = false;
-                cpy.DateForm = DateTime.Now;
-                cpy.Pfeed = true;
-                cpy.Pwater = true;
-                partiyaVzrosloyChicken.CoPrID = cpy.ID;
+                KPE.KolvoN = partiyaVzrosloyChicken.Kolvo;
+                KPE.FreeOrNotFree = false;
+                KPE.DateForm = DateTime.Now;
+                KPE.Pfeed = true;
+                KPE.Pwater = true;
+                partiyaVzrosloyChicken.CoPrID = KPE.ID;
                 partiyaVzrosloyChicken.FreeOrNotFree = false;
                 context.SaveChanges();
                 return "Готово!";
@@ -278,27 +278,23 @@ namespace WinFormsLibrary1
             else { return "КПЯ заполнен"; }
 
         }
-        public string CPYFormEgg(int b, string a, string e)
+        public string KPEFormEggs(int b, string a)
         {
             ApplicationContext context = new ApplicationContext();
             int k = a.IndexOf(";");
             a = a.Substring(0, k);
-            k = e.IndexOf(":");
-            e = e.Substring(k + 2);
-            int Cikl = Convert.ToInt32(e);
             int IDb = Convert.ToInt32(a);
-            ComplexProizvodstvaEggs cpy = context.ComplexProizvodstvaEggs.Where(h => h.ID == IDb).FirstOrDefault();
-            if (cpy.FreeOrNotFree == true)
-            {
+            ComplexProizvodstvaEggs KPE = context.ComplexProizvodstvaEggs.Where(h => h.ID == IDb).FirstOrDefault();
+            if (KPE.FreeOrNotFree == true)
                 return "Птиц нет";
-            }
-            if(cpy.Cikl >= Cikl && cpy.FreeOrNotFree == false)
+            
+            if(KPE.Cikl >= KPE.CiklMax && KPE.FreeOrNotFree == false)
             {
-                cpy.KolvoN = 0;
-                cpy.FreeOrNotFree = true;
-                cpy.Pfeed = false;
-                cpy.Pwater = false;
-                cpy.Cikl = 0;
+                KPE.KolvoN = 0;
+                KPE.FreeOrNotFree = true;
+                KPE.Pfeed = false;
+                KPE.Pwater = false;
+                KPE.Cikl = 0;
                 context.SaveChanges();
                 return "Курицы слишком стары и были отправлены на убой";
             }
@@ -306,38 +302,43 @@ namespace WinFormsLibrary1
             {
                 PartiyaEggs partiyaEggs = new PartiyaEggs
                 {
-                    CoPrID2 = cpy.ID,
+                    CoPrID2 = KPE.ID,
                     DateForm = DateTime.Now,
                     Kolvo = b,
                     FreeOrNotFree = true
                 };
-                cpy.Cikl++;
+                KPE.Cikl++;
                 context.PartiyaEggs.Add(partiyaEggs);
                 context.SaveChanges();
                 return "Готово!";
             }
         }
         
-        public string CSEFormEgg(int b, string a, int[] cat)
+        public string CSEFormEgg(int b, string a, int[] category)
         {
+            int c = 0;
             ApplicationContext context = new ApplicationContext();
             int k = a.IndexOf(";");
             a = a.Substring(0, k);
             int IDb = Convert.ToInt32(a);
             PartiyaEggs partiyaEggs = context.PartiyaEggs.Where(h => h.ID == IDb).FirstOrDefault();
             CehSortEggs cse = context.CehSortEggs.FirstOrDefault();
+
+            for (int i = 0; i < category.Length; i++) { c += category[i]; }
+            if (c > partiyaEggs.Kolvo)
+                return "Неточность введенных данных";
             if (partiyaEggs.FreeOrNotFree == true)
             {
                 partiyaEggs.CehSortID = cse.ID;
                 partiyaEggs.FreeOrNotFree = false;
                 context.SaveChanges();
-                for (int i = 0; i < cat.Length; i++ )
+                for (int i = 0; i < category.Length; i++ )
                 {
                     PartiyaTovarnEggs partiyaTovarnEggs = new PartiyaTovarnEggs
                     {
                         CehSortID2 = cse.ID,
                         DateUp = partiyaEggs.DateForm,
-                        Kolvo = cat[i],
+                        Kolvo = category[i],
                         Categori = i,
                     };
                     context.PartiyaTovarnEggs.Add(partiyaTovarnEggs);

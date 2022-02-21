@@ -1,7 +1,7 @@
 ﻿
 namespace Pticefabrica
 {
-    partial class Form3
+    partial class Incub
     {
         /// <summary>
         /// Required designer variable.

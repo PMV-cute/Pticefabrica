@@ -1,7 +1,7 @@
 ﻿
 namespace Pticefabrica
 {
-    partial class Form5
+    partial class UPK
     {
         /// <summary>
         /// Required designer variable.

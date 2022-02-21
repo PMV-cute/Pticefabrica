@@ -10,12 +10,13 @@ using System.Linq;
 
 namespace Pticefabrica  // Репродуктор
 {
-    public partial class Form2 : Form
+    public partial class Repr : Form
     {
-        public Form2()
+        public Repr()
         {
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(MyForm_MouseDown);
+            //Reload();
         }
         private void MyForm_MouseDown(object sender, MouseEventArgs e)
         {

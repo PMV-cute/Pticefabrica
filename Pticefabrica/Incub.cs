@@ -10,9 +10,9 @@ using System.Linq;
 
 namespace Pticefabrica // Инкубатор
 {
-    public partial class Form3 : Form
+    public partial class Incub : Form
     {
-        public Form3()
+        public Incub()
         {
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(MyForm_MouseDown);
@@ -56,6 +56,7 @@ namespace Pticefabrica // Инкубатор
             {
                 int k = listBox2.SelectedItem.ToString().IndexOf(";");
                 int IDb = Convert.ToInt32(listBox2.SelectedItem.ToString().Substring(0, k));
+
                 Incubator incubator = context.Incubator.Where(c => c.ID == IDb).FirstOrDefault();
                 if (incubator.KolvoEggs >= Convert.ToInt32(textBox4.Text) + Convert.ToInt32(textBox5.Text))
                 {

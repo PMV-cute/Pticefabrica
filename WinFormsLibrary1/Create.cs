@@ -23,7 +23,7 @@ namespace WinFormsLibrary1
             Reproductor reproductor = new Reproductor
             {
                 KolvoB = 0,
-                KolvoN = 0,
+                KolvoN = 0
             };
             context.Reproductor.Add(reproductor);
             context.SaveChanges();
@@ -115,7 +115,7 @@ namespace WinFormsLibrary1
             {
                 ComplexProizvodstvaEggs complexProizvodstvaEggs = new ComplexProizvodstvaEggs
                 {
-                    KolvoN = 0
+                    KolvoN = 0,
                 };
                 context.ComplexProizvodstvaEggs.Add(complexProizvodstvaEggs);
                 context.SaveChanges();

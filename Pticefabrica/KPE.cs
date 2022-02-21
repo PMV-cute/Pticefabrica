@@ -10,13 +10,13 @@ using System.Linq;
 
 namespace Pticefabrica
 {
-    public partial class Form5 : Form
+    public partial class KPE : Form
     {
-        public Form5()
+        public KPE()
         {
             InitializeComponent();
             this.MouseDown += new MouseEventHandler(MyForm_MouseDown);
-            Reload();
+            //Reload();
         }
         private void MyForm_MouseDown(object sender, MouseEventArgs e)
         {
@@ -24,61 +24,75 @@ namespace Pticefabrica
             Message m = Message.Create(base.Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
             this.WndProc(ref m);
         }
-        private void label6_Click_1(object sender, EventArgs e)
+        private void label6_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
-        private void ReloadUPK_Click(object sender, EventArgs e)
+        private void ReloadKPE_Click(object sender, EventArgs e)
         {
             Reload();
         }
         private void LoadUPK_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedItem == null) { UPKText.Text = "выберите партию и/или УПК"; }
+            if (listBox1.SelectedItem == null && listBox2.SelectedItem == null) { KPEText.Text = "выберите партию и/или комплекс"; }
             else
             {
-                UPKText.Text = new Logical().UPKLoad(listBox1.SelectedItem.ToString());
+                KPEText.Text = new Logical().KPELoad(listBox1.SelectedItem.ToString(), listBox2.SelectedItem.ToString());
             }
             Reload();
         }
-        private void FormUPK_Click(object sender, EventArgs e)
+
+        private void FormKPE_Click(object sender, EventArgs e)
         {
             ApplicationContext context = new ApplicationContext();
-            UPKText.Text = new Logical().UPKFormFabricat();
+
+            if (int.TryParse(textBox1.Text, out int value1) && listBox2.SelectedItem != null)
+            {
+                KPEText.Text = new Logical().KPEFormEggs(Convert.ToInt32(textBox1.Text), listBox2.SelectedItem.ToString());
+            }
+            else KPEText.Text = "Проверьте провильность введенных данных";
             Reload();
         }
-        public void Reload()
+        private void Reload()
         {
             listBox1.Items.Clear();
-            UPKLoad.Text = "";
+            listBox2.Items.Clear();
+            
             ApplicationContext context = new ApplicationContext();
+            ComplexProizvodstvaEggs cpe = context.ComplexProizvodstvaEggs.FirstOrDefault();
+            label3.Text = "Количество циклов: " + cpe.CiklMax;
+
             var part = context.PartiyaVzrosloyChicken.ToList();
-            var upk = context.UPK.ToList();
+            var cpy = context.ComplexProizvodstvaEggs.ToList();
             foreach (var parteg in part)
             {
-                if (parteg.FreeOrNotFree == true && parteg.TypeChiсken == "Бройлер")
+                if (parteg.FreeOrNotFree == true && parteg.TypeChiсken == "Несушка")
                 {
                     listBox1.Items.Add($"{parteg.ID}; Дата: {parteg.DateForm}; Количество: {parteg.Kolvo};");
                 }
                 else
                 {
                     /*
-                    if (parteg.TypeChiсken == "Бройлер")
+                    if (parteg.TypeChiсken == "Несушка")
                     {
                         context.Remove(context.PartiyaVzrosloyChicken.Single(s => s.ID == parteg.ID)); // Удаление сущности из таблицы
                         context.SaveChanges();
                     }
-                    else { break; }
                     */
+
+                    
                 }
             }
-            foreach (var u in upk)
+            foreach (var u in cpy)
             {
                 if (u.FreeOrNotFree)
-                    UPKLoad.Text = $"Убойно перерабатывающий комплекс свободен";
+                {
+                    listBox2.Items.Add($"{u.ID};   Свободен;");
+                }
                 else
-                    UPKLoad.Text = $"Количество: {u.KolvoB}; Дата поступления {u.Dateform}";
+                {
+                    listBox2.Items.Add($"{u.ID}; Дата поступления: {u.DateForm}; Количество: {u.KolvoN}; Цикл: №{u.Cikl+1}");
+                }
             }
         }
     }

@@ -61,7 +61,8 @@ namespace WinFormsLibrary1
             modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
             modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.Pfeed).HasDefaultValue(false);
             modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.Pwater).HasDefaultValue(false);
-            modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.Cikl).HasDefaultValue(1);
+            modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.Cikl).HasDefaultValue(0);
+            modelBuilder.Entity<ComplexProizvodstvaEggs>().Property(s => s.CiklMax).HasDefaultValue(10);
 
             modelBuilder.Entity<PartiyaEggs>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
 

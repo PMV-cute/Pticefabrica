@@ -12,13 +12,14 @@ namespace Pticefabrica
 {
     public partial class Form1 : Form
     {
-        Form f2 = new Form2();
-        Form f3 = new Form3();
-        Form f4 = new Form4();
-        Form f5 = new Form5();
-        Form f6 = new Form6();
-        Form f7 = new Form7();
-        Form f8 = new Form8();
+        Form f2 = new Repr();
+        Form f3 = new Incub();
+        Form f4 = new Ptichnik();
+        Form f5 = new UPK();
+        Form f6 = new KPE();
+        Form f7 = new CSE();
+        Form f8 = new CPM();
+        Form f9 = new Leader();
         public Form1()
         {
             new Create().CreateAll();
@@ -27,8 +28,6 @@ namespace Pticefabrica
             this.MouseDown += new MouseEventHandler(MyForm_MouseDown);
            
         }
-        
-        private void Form1_Load(object sender, EventArgs e) { }
         private void MyForm_MouseDown(object sender, MouseEventArgs e)
         {
             base.Capture = false;
@@ -58,6 +57,7 @@ namespace Pticefabrica
                     if (u.role == "КомплексПЯ") f6.Show();
                     if (u.role == "КомплексСЯ") f7.Show();
                     if (u.role == "ЦехПМ") f8.Show();
+                    if (u.role == "Руководитель") f9.Show();
                     if (u.role == "Admin")
                     {
                         f2.Show();
@@ -67,6 +67,7 @@ namespace Pticefabrica
                         f6.Show();
                         f7.Show();
                         f8.Show();
+                        f9.Show();
                     }
                     Hide();
                     return;

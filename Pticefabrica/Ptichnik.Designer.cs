@@ -1,7 +1,7 @@
 ﻿
 namespace Pticefabrica
 {
-    partial class Form4
+    partial class Ptichnik
     {
         /// <summary>
         /// Required designer variable.

@@ -1,7 +1,7 @@
 ﻿
 namespace Pticefabrica
 {
-    partial class Form8
+    partial class CPM
     {
         /// <summary>
         /// Required designer variable.
