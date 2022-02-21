@@ -145,16 +145,22 @@ namespace WinFormsLibrary1
             };
             context.CehProizvMelanja.Add(cehProizvMelanja);
             context.SaveChanges();
-            LogPas logPas1 = new LogPas { login = "Maksim", password = "1234", role = "Admin" };
-            LogPas logPas2 = new LogPas { login = "Ivan", password = "1234", role = "Admin" };
-            LogPas logPas3 = new LogPas { login = "Alexey", password = "1234", role = "Руководитель" };
-            LogPas logPas4 = new LogPas { login = "Репродуктор", password = "1234", role = "Репродуктор" };
-            LogPas logPas5 = new LogPas { login = "Инкубатор", password = "1234", role = "Инкубатор" };
-            LogPas logPas6 = new LogPas { login = "Птичник", password = "1234", role = "Птичник" };
-            LogPas logPas7 = new LogPas { login = "КПЯ", password = "1234", role = "КомплексПЯ" };
-            LogPas logPas8 = new LogPas { login = "КСЯ", password = "1234", role = "КомплексСЯ" };
-            LogPas logPas9 = new LogPas { login = "УПК", password = "1234", role = "УПК" };
-            LogPas logPas10 = new LogPas { login = "ЦПМ", password = "1234", role = "ЦехПМ" };
+
+            string a = new Crypt().getCrypt("1234");
+            string b = new Crypt().getCrypt("4321");
+            string c = new Crypt().getCrypt("1111");
+
+
+            LogPas logPas1 = new LogPas { login = "Maksim", password = a, role = "Admin" };
+            LogPas logPas2 = new LogPas { login = "Ivan", password = a, role = "Admin" };
+            LogPas logPas3 = new LogPas { login = "Alexey", password = c, role = "Руководитель" };
+            LogPas logPas4 = new LogPas { login = "Репродуктор", password = b, role = "Репродуктор" };
+            LogPas logPas5 = new LogPas { login = "Инкубатор", password = b, role = "Инкубатор" };
+            LogPas logPas6 = new LogPas { login = "Птичник", password = b, role = "Птичник" };
+            LogPas logPas7 = new LogPas { login = "КПЯ", password = b, role = "КомплексПЯ" };
+            LogPas logPas8 = new LogPas { login = "КСЯ", password = b, role = "КомплексСЯ" };
+            LogPas logPas9 = new LogPas { login = "УПК", password = b, role = "УПК" };
+            LogPas logPas10 = new LogPas { login = "ЦПМ", password = b, role = "ЦехПМ" };
 
             context.LogPas.AddRange(logPas1, logPas2, logPas3, logPas4, logPas5, logPas6, logPas7, logPas8, logPas9, logPas10); // Добавление данных в бд (Оно не обязательно для создания бд) 
             context.SaveChanges();

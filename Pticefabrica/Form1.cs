@@ -40,14 +40,16 @@ namespace Pticefabrica
             string log = textBox1.Text.ToString();
             string pas = textBox2.Text.ToString();
             
+            
             ApplicationContext context = new ApplicationContext();
             var users = context.LogPas.ToList();
             int count = 0;
             foreach (var u in users)
             {
                 count++;
+                string upas = u.password;
                 //textBox3.Text += u.login +u.password + u.role;
-                if (u.login == log && u.password == pas)
+                if (u.login == log && new Crypt().getDeCrypt(pas,upas))
                 {
                     if (u.role == "Репродуктор") f2.Show();
                     if (u.role == "Инкубатор") f3.Show();
