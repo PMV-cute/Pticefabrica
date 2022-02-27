@@ -18,16 +18,6 @@ namespace WinFormsLibrary1.Entity
 
         [ForeignKey("RepID")]
         public ICollection<PartiyaEggsRodClass> PartiyaEggsRodClasses { get; set; }
-        [ForeignKey("RepID2")]
-        public ICollection<PartiyaRemontnayaVzrosloyChicken> PartiyaRemontnayaVzrosloyChickens { get; set; }
-        public string FormirovPartEggs()
-        {
-            ApplicationContext context = new ApplicationContext();
-            var repr = context.Reproductor.ToList();
-            var PER = context.PartiyaEggsRodClass.ToList();
-            
-            return $"Количество партий{PER[PER.Count-1].Kolvo/1000}: количество произведенных яиц: {PER[PER.Count - 1].Kolvo}. Дата: {PER[PER.Count-1].DatePostEggs}";
-        }
 
     }
 }

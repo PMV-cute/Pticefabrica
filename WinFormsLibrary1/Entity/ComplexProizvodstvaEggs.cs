@@ -24,7 +24,6 @@ namespace WinFormsLibrary1.Entity
         public ICollection<PartiyaVzrosloyChicken> PartiyaVzrosloyChickens { get; set; }
         [ForeignKey("CoPrID2")]
         public ICollection<PartiyaEggs> PartiyaEggses { get; set; }
-        [ForeignKey("CoPrID3")]
-        public ICollection<NegodnayaChicken> NegodnayaChickens { get; set; }
+
     }
 }

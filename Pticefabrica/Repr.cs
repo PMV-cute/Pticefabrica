@@ -63,7 +63,7 @@ namespace Pticefabrica  // Репродуктор
         {
             Application.Exit();
         }
-        public void Reload()
+        private void Reload()
         {
             listBox5.Items.Clear();
             listBox6.Items.Clear();

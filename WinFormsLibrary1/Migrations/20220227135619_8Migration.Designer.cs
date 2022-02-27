@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WinFormsLibrary1;
@@ -9,9 +10,10 @@ using WinFormsLibrary1;
 namespace WinFormsLibrary1.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220227135619_8Migration")]
+    partial class _8Migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,9 +123,6 @@ namespace WinFormsLibrary1.Migrations
 
                     b.Property<DateTime>("DateUp")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<int>("Kolvo")
-                        .HasColumnType("integer");
 
                     b.Property<int>("UPKID2")
                         .HasColumnType("integer");
@@ -345,6 +344,34 @@ namespace WinFormsLibrary1.Migrations
                     b.ToTable("PartiyaMolodnyaka");
                 });
 
+            modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaRemontnayaVzrosloyChicken", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("Kolvo")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PaVzChID")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("RepID2")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("TypeChiсken")
+                        .HasColumnType("text");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("PaVzChID");
+
+                    b.HasIndex("RepID2");
+
+                    b.ToTable("PartiyaRemontnayaVzrosloyChicken");
+                });
+
             modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaTovarnEggs", b =>
                 {
                     b.Property<int>("ID")
@@ -559,6 +586,21 @@ namespace WinFormsLibrary1.Migrations
                         .HasForeignKey("PtID");
                 });
 
+            modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaRemontnayaVzrosloyChicken", b =>
+                {
+                    b.HasOne("WinFormsLibrary1.Entity.PartiyaVzrosloyChicken", "PartiyaVzrosloyChicken")
+                        .WithMany()
+                        .HasForeignKey("PaVzChID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WinFormsLibrary1.Entity.Reproductor", null)
+                        .WithMany("PartiyaRemontnayaVzrosloyChickens")
+                        .HasForeignKey("RepID2");
+
+                    b.Navigation("PartiyaVzrosloyChicken");
+                });
+
             modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaTovarnEggs", b =>
                 {
                     b.HasOne("WinFormsLibrary1.Entity.CehSortEggs", null)
@@ -621,6 +663,8 @@ namespace WinFormsLibrary1.Migrations
             modelBuilder.Entity("WinFormsLibrary1.Entity.Reproductor", b =>
                 {
                     b.Navigation("PartiyaEggsRodClasses");
+
+                    b.Navigation("PartiyaRemontnayaVzrosloyChickens");
                 });
 
             modelBuilder.Entity("WinFormsLibrary1.Entity.UPK", b =>

@@ -234,16 +234,16 @@ namespace WinFormsLibrary1
             UPK upk = context.UPK.FirstOrDefault();
             if (upk.FreeOrNotFree == false)
             {
-                for (int i = 0; i < upk.KolvoB; i++)
-                {
+               
                     Fabrikat fabrikat = new Fabrikat
                     {
+                        Kolvo = upk.KolvoB,
                         UPKID2 = upk.ID,
                         DateUp = DateTime.Now
                     };
                     context.Fabrikat.Add(fabrikat);
                     context.SaveChanges();
-                }
+                
                 upk.KolvoB = 0;
                 upk.FreeOrNotFree = true;
                 context.SaveChanges();

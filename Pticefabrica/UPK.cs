@@ -48,7 +48,7 @@ namespace Pticefabrica
             UPKText.Text = new Logical().UPKFormFabricat();
             Reload();
         }
-        public void Reload()
+        private void Reload()
         {
             listBox1.Items.Clear();
             UPKLoad.Text = "";

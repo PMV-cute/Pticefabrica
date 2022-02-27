@@ -52,13 +52,13 @@ namespace Pticefabrica  // Птичник
             else { PtichnicText.Text = "Выберите птичник"; }
             Reload();
         }
-        public void Reload()
+        private void Reload()
         {
             listBox3.Items.Clear();
             listBox4.Items.Clear();
             ApplicationContext context = new ApplicationContext();
             var partms = context.PartiyaMolodnyaka.ToList();
-            var pt = context.Ptichnic.ToList();
+            List<Ptichnic> pt = context.Ptichnic.ToList().OrderBy(o => o.ID).ToList();
             foreach (var partm in partms)
             {
                 DateTime date = partm.DataForm;

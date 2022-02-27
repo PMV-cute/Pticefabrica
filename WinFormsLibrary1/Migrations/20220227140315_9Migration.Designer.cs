@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WinFormsLibrary1;
@@ -9,9 +10,10 @@ using WinFormsLibrary1;
 namespace WinFormsLibrary1.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20220227140315_9Migration")]
+    partial class _9Migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -121,9 +123,6 @@ namespace WinFormsLibrary1.Migrations
 
                     b.Property<DateTime>("DateUp")
                         .HasColumnType("timestamp without time zone");
-
-                    b.Property<int>("Kolvo")
-                        .HasColumnType("integer");
 
                     b.Property<int>("UPKID2")
                         .HasColumnType("integer");

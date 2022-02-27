@@ -68,13 +68,13 @@ namespace Pticefabrica // Инкубатор
             Reload();
         }
 
-        public void Reload()
+        private void Reload()
         {
             listBox1.Items.Clear();
             listBox2.Items.Clear();
             ApplicationContext context = new ApplicationContext();
             var parteggs = context.PartiyaEggsRodClass.ToList();
-            var incub = context.Incubator.ToList();
+            List<Incubator> incub = context.Incubator.ToList().OrderBy(o => o.ID).ToList();
             foreach (var parteg in parteggs)
             {
                 DateTime date = parteg.DatePostEggs;

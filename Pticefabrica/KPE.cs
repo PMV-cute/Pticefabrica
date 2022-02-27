@@ -63,7 +63,7 @@ namespace Pticefabrica
             label3.Text = "Количество циклов: " + cpe.CiklMax;
 
             var part = context.PartiyaVzrosloyChicken.ToList();
-            var cpy = context.ComplexProizvodstvaEggs.ToList();
+            List<ComplexProizvodstvaEggs> cpy = context.ComplexProizvodstvaEggs.ToList().OrderBy(o => o.ID).ToList();
             foreach (var parteg in part)
             {
                 if (parteg.FreeOrNotFree == true && parteg.TypeChiсken == "Несушка")

@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Pticefabrica
@@ -11,10 +12,13 @@ namespace Pticefabrica
         [STAThread]
         static void Main()
         {
+
+            System.Text.Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            
         }
     }
 }

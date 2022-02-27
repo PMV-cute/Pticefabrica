@@ -3,7 +3,7 @@ using System;
 
 namespace WinFormsLibrary1.Entity
 {
-    public class Melanj
+    public class Melanj : EntityClass
     {
         [Key]
         [Required]

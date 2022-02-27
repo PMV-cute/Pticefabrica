@@ -14,7 +14,6 @@ namespace WinFormsLibrary1.Entity
         public ICollection<Melanj> Melanjs { get; set; }
         [ForeignKey("CehPrMID2")]
         public ICollection<OtbrakovkaEggs> OtbrakovkaEggses { get; set; }
-        [ForeignKey("CehPrMID3")]
-        public ICollection<Othodi> Othodis { get; set; }
+
     }
 }

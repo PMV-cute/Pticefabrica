@@ -22,8 +22,8 @@ namespace WinFormsLibrary1
             }
             Reproductor reproductor = new Reproductor
             {
-                KolvoB = 0,
-                KolvoN = 0
+                KolvoB = 200,
+                KolvoN = 1000
             };
             context.Reproductor.Add(reproductor);
             context.SaveChanges();
@@ -145,11 +145,23 @@ namespace WinFormsLibrary1
             };
             context.CehProizvMelanja.Add(cehProizvMelanja);
             context.SaveChanges();
+            for (int i = 0; i < 100; i++)
+            {
+                Melanj melanj = new Melanj
+                {
+                    TypeMelanga = "Белок",
+                    DateRosliva = DateTime.Now,
+                };
+                context.Melanj.Add(melanj);
+                context.SaveChanges();
+            }
+                
+
 
             string a = new Crypt().getCrypt("1234");
             string b = new Crypt().getCrypt("4321");
             string c = new Crypt().getCrypt("1111");
-
+    
 
             LogPas logPas1 = new LogPas { login = "Maksim", password = a, role = "Admin" };
             LogPas logPas2 = new LogPas { login = "Ivan", password = a, role = "Admin" };
