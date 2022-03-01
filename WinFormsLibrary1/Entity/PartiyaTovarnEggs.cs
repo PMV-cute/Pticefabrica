@@ -2,7 +2,7 @@
 using System;
 namespace WinFormsLibrary1.Entity
 {
-    public class PartiyaTovarnEggs : EntityClass
+    public class PartiyaTovarnEggs 
     {
         [Key]
         public int ID { get; set; }

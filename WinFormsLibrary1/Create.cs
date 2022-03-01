@@ -50,6 +50,35 @@ namespace WinFormsLibrary1
                 context.Ptichnic.Add(ptichnic);
                 context.SaveChanges();
             }
+            UPK uPK = new UPK
+            {
+                KolvoB = 0,
+                FreeOrNotFree = true
+            };
+            context.UPK.Add(uPK);
+            context.SaveChanges();
+            for (int i = 0; i < 14; i++)
+            {
+                ComplexProizvodstvaEggs complexProizvodstvaEggs = new ComplexProizvodstvaEggs
+                {
+                    KolvoN = 0,
+                };
+                context.ComplexProizvodstvaEggs.Add(complexProizvodstvaEggs);
+                context.SaveChanges();
+            }
+            CehSortEggs cehSortEggs = new CehSortEggs
+            {
+                Kolvo = 0,
+                FreeOrNotFree = false,
+                DateForm = DateTime.Now
+            };
+            context.CehSortEggs.Add(cehSortEggs);
+            context.SaveChanges();
+
+
+            // -------------------------------------------------------------------
+
+
             for (int i = 0; i < 5; i++)
             {
                 PartiyaEggsRodClass partiya = new PartiyaEggsRodClass
@@ -104,31 +133,6 @@ namespace WinFormsLibrary1
                 context.PartiyaVzrosloyChicken.Add(partiya);
                 context.SaveChanges();
             }
-            UPK uPK = new UPK
-            {
-                KolvoB = 0,
-                FreeOrNotFree = true
-            };
-            context.UPK.Add(uPK);
-            context.SaveChanges();
-            for (int i = 0; i < 14; i++)
-            {
-                ComplexProizvodstvaEggs complexProizvodstvaEggs = new ComplexProizvodstvaEggs
-                {
-                    KolvoN = 0,
-                };
-                context.ComplexProizvodstvaEggs.Add(complexProizvodstvaEggs);
-                context.SaveChanges();
-            }
-            CehSortEggs cehSortEggs = new CehSortEggs
-            {
-                Kolvo = 0,
-                FreeOrNotFree = false,
-                DateForm = DateTime.Now
-            };
-            context.CehSortEggs.Add(cehSortEggs);
-            context.SaveChanges();
-
             for (int i = 0; i < 10; i++)
             {
                 PartiyaEggs partiyaEggs = new PartiyaEggs
@@ -139,10 +143,7 @@ namespace WinFormsLibrary1
                 context.PartiyaEggs.Add(partiyaEggs);
                 context.SaveChanges();
             }
-            CehProizvMelanja cehProizvMelanja = new CehProizvMelanja
-            {
-
-            };
+            CehProizvMelanja cehProizvMelanja = new CehProizvMelanja { };
             context.CehProizvMelanja.Add(cehProizvMelanja);
             context.SaveChanges();
             for (int i = 0; i < 100; i++)
@@ -155,8 +156,30 @@ namespace WinFormsLibrary1
                 context.Melanj.Add(melanj);
                 context.SaveChanges();
             }
-                
+            
+            for(int i = 0; i < 100; i++)
+            {
+                Fabrikat fabrikat = new Fabrikat
+                {
+                    DateUp = DateTime.Now,
+                    UPKID2 = 1,
+                };
+                context.Fabrikat.Add(fabrikat);
+                context.SaveChanges();
+            }
+            for (int i = 0; i < 25; i++)
+            {
+                PartiyaTovarnEggs partiyaTovarnEggs = new PartiyaTovarnEggs
+                {
+                    Kolvo = 100,
+                    DateUp = DateTime.Now,
+                    Categori = 1,
+                };
+                context.PartiyaTovarnEggs.Add(partiyaTovarnEggs);
+                context.SaveChanges();
+            }
 
+            
 
             string a = new Crypt().getCrypt("1234");
             string b = new Crypt().getCrypt("4321");
@@ -174,7 +197,7 @@ namespace WinFormsLibrary1
             LogPas logPas9 = new LogPas { login = "УПК", password = b, role = "УПК" };
             LogPas logPas10 = new LogPas { login = "ЦПМ", password = b, role = "ЦехПМ" };
 
-            context.LogPas.AddRange(logPas1, logPas2, logPas3, logPas4, logPas5, logPas6, logPas7, logPas8, logPas9, logPas10); // Добавление данных в бд (Оно не обязательно для создания бд) 
+            context.LogPas.AddRange(logPas1, logPas2, logPas3, logPas4, logPas5, logPas6, logPas7, logPas8, logPas9, logPas10); 
             context.SaveChanges();
         }
     }

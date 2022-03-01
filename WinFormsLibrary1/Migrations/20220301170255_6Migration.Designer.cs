@@ -10,8 +10,8 @@ using WinFormsLibrary1;
 namespace WinFormsLibrary1.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220219152121_5Migration")]
-    partial class _5Migration
+    [Migration("20220301170255_6Migration")]
+    partial class _6Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,23 +20,6 @@ namespace WinFormsLibrary1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-            modelBuilder.Entity("WinFormsLibrary1.Entity.CehPererabotkiOthodov", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("NormsPererab")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("CehPererabotkiOthodov");
-                });
 
             modelBuilder.Entity("WinFormsLibrary1.Entity.CehProizvMelanja", b =>
                 {
@@ -98,7 +81,12 @@ namespace WinFormsLibrary1.Migrations
                     b.Property<int>("Cikl")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasDefaultValue(1);
+                        .HasDefaultValue(0);
+
+                    b.Property<int>("CiklMax")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(10);
 
                     b.Property<DateTime>("DateForm")
                         .HasColumnType("timestamp without time zone");
@@ -220,56 +208,6 @@ namespace WinFormsLibrary1.Migrations
                     b.ToTable("Melanj");
                 });
 
-            modelBuilder.Entity("WinFormsLibrary1.Entity.NegodnayaChicken", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int?>("CePerOID")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("CoPrID3")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Kolvo")
-                        .HasColumnType("integer");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CePerOID");
-
-                    b.HasIndex("CoPrID3");
-
-                    b.ToTable("NegodnayaChicken");
-                });
-
-            modelBuilder.Entity("WinFormsLibrary1.Entity.Otbrakovka", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int?>("CePerOID3")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("UPKID3")
-                        .HasColumnType("integer");
-
-                    b.Property<double>("Weight")
-                        .HasColumnType("double precision");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CePerOID3");
-
-                    b.HasIndex("UPKID3");
-
-                    b.ToTable("Otbrakovka");
-                });
-
             modelBuilder.Entity("WinFormsLibrary1.Entity.OtbrakovkaEggs", b =>
                 {
                     b.Property<int>("ID")
@@ -283,6 +221,14 @@ namespace WinFormsLibrary1.Migrations
                     b.Property<int?>("CehSortID3")
                         .HasColumnType("integer");
 
+                    b.Property<bool>("FreeOrNotFree")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
+                    b.Property<DateTime>("dateTime")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<int>("kolvo")
                         .HasColumnType("integer");
 
@@ -293,31 +239,6 @@ namespace WinFormsLibrary1.Migrations
                     b.HasIndex("CehSortID3");
 
                     b.ToTable("OtbrakovkaEggs");
-                });
-
-            modelBuilder.Entity("WinFormsLibrary1.Entity.Othodi", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int?>("CePerOID2")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("CehPrMID3")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("kolvo")
-                        .HasColumnType("text");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("CePerOID2");
-
-                    b.HasIndex("CehPrMID3");
-
-                    b.ToTable("Othodi");
                 });
 
             modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaEggs", b =>
@@ -337,7 +258,9 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<bool>("FreeOrNotFree")
-                        .HasColumnType("boolean");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
 
                     b.Property<int>("Kolvo")
                         .HasColumnType("integer");
@@ -421,34 +344,6 @@ namespace WinFormsLibrary1.Migrations
                     b.ToTable("PartiyaMolodnyaka");
                 });
 
-            modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaRemontnayaVzrosloyChicken", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<int>("Kolvo")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("PaVzChID")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("RepID2")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("TypeChiсken")
-                        .HasColumnType("text");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("PaVzChID");
-
-                    b.HasIndex("RepID2");
-
-                    b.ToTable("PartiyaRemontnayaVzrosloyChicken");
-                });
-
             modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaTovarnEggs", b =>
                 {
                     b.Property<int>("ID")
@@ -456,15 +351,17 @@ namespace WinFormsLibrary1.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<string>("Category")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Categori")
+                        .HasColumnType("integer");
 
                     b.Property<int?>("CehSortID2")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("DateUp")
                         .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("Kolvo")
+                        .HasColumnType("integer");
 
                     b.HasKey("ID");
 
@@ -615,28 +512,6 @@ namespace WinFormsLibrary1.Migrations
                         .HasForeignKey("CehPrMID");
                 });
 
-            modelBuilder.Entity("WinFormsLibrary1.Entity.NegodnayaChicken", b =>
-                {
-                    b.HasOne("WinFormsLibrary1.Entity.CehPererabotkiOthodov", null)
-                        .WithMany("NegodnayaChickens")
-                        .HasForeignKey("CePerOID");
-
-                    b.HasOne("WinFormsLibrary1.Entity.ComplexProizvodstvaEggs", null)
-                        .WithMany("NegodnayaChickens")
-                        .HasForeignKey("CoPrID3");
-                });
-
-            modelBuilder.Entity("WinFormsLibrary1.Entity.Otbrakovka", b =>
-                {
-                    b.HasOne("WinFormsLibrary1.Entity.CehPererabotkiOthodov", null)
-                        .WithMany("Otbrakovkas")
-                        .HasForeignKey("CePerOID3");
-
-                    b.HasOne("WinFormsLibrary1.Entity.UPK", null)
-                        .WithMany("Otbrakovkas")
-                        .HasForeignKey("UPKID3");
-                });
-
             modelBuilder.Entity("WinFormsLibrary1.Entity.OtbrakovkaEggs", b =>
                 {
                     b.HasOne("WinFormsLibrary1.Entity.CehProizvMelanja", null)
@@ -646,17 +521,6 @@ namespace WinFormsLibrary1.Migrations
                     b.HasOne("WinFormsLibrary1.Entity.CehSortEggs", null)
                         .WithMany("OtbrakovkaEggses")
                         .HasForeignKey("CehSortID3");
-                });
-
-            modelBuilder.Entity("WinFormsLibrary1.Entity.Othodi", b =>
-                {
-                    b.HasOne("WinFormsLibrary1.Entity.CehPererabotkiOthodov", null)
-                        .WithMany("Othodis")
-                        .HasForeignKey("CePerOID2");
-
-                    b.HasOne("WinFormsLibrary1.Entity.CehProizvMelanja", null)
-                        .WithMany("Othodis")
-                        .HasForeignKey("CehPrMID3");
                 });
 
             modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaEggs", b =>
@@ -694,21 +558,6 @@ namespace WinFormsLibrary1.Migrations
                         .HasForeignKey("PtID");
                 });
 
-            modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaRemontnayaVzrosloyChicken", b =>
-                {
-                    b.HasOne("WinFormsLibrary1.Entity.PartiyaVzrosloyChicken", "PartiyaVzrosloyChicken")
-                        .WithMany()
-                        .HasForeignKey("PaVzChID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WinFormsLibrary1.Entity.Reproductor", null)
-                        .WithMany("PartiyaRemontnayaVzrosloyChickens")
-                        .HasForeignKey("RepID2");
-
-                    b.Navigation("PartiyaVzrosloyChicken");
-                });
-
             modelBuilder.Entity("WinFormsLibrary1.Entity.PartiyaTovarnEggs", b =>
                 {
                     b.HasOne("WinFormsLibrary1.Entity.CehSortEggs", null)
@@ -731,22 +580,11 @@ namespace WinFormsLibrary1.Migrations
                         .HasForeignKey("UPKID");
                 });
 
-            modelBuilder.Entity("WinFormsLibrary1.Entity.CehPererabotkiOthodov", b =>
-                {
-                    b.Navigation("NegodnayaChickens");
-
-                    b.Navigation("Otbrakovkas");
-
-                    b.Navigation("Othodis");
-                });
-
             modelBuilder.Entity("WinFormsLibrary1.Entity.CehProizvMelanja", b =>
                 {
                     b.Navigation("Melanjs");
 
                     b.Navigation("OtbrakovkaEggses");
-
-                    b.Navigation("Othodis");
                 });
 
             modelBuilder.Entity("WinFormsLibrary1.Entity.CehSortEggs", b =>
@@ -760,8 +598,6 @@ namespace WinFormsLibrary1.Migrations
 
             modelBuilder.Entity("WinFormsLibrary1.Entity.ComplexProizvodstvaEggs", b =>
                 {
-                    b.Navigation("NegodnayaChickens");
-
                     b.Navigation("PartiyaEggses");
 
                     b.Navigation("PartiyaVzrosloyChickens");
@@ -784,15 +620,11 @@ namespace WinFormsLibrary1.Migrations
             modelBuilder.Entity("WinFormsLibrary1.Entity.Reproductor", b =>
                 {
                     b.Navigation("PartiyaEggsRodClasses");
-
-                    b.Navigation("PartiyaRemontnayaVzrosloyChickens");
                 });
 
             modelBuilder.Entity("WinFormsLibrary1.Entity.UPK", b =>
                 {
                     b.Navigation("Fabrikats");
-
-                    b.Navigation("Otbrakovkas");
 
                     b.Navigation("PartiyaVzrosloyChickens");
                 });

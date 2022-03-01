@@ -57,7 +57,7 @@ namespace Pticefabrica
             var upk = context.UPK.ToList();
             foreach (var parteg in part)
             {
-                if (parteg.FreeOrNotFree == true && parteg.TypeChiсken == "Бройлер")
+                if (parteg.FreeOrNotFree && parteg.TypeChiсken == "Бройлер")
                 {
                     listBox1.Items.Add($"{parteg.ID}; Дата: {parteg.DateForm}; Количество: {parteg.Kolvo};");
                 }

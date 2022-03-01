@@ -23,12 +23,7 @@ namespace WinFormsLibrary1
         public DbSet<Reproductor> Reproductor { get; set; }
         public DbSet<UPK> UPK { get; set; }
         public DbSet<LogPas> LogPas { get; set; } // Логины и пароли для входа в аккаунт
-        /*
-        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
-        {
-            Database.EnsureCreated();
-        }
-        */
+
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
             //modelBuilder.Entity<Broyler>().HasIndex(s => s.TypeChiсken).IsUnique(); //Работает и делает поля уникальными
@@ -63,14 +58,6 @@ namespace WinFormsLibrary1
             modelBuilder.Entity<OtbrakovkaEggs>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
 
         }
-
-        /*
-        public static DbContextOptions<ApplicationContext> GetDb()
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationContext>();
-            return optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Pticefabrica1;Username=postgres;Password=maksimka09").Options;
-        }
-        */
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Pticefabrica;Username=postgres;Password=maksimka09");

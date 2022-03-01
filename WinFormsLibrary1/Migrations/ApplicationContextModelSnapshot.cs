@@ -122,9 +122,6 @@ namespace WinFormsLibrary1.Migrations
                     b.Property<DateTime>("DateUp")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int>("Kolvo")
-                        .HasColumnType("integer");
-
                     b.Property<int>("UPKID2")
                         .HasColumnType("integer");
 

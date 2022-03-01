@@ -18,7 +18,7 @@ namespace Pticefabrica
             this.MouseDown += new MouseEventHandler(MyForm_MouseDown);
             Reload1();
             Reload2();
-
+            Reload3();
         }
         private void MyForm_MouseDown(object sender, MouseEventArgs e)
         {
@@ -35,7 +35,7 @@ namespace Pticefabrica
         {
             int kvartal = (int)(numericUpDown1.Value);
             int year = (int)(numericUpDown2.Value);
-            if (new Reporter().GetReport())
+            if (new Reporter().GetReport(year,kvartal))
                 OtchetLabel.Text = "Все четко!";
             else OtchetLabel.Text = "Все не четко!";
         }
@@ -44,23 +44,89 @@ namespace Pticefabrica
         {
             Reload1();
             Reload2();
+            Reload3();
+        }
+        private void Reload3()
+        {
+            listBox5.Items.Clear();
+            ApplicationContext context = new ApplicationContext();
+            List<PartiyaEggsRodClass> a = context.PartiyaEggsRodClass.ToList().OrderBy(o => o.ID).ToList();
+            List<PartiyaMolodnyaka> b = context.PartiyaMolodnyaka.ToList().OrderBy(o => o.ID).ToList();
+            List<PartiyaVzrosloyChicken> c = context.PartiyaVzrosloyChicken.ToList().OrderBy(o => o.ID).ToList();
+            List<PartiyaEggs> d = context.PartiyaEggs.ToList().OrderBy(o => o.ID).ToList();
+            listBox5.Items.Add("Партии яиц родительского стада: ");
+            foreach (var parteg in a)
+            {
+                DateTime date = parteg.DatePostEggs;
+                DateTime date1 = DateTime.Now;
+                date1 = date1.AddDays(-3);
+                if (DateTime.Compare(date, date1) >= 0 && parteg.FreeOrNotFree)
+                {
+                    listBox5.Items.Add($"{parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo};");
+                }
+                else
+                {
+                    listBox5.Items.Add($"Просрочка/Уже вылупились {parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo}; ");
+                }
+            }
+            listBox5.Items.Add("");
+            listBox5.Items.Add("Партии молодняка: ");
+            foreach (var partm in b)
+            {
+                listBox5.Items.Add($"{partm.ID}; Дата: {partm.DataForm}; Количество: {partm.Kolvo}; {partm.TypeChicken}");
+            }
+            listBox5.Items.Add("");
+            listBox5.Items.Add("Партии взрослой птицы: ");
+            foreach (var parteg in c)
+            {
+                if (parteg.FreeOrNotFree)
+                {
+                    listBox5.Items.Add($"Ждут распределения {parteg.ID}; Дата: {parteg.DateForm}; Количество: {parteg.Kolvo};");
+                }
+                else 
+                {
+                    listBox5.Items.Add($"Ушли в производство {parteg.ID}; Дата: {parteg.DateForm}; Количество: {parteg.Kolvo};");
+
+                }
+            }
+            listBox5.Items.Add("");
+            listBox5.Items.Add("Партии неотсортированных яиц: ");
+            foreach (var p in d)
+            {
+                if (p.FreeOrNotFree)
+                {
+                    listBox5.Items.Add($"Готовы к сортировке {p.ID}; Дата: {p.DateForm}; Количество: {p.Kolvo};");
+                }
+                else
+                {
+                    listBox5.Items.Add($"Уже отсортированы {p.ID}; Дата: {p.DateForm}; Количество: {p.Kolvo};");
+
+                }
+            }
         }
         private void Reload2()
         {
             listBox2.Items.Clear();
             listBox3.Items.Clear();
+            listBox4.Items.Clear();
             ApplicationContext context = new ApplicationContext();
             List<Fabrikat> a = context.Fabrikat.ToList().OrderBy(o => o.ID).ToList();
             List<Melanj> b = context.Melanj.ToList().OrderBy(o => o.Ntari).ToList();
             List<PartiyaTovarnEggs> c = context.PartiyaTovarnEggs.ToList().OrderBy(o => o.ID).ToList();
             listBox2.Items.Add("Фабрикат: ");
-            foreach (var af in a)
+            foreach (var aa in a)
             {
-                listBox2.Items.Add($"Количество: {af.Kolvo}; Дата производства: {af.DateUp};");
+                listBox2.Items.Add($"{aa.ID}; Дата производства: {aa.DateUp};");
             }
-            foreach (var bm in b)
+            listBox3.Items.Add("Меланж: ");
+            foreach (var bb in b)
             {
-                listBox3.Items.Add($"Номер тары: {bm.Ntari}; Дата: {bm.DateRosliva}; Тип: {bm.TypeMelanga};");
+                listBox3.Items.Add($"Номер тары: {bb.Ntari}; Дата: {bb.DateRosliva}; Тип: {bb.TypeMelanga};");
+            }
+            listBox4.Items.Add("Партии товарных яиц: ");
+            foreach (var cc in c)
+            {
+                listBox4.Items.Add($"{cc.ID}; Количество {cc.Kolvo}; Категория {cc.Categori}; Дата {cc.DateUp}");
             }
 
         }

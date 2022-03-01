@@ -35,20 +35,23 @@ namespace Pticefabrica
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.listBox4 = new System.Windows.Forms.ListBox();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.listBox5 = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.OtchetLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.FormOtchet = new System.Windows.Forms.Button();
             this.ReloadData = new System.Windows.Forms.Button();
-            this.OtchetLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -109,6 +112,7 @@ namespace Pticefabrica
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.listBox4);
             this.tabPage2.Controls.Add(this.listBox3);
             this.tabPage2.Controls.Add(this.listBox2);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
@@ -119,13 +123,22 @@ namespace Pticefabrica
             this.tabPage2.Text = "Готовая продукция";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // listBox4
+            // 
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.ItemHeight = 15;
+            this.listBox4.Location = new System.Drawing.Point(8, 265);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(775, 124);
+            this.listBox4.TabIndex = 2;
+            // 
             // listBox3
             // 
             this.listBox3.FormattingEnabled = true;
             this.listBox3.ItemHeight = 15;
-            this.listBox3.Location = new System.Drawing.Point(8, 125);
+            this.listBox3.Location = new System.Drawing.Point(8, 138);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(775, 94);
+            this.listBox3.Size = new System.Drawing.Size(775, 124);
             this.listBox3.TabIndex = 1;
             // 
             // listBox2
@@ -134,17 +147,27 @@ namespace Pticefabrica
             this.listBox2.ItemHeight = 15;
             this.listBox2.Location = new System.Drawing.Point(8, 12);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(775, 94);
+            this.listBox2.Size = new System.Drawing.Size(775, 124);
             this.listBox2.TabIndex = 0;
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.listBox5);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(793, 392);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Партии";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // listBox5
+            // 
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.ItemHeight = 15;
+            this.listBox5.Location = new System.Drawing.Point(3, 3);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(787, 379);
+            this.listBox5.TabIndex = 1;
             // 
             // tabPage4
             // 
@@ -160,6 +183,15 @@ namespace Pticefabrica
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Отчетность";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // OtchetLabel
+            // 
+            this.OtchetLabel.AutoSize = true;
+            this.OtchetLabel.Location = new System.Drawing.Point(21, 103);
+            this.OtchetLabel.Name = "OtchetLabel";
+            this.OtchetLabel.Size = new System.Drawing.Size(38, 15);
+            this.OtchetLabel.TabIndex = 5;
+            this.OtchetLabel.Text = "label4";
             // 
             // label3
             // 
@@ -243,15 +275,6 @@ namespace Pticefabrica
             this.ReloadData.UseVisualStyleBackColor = true;
             this.ReloadData.Click += new System.EventHandler(this.ReloadData_Click);
             // 
-            // OtchetLabel
-            // 
-            this.OtchetLabel.AutoSize = true;
-            this.OtchetLabel.Location = new System.Drawing.Point(135, 144);
-            this.OtchetLabel.Name = "OtchetLabel";
-            this.OtchetLabel.Size = new System.Drawing.Size(38, 15);
-            this.OtchetLabel.TabIndex = 5;
-            this.OtchetLabel.Text = "label4";
-            // 
             // Leader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -267,6 +290,7 @@ namespace Pticefabrica
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
@@ -294,5 +318,7 @@ namespace Pticefabrica
         private System.Windows.Forms.Button FormOtchet;
         private System.Windows.Forms.Button ReloadData;
         private System.Windows.Forms.Label OtchetLabel;
+        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.ListBox listBox5;
     }
 }

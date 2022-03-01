@@ -12,7 +12,7 @@ namespace WinFormsLibrary1
     public class GenerationExel
     {
         /**/
-        public bool Generate(List<Melanj> report, string w, string d, string reportname )
+        public bool Generate(List<List<String>> report, string ways, string dir, string reportname )
         {
             ExcelPackage package = new ExcelPackage();
 
@@ -27,24 +27,29 @@ namespace WinFormsLibrary1
             sheet.Cells["B4"].Value = "Sector:";
             sheet.Cells["C4"].Value = "Производственный";
             sheet.Cells["B5"].Value = "Report type";
-            sheet.Cells["C5"].Value = "reportname";
+            sheet.Cells["C5"].Value = reportname;
 
             sheet.Cells[8, 2].Value = "Total Count:";
             sheet.Cells[9, 2, 9, 4].LoadFromArrays(new object[][] { new[] { "Capitalization", "SharePrice", "Date" } });
             var row = 10;
             var column = 2;
+            var columns = 0;
             foreach (var item in report)
             {
-                sheet.Cells[row, column].Value = item.Ntari;
-                sheet.Cells[row, column + 1].Value = item.TypeMelanga;
-                sheet.Cells[row, column + 2].Value = item.DateRosliva;
+                for(int i = 0; i < item.Count ;i++)
+                {
+                    sheet.Cells[row, column + i].Value = item[i];
+                }
                 row++;
+                columns = item.Count;
             }
-            sheet.Cells[8, 3].Formula = $"=COUNT(B{10}:B{row})";
+            //sheet.Cells[8, 3].Formula = $"=COUNT(B{10}:B{row})";
+            sheet.Cells[8, 3].Value = report.Count;
             //sheet.Cells[1, 1, row, column + 2].AutoFitColumns();
-            sheet.Column(2).Width = 14;
-            sheet.Column(3).Width = 12;
+            sheet.Column(2).Width = 20;
+            sheet.Column(3).Width = 20;
             sheet.Column(4).Width = 20;
+            sheet.Column(5).Width = 20;
 
             sheet.Cells[9, 4, 9 + report.Count, 4].Style.Numberformat.Format = "yyyy.mm.dd hh:mm:ss";
             sheet.Cells[9, 2, 9 + report.Count, 2].Style.Numberformat.Format = "### ### ### ##0";
@@ -56,8 +61,8 @@ namespace WinFormsLibrary1
             sheet.Cells[8, 2, 8, 4].Style.Font.Bold = true;
             sheet.Cells["B2:C4"].Style.Font.Bold = true;
 
-            sheet.Cells[9, 2, 9 + report.Count, 4].Style.Border.BorderAround(ExcelBorderStyle.Double);
-            sheet.Cells[9, 2, 9, 4].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+            sheet.Cells[9, 2, 9 + report.Count, 5].Style.Border.BorderAround(ExcelBorderStyle.Double);
+            sheet.Cells[9, 2, 9, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
 
             var capitalizationChart = sheet.Drawings.AddChart("FindingsChart", OfficeOpenXml.Drawing.Chart.eChartType.Line);
             capitalizationChart.Title.Text = "Capitalization";
@@ -68,10 +73,8 @@ namespace WinFormsLibrary1
 
             sheet.Protection.IsProtected = true;
 
-            Random rnd = new Random();
-
-            string path = @"Y:\Programming";
-            string way = $@"Y:\Programming\Report{rnd.Next(1,3000000)}.xlsx";
+            string path = $@"Y:\{dir}";
+            string way = $@"Y:\{dir}\{ways}.xlsx";
 
             DirectoryInfo dirInfo = new DirectoryInfo(path);
             FileInfo fi = new FileInfo(way);
