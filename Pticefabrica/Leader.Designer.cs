@@ -41,6 +41,10 @@ namespace Pticefabrica
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.MaxCikl = new System.Windows.Forms.NumericUpDown();
+            this.MaxKolvoN = new System.Windows.Forms.NumericUpDown();
+            this.MaxKolvoB = new System.Windows.Forms.NumericUpDown();
             this.OtchetLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,6 +57,9 @@ namespace Pticefabrica
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxCikl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxKolvoN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxKolvoB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -171,6 +178,10 @@ namespace Pticefabrica
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button1);
+            this.tabPage4.Controls.Add(this.MaxCikl);
+            this.tabPage4.Controls.Add(this.MaxKolvoN);
+            this.tabPage4.Controls.Add(this.MaxKolvoB);
             this.tabPage4.Controls.Add(this.OtchetLabel);
             this.tabPage4.Controls.Add(this.label3);
             this.tabPage4.Controls.Add(this.label2);
@@ -183,6 +194,47 @@ namespace Pticefabrica
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Отчетность";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(222, 300);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(187, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Установить новые значения";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // MaxCikl
+            // 
+            this.MaxCikl.Location = new System.Drawing.Point(72, 300);
+            this.MaxCikl.Name = "MaxCikl";
+            this.MaxCikl.Size = new System.Drawing.Size(120, 23);
+            this.MaxCikl.TabIndex = 8;
+            // 
+            // MaxKolvoN
+            // 
+            this.MaxKolvoN.Location = new System.Drawing.Point(72, 251);
+            this.MaxKolvoN.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.MaxKolvoN.Name = "MaxKolvoN";
+            this.MaxKolvoN.Size = new System.Drawing.Size(120, 23);
+            this.MaxKolvoN.TabIndex = 7;
+            // 
+            // MaxKolvoB
+            // 
+            this.MaxKolvoB.Location = new System.Drawing.Point(72, 198);
+            this.MaxKolvoB.Maximum = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.MaxKolvoB.Name = "MaxKolvoB";
+            this.MaxKolvoB.Size = new System.Drawing.Size(120, 23);
+            this.MaxKolvoB.TabIndex = 6;
             // 
             // OtchetLabel
             // 
@@ -257,7 +309,7 @@ namespace Pticefabrica
             // 
             // FormOtchet
             // 
-            this.FormOtchet.Location = new System.Drawing.Point(297, 210);
+            this.FormOtchet.Location = new System.Drawing.Point(580, 300);
             this.FormOtchet.Name = "FormOtchet";
             this.FormOtchet.Size = new System.Drawing.Size(177, 23);
             this.FormOtchet.TabIndex = 0;
@@ -293,6 +345,9 @@ namespace Pticefabrica
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxCikl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxKolvoN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxKolvoB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
@@ -320,5 +375,9 @@ namespace Pticefabrica
         private System.Windows.Forms.Label OtchetLabel;
         private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.ListBox listBox5;
+        private System.Windows.Forms.NumericUpDown MaxCikl;
+        private System.Windows.Forms.NumericUpDown MaxKolvoN;
+        private System.Windows.Forms.NumericUpDown MaxKolvoB;
+        private System.Windows.Forms.Button button1;
     }
 }

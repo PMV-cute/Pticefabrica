@@ -19,7 +19,7 @@ namespace WinFormsLibrary1
             Reproductor reproductor = context.Reproductor.FirstOrDefault();
             reproductor.KolvoB = a;
             reproductor.KolvoN = b;
-
+            
             var repr = context.Reproductor.ToList();
             if (c > 0)
             {
@@ -103,7 +103,7 @@ namespace WinFormsLibrary1
                 incubator.DatePost = DateTime.Now;
                 incubator.DayOfBorn = partiyaEggsRodClass.DatePostEggs.AddDays(21);
                 incubator.FreeOrNotFree = false;
-                partiyaEggsRodClass.Kolvo = 0;
+                //partiyaEggsRodClass.Kolvo = 0;
                 partiyaEggsRodClass.FreeOrNotFree = false;
                 partiyaEggsRodClass.IncID2 = incubator.ID;
                 context.SaveChanges();
@@ -119,7 +119,7 @@ namespace WinFormsLibrary1
             a = a.Substring(0, k);
             int IDb = Convert.ToInt32(a);
             Incubator incubator = context.Incubator.Where(c => c.ID == IDb).FirstOrDefault();
-            if (DateTime.Compare(DateTime.Now, incubator.DayOfBorn) > 0)
+            if (DateTime.Compare(DateTime.Now, incubator.DayOfBorn) < 0)
             {
                 PartiyaMolodnyaka partiyaMolodnyaka = new PartiyaMolodnyaka
                 {
@@ -168,7 +168,7 @@ namespace WinFormsLibrary1
                 ptichnic.DateGrow = partiyaMolodnyaka.DataForm.AddDays(days);
                 ptichnic.FreeOrNotFree = false;
                 ptichnic.TypeChicken = partiyaMolodnyaka.TypeChicken;
-                partiyaMolodnyaka.Kolvo = 0;
+                //partiyaMolodnyaka.Kolvo = 0;
                 partiyaMolodnyaka.FreeOrNotFree = false;
                 partiyaMolodnyaka.PtID = ptichnic.ID;
                 context.SaveChanges();
@@ -185,7 +185,7 @@ namespace WinFormsLibrary1
             a = a.Substring(0, k);
             int IDb = Convert.ToInt32(a);
             Ptichnic ptichnic = context.Ptichnic.Where(c => c.ID == IDb).FirstOrDefault();
-            if (DateTime.Compare(DateTime.Now, ptichnic.DateGrow) > 0)
+            if (DateTime.Compare(DateTime.Now, ptichnic.DateGrow) < 0 && ptichnic.Kolvo != 0)
             {
                 PartiyaVzrosloyChicken partiyaVzrosloyChicken = new PartiyaVzrosloyChicken
                 {

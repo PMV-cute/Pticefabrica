@@ -62,18 +62,30 @@ namespace Pticefabrica
                 date1 = date1.AddDays(-3);
                 if (DateTime.Compare(date, date1) >= 0 && parteg.FreeOrNotFree)
                 {
-                    listBox5.Items.Add($"{parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo};");
+                    listBox5.Items.Add($"Ждут распределения {parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo};");
                 }
-                else
+                if(DateTime.Compare(date,date1) < 0 && parteg.FreeOrNotFree)
                 {
-                    listBox5.Items.Add($"Просрочка/Уже вылупились {parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo}; ");
+                    listBox5.Items.Add($"Просрочка {parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo}; ");
+                }
+                if (!parteg.FreeOrNotFree)
+                {
+                    listBox5.Items.Add($"Уже вылупились/Растут {parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo}; ");
                 }
             }
             listBox5.Items.Add("");
             listBox5.Items.Add("Партии молодняка: ");
             foreach (var partm in b)
             {
-                listBox5.Items.Add($"{partm.ID}; Дата: {partm.DataForm}; Количество: {partm.Kolvo}; {partm.TypeChicken}");
+                if (partm.PtID!=null)
+                {
+                    listBox5.Items.Add($"Растут/Выросли {partm.ID}; Дата: {partm.DataForm}; Количество: {partm.Kolvo}; {partm.TypeChicken}");
+                }
+                else
+                {
+                    listBox5.Items.Add($"Еще не в птичнике {partm.ID}; Дата: {partm.DataForm}; Количество: {partm.Kolvo}; {partm.TypeChicken}");
+                }
+                
             }
             listBox5.Items.Add("");
             listBox5.Items.Add("Партии взрослой птицы: ");
@@ -81,11 +93,11 @@ namespace Pticefabrica
             {
                 if (parteg.FreeOrNotFree)
                 {
-                    listBox5.Items.Add($"Ждут распределения {parteg.ID}; Дата: {parteg.DateForm}; Количество: {parteg.Kolvo};");
+                    listBox5.Items.Add($"Ждут распределения {parteg.ID}; Дата: {parteg.DateForm}; Количество: {parteg.Kolvo}; {parteg.TypeChiсken}");
                 }
                 else 
                 {
-                    listBox5.Items.Add($"Ушли в производство {parteg.ID}; Дата: {parteg.DateForm}; Количество: {parteg.Kolvo};");
+                    listBox5.Items.Add($"Ушли в производство {parteg.ID}; Дата: {parteg.DateForm}; Количество: {parteg.Kolvo}; {parteg.TypeChiсken}");
 
                 }
             }
@@ -128,7 +140,25 @@ namespace Pticefabrica
             {
                 listBox4.Items.Add($"{cc.ID}; Количество {cc.Kolvo}; Категория {cc.Categori}; Дата {cc.DateUp}");
             }
-
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ApplicationContext context = new ApplicationContext();
+            List<Reproductor> a = context.Reproductor.ToList().OrderBy(o => o.RepID).ToList();
+            List<ComplexProizvodstvaEggs> d = context.ComplexProizvodstvaEggs.ToList().OrderBy(o => o.ID).ToList();
+            foreach(var aa in a)
+            {
+                aa.maxB = (int)MaxKolvoB.Value;
+                aa.maxN = (int)MaxKolvoN.Value;
+                
+            }
+            context.SaveChanges();
+            foreach (var dd in d)
+            {
+                dd.CiklMax = (int)MaxCikl.Value;
+                context.SaveChanges();
+            }
+            OtchetLabel.Text = "Изменения готовы! ";
         }
         private void Reload1()
         {
@@ -197,54 +227,8 @@ namespace Pticefabrica
                 else
                     listBox1.Items.Add($"Количество: {u.KolvoB}; Дата поступления {u.Dateform}");
             }
-            /*
-            DataGridViewTextBoxColumn col0 = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn col1 = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn col2 = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn col3 = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn col4 = new DataGridViewTextBoxColumn();
-            DataGridViewTextBoxColumn col5 = new DataGridViewTextBoxColumn();
-            col0.HeaderText = "Номер";
-            col1.HeaderText = "Количество";
-            col3.HeaderText = "Дата рождения";
-            col4.HeaderText = "Связанный репродуктор";
-            col5.HeaderText = "Связанный инкубатор";
-            col2.HeaderText = "FreeOrNotFree";
-            col0.Name = "Номер";
-            col1.Name = "Количество";
-            col2.Name = "FreeOrNotFree";
-            col3.Name = "Дата рождения";
-            col4.Name = "Связанный репродуктор";
-            col5.Name = "Связанный инкубатор";
-            Part1Data.Columns.Add(col0);
-            Part1Data.Columns.Add(col1);
-            Part1Data.Columns.Add(col2);
-            Part1Data.Columns.Add(col3);
-            Part1Data.Columns.Add(col4);
-            Part1Data.Columns.Add(col5);
-            for (int i = 0; i < 1; i++)
-            {
-                DataGridViewCell firstCell = new DataGridViewTextBoxCell();
-                DataGridViewCell secondCell = new DataGridViewTextBoxCell(); 
-                DataGridViewCell thirdCell = new DataGridViewCheckBoxCell();
-                DataGridViewCell fourthCell = new DataGridViewCheckBoxCell();
-                DataGridViewCell fifthCell = new DataGridViewCheckBoxCell();
-                DataGridViewCell sixCell = new DataGridViewCheckBoxCell();
-                DataGridViewRow row = new DataGridViewRow();
-                firstCell.Value = Convert.ToString(a[i].ID);
-                secondCell.Value = Convert.ToString(a[i].Kolvo);
-                thirdCell.Value  = Convert.ToString(a[i].FreeOrNotFree);
-                fourthCell.Value = Convert.ToString(a[i].DatePostEggs);
-                fifthCell.Value =  Convert.ToString(a[i].RepID);
-                sixCell.Value = Convert.ToString(a[i].IncID2);
-
-                row.Cells.AddRange(firstCell, secondCell, thirdCell, fourthCell, fifthCell, sixCell);
-                Part1Data.Rows.Add(row);
-                
-            }
-            */
         }
 
-
+        
     }
 }
