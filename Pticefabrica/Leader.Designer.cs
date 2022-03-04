@@ -52,6 +52,9 @@ namespace Pticefabrica
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.FormOtchet = new System.Windows.Forms.Button();
             this.ReloadData = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -178,6 +181,9 @@ namespace Pticefabrica
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label7);
+            this.tabPage4.Controls.Add(this.label5);
+            this.tabPage4.Controls.Add(this.label4);
             this.tabPage4.Controls.Add(this.button1);
             this.tabPage4.Controls.Add(this.MaxCikl);
             this.tabPage4.Controls.Add(this.MaxKolvoN);
@@ -197,7 +203,7 @@ namespace Pticefabrica
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(222, 300);
+            this.button1.Location = new System.Drawing.Point(8, 331);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(187, 23);
             this.button1.TabIndex = 9;
@@ -207,14 +213,14 @@ namespace Pticefabrica
             // 
             // MaxCikl
             // 
-            this.MaxCikl.Location = new System.Drawing.Point(72, 300);
+            this.MaxCikl.Location = new System.Drawing.Point(8, 302);
             this.MaxCikl.Name = "MaxCikl";
             this.MaxCikl.Size = new System.Drawing.Size(120, 23);
             this.MaxCikl.TabIndex = 8;
             // 
             // MaxKolvoN
             // 
-            this.MaxKolvoN.Location = new System.Drawing.Point(72, 251);
+            this.MaxKolvoN.Location = new System.Drawing.Point(8, 248);
             this.MaxKolvoN.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -226,7 +232,7 @@ namespace Pticefabrica
             // 
             // MaxKolvoB
             // 
-            this.MaxKolvoB.Location = new System.Drawing.Point(72, 198);
+            this.MaxKolvoB.Location = new System.Drawing.Point(8, 186);
             this.MaxKolvoB.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -239,16 +245,15 @@ namespace Pticefabrica
             // OtchetLabel
             // 
             this.OtchetLabel.AutoSize = true;
-            this.OtchetLabel.Location = new System.Drawing.Point(21, 103);
+            this.OtchetLabel.Location = new System.Drawing.Point(376, 335);
             this.OtchetLabel.Name = "OtchetLabel";
-            this.OtchetLabel.Size = new System.Drawing.Size(38, 15);
+            this.OtchetLabel.Size = new System.Drawing.Size(0, 15);
             this.OtchetLabel.TabIndex = 5;
-            this.OtchetLabel.Text = "label4";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(363, 60);
+            this.label3.Location = new System.Drawing.Point(147, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 15);
             this.label3.TabIndex = 4;
@@ -257,7 +262,7 @@ namespace Pticefabrica
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 61);
+            this.label2.Location = new System.Drawing.Point(8, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 15);
             this.label2.TabIndex = 3;
@@ -265,7 +270,7 @@ namespace Pticefabrica
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(425, 58);
+            this.numericUpDown2.Location = new System.Drawing.Point(147, 40);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             2034,
             0,
@@ -287,7 +292,7 @@ namespace Pticefabrica
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(86, 59);
+            this.numericUpDown1.Location = new System.Drawing.Point(8, 40);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             4,
             0,
@@ -309,7 +314,7 @@ namespace Pticefabrica
             // 
             // FormOtchet
             // 
-            this.FormOtchet.Location = new System.Drawing.Point(580, 300);
+            this.FormOtchet.Location = new System.Drawing.Point(8, 81);
             this.FormOtchet.Name = "FormOtchet";
             this.FormOtchet.Size = new System.Drawing.Size(177, 23);
             this.FormOtchet.TabIndex = 0;
@@ -326,6 +331,33 @@ namespace Pticefabrica
             this.ReloadData.Text = "Обновить";
             this.ReloadData.UseVisualStyleBackColor = true;
             this.ReloadData.Click += new System.EventHandler(this.ReloadData_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(8, 158);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(304, 15);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Необходимое количество бройлеров в репродукторе";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 221);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(291, 15);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Необходимое количество несушек в репродукторе";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 282);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(223, 15);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Количество циклов несения у несушек";
             // 
             // Leader
             // 
@@ -379,5 +411,8 @@ namespace Pticefabrica
         private System.Windows.Forms.NumericUpDown MaxKolvoN;
         private System.Windows.Forms.NumericUpDown MaxKolvoB;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

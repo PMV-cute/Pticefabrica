@@ -12,7 +12,7 @@ namespace WinFormsLibrary1
     public class GenerationExel
     {
         /**/
-        public bool Generate(List<List<String>> report, string ways, string dir, string reportname )
+        public bool Generate(List<List<String>> report, string ways, string dir, string reportname, List<String> colnames)
         {
             ExcelPackage package = new ExcelPackage();
 
@@ -30,7 +30,10 @@ namespace WinFormsLibrary1
             sheet.Cells["C5"].Value = reportname;
 
             sheet.Cells[8, 2].Value = "Total Count:";
-            sheet.Cells[9, 2, 9, 4].LoadFromArrays(new object[][] { new[] { "Capitalization", "SharePrice", "Date" } });
+            for(int i = 0; i < colnames.Count; i++)
+            {
+                sheet.Cells[9, 2 + i].Value = colnames[i];
+            }
             var row = 10;
             var column = 2;
             var columns = 0;
@@ -55,21 +58,17 @@ namespace WinFormsLibrary1
             sheet.Cells[9, 2, 9 + report.Count, 2].Style.Numberformat.Format = "### ### ### ##0";
 
             sheet.Column(2).Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
-            sheet.Cells[9, 3, 9 + report.Count, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
-            sheet.Column(4).Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+            sheet.Column(3).Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+            sheet.Column(4).Style.HorizontalAlignment = ExcelHorizontalAlignment.Left;
+            //sheet.Cells[9, 3, 9 + report.Count, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
 
             sheet.Cells[8, 2, 8, 4].Style.Font.Bold = true;
             sheet.Cells["B2:C4"].Style.Font.Bold = true;
 
-            sheet.Cells[9, 2, 9 + report.Count, 5].Style.Border.BorderAround(ExcelBorderStyle.Double);
-            sheet.Cells[9, 2, 9, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+            sheet.Cells[9, 2, 9 + report.Count, 1 + columns].Style.Border.BorderAround(ExcelBorderStyle.Double);
+            sheet.Cells[9, 2, 9, 1 + columns].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
 
-            var capitalizationChart = sheet.Drawings.AddChart("FindingsChart", OfficeOpenXml.Drawing.Chart.eChartType.Line);
-            capitalizationChart.Title.Text = "Capitalization";
-            capitalizationChart.SetPosition(7, 0, 5, 0);
-            capitalizationChart.SetSize(800, 400);
-            var capitalizationData = (ExcelChartSerie)(capitalizationChart.Series.Add(sheet.Cells[$"B10:B{row}"], sheet.Cells[$"D10:D{row}"]));
-            capitalizationData.Header = "";
+           
 
             sheet.Protection.IsProtected = true;
 

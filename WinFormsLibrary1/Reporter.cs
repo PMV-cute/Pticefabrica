@@ -50,9 +50,10 @@ namespace WinFormsLibrary1
                 vs.Add(item.DateRosliva.ToString());
                 report.Add(vs);
             }
-            new GenerationExel().Generate(report, $"Melanj_Q{kvartal}", $"{year}", "Melanj");
+            List<string> namesColumn = new List<string> { "Номер", "Тип", "Дата разлива"};
+            new GenerationExel().Generate(report, $"Melanj_Q{kvartal}", $"{year}", "Melanj", namesColumn);
 
-
+            namesColumn.Clear();
             report.Clear();
             List<Fabrikat> fab = context.Fabrikat.Where(h => h.DateUp >= startdate && h.DateUp < enddate).ToList();
             foreach (var item in fab)
@@ -62,9 +63,11 @@ namespace WinFormsLibrary1
                 vs.Add(item.DateUp.ToString());
                 report.Add(vs);
             }
-            new GenerationExel().Generate(report, $"Fabrikat_Q{kvartal}", $"{year}", "Fabrikat");
-            
-            
+            namesColumn.Add("Номер");
+            namesColumn.Add("Дата");
+            new GenerationExel().Generate(report, $"Fabrikat_Q{kvartal}", $"{year}", "Fabrikat", namesColumn);
+
+            namesColumn.Clear();
             report.Clear();
             List<PartiyaTovarnEggs> tov = context.PartiyaTovarnEggs.Where(h => h.DateUp >= startdate && h.DateUp < enddate).ToList();
 
@@ -78,7 +81,11 @@ namespace WinFormsLibrary1
                 
                 report.Add(vs);
             }
-            new GenerationExel().Generate(report, $"TovarnEggs_Q{kvartal}", $"{year}", $"Товарные яйца");
+            namesColumn.Add("Номер");
+            namesColumn.Add("Количество");
+            namesColumn.Add("Дата");
+            namesColumn.Add("Категория");
+            new GenerationExel().Generate(report, $"TovarnEggs_Q{kvartal}", $"{year}", $"Товарные яйца", namesColumn);
 
             return true;
         }
