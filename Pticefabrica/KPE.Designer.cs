@@ -44,7 +44,7 @@ namespace Pticefabrica
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(113, 333);
+            this.textBox1.Location = new System.Drawing.Point(114, 375);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 23);
             this.textBox1.TabIndex = 81;
@@ -52,14 +52,15 @@ namespace Pticefabrica
             // KPEText
             // 
             this.KPEText.AutoSize = true;
-            this.KPEText.Location = new System.Drawing.Point(328, 377);
+            this.KPEText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.KPEText.Location = new System.Drawing.Point(235, 417);
             this.KPEText.Name = "KPEText";
-            this.KPEText.Size = new System.Drawing.Size(0, 15);
+            this.KPEText.Size = new System.Drawing.Size(0, 21);
             this.KPEText.TabIndex = 80;
             // 
             // FormKPE
             // 
-            this.FormKPE.Location = new System.Drawing.Point(12, 362);
+            this.FormKPE.Location = new System.Drawing.Point(13, 415);
             this.FormKPE.Name = "FormKPE";
             this.FormKPE.Size = new System.Drawing.Size(201, 23);
             this.FormKPE.TabIndex = 79;
@@ -69,21 +70,21 @@ namespace Pticefabrica
             // 
             // LoadUPK
             // 
-            this.LoadUPK.Location = new System.Drawing.Point(559, 126);
+            this.LoadUPK.Location = new System.Drawing.Point(13, 332);
             this.LoadUPK.Name = "LoadUPK";
-            this.LoadUPK.Size = new System.Drawing.Size(154, 23);
+            this.LoadUPK.Size = new System.Drawing.Size(201, 23);
             this.LoadUPK.TabIndex = 76;
-            this.LoadUPK.Text = "Отправка в комплекс";
+            this.LoadUPK.Text = "Отправка партий птиц в комплекс";
             this.LoadUPK.UseVisualStyleBackColor = true;
             this.LoadUPK.Click += new System.EventHandler(this.LoadUPK_Click);
             // 
             // ReloadKPE
             // 
-            this.ReloadKPE.Location = new System.Drawing.Point(559, 85);
+            this.ReloadKPE.Location = new System.Drawing.Point(13, 43);
             this.ReloadKPE.Name = "ReloadKPE";
-            this.ReloadKPE.Size = new System.Drawing.Size(154, 23);
+            this.ReloadKPE.Size = new System.Drawing.Size(233, 23);
             this.ReloadKPE.TabIndex = 74;
-            this.ReloadKPE.Text = "Обновить";
+            this.ReloadKPE.Text = "Обновить данные";
             this.ReloadKPE.UseVisualStyleBackColor = true;
             this.ReloadKPE.Click += new System.EventHandler(this.ReloadKPE_Click);
             // 
@@ -111,7 +112,7 @@ namespace Pticefabrica
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 337);
+            this.label2.Location = new System.Drawing.Point(13, 379);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 15);
             this.label2.TabIndex = 82;
@@ -120,7 +121,7 @@ namespace Pticefabrica
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 392);
+            this.label3.Location = new System.Drawing.Point(13, 399);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 15);
             this.label3.TabIndex = 83;
@@ -129,16 +130,16 @@ namespace Pticefabrica
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(12, 73);
+            this.listBox1.Location = new System.Drawing.Point(13, 72);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(519, 124);
+            this.listBox1.Size = new System.Drawing.Size(776, 124);
             this.listBox1.TabIndex = 75;
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 15;
-            this.listBox2.Location = new System.Drawing.Point(12, 203);
+            this.listBox2.Location = new System.Drawing.Point(12, 202);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(775, 124);
             this.listBox2.TabIndex = 77;

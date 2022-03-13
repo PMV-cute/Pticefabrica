@@ -27,7 +27,7 @@ namespace WinFormsLibrary1
             };
             context.Reproductor.Add(reproductor);
             context.SaveChanges();
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < 7; i++)
             {
                 Incubator incubator = new Incubator
                 {
@@ -38,7 +38,7 @@ namespace WinFormsLibrary1
                 context.Incubator.Add(incubator);
                 context.SaveChanges();
             }
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < 7; i++)
             {
                 Ptichnic ptichnic = new Ptichnic
                 {
@@ -57,7 +57,7 @@ namespace WinFormsLibrary1
             };
             context.UPK.Add(uPK);
             context.SaveChanges();
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < 7; i++)
             {
                 ComplexProizvodstvaEggs complexProizvodstvaEggs = new ComplexProizvodstvaEggs
                 {
@@ -79,7 +79,7 @@ namespace WinFormsLibrary1
             // -------------------------------------------------------------------
 
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 7; i++)
             {
                 PartiyaEggsRodClass partiya = new PartiyaEggsRodClass
                 {
@@ -146,28 +146,30 @@ namespace WinFormsLibrary1
             CehProizvMelanja cehProizvMelanja = new CehProizvMelanja { };
             context.CehProizvMelanja.Add(cehProizvMelanja);
             context.SaveChanges();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Melanj melanj = new Melanj
                 {
                     TypeMelanga = "Белок",
                     DateRosliva = DateTime.Now,
+                    kolvo = 100
                 };
                 context.Melanj.Add(melanj);
                 context.SaveChanges();
             }
             
-            for(int i = 0; i < 100; i++)
+            for(int i = 0; i < 10; i++)
             {
                 Fabrikat fabrikat = new Fabrikat
                 {
                     DateUp = DateTime.Now,
                     UPKID2 = 1,
+                    kolvo = 100
                 };
                 context.Fabrikat.Add(fabrikat);
                 context.SaveChanges();
             }
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < 10; i++)
             {
                 PartiyaTovarnEggs partiyaTovarnEggs = new PartiyaTovarnEggs
                 {
@@ -184,7 +186,6 @@ namespace WinFormsLibrary1
             string a = new Crypt().getCrypt("1234");
             string b = new Crypt().getCrypt("4321");
             string c = new Crypt().getCrypt("1111");
-    
 
             LogPas logPas1 = new LogPas { login = "Maksim", password = a, role = "Admin" };
             LogPas logPas2 = new LogPas { login = "Ivan", password = a, role = "Admin" };

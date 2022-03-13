@@ -36,7 +36,7 @@ namespace Pticefabrica
         private void Reload()
         {
             listBox1.Items.Clear();
-
+            listBox1.Items.Add("Отбраковка яичная: ");
             ApplicationContext context = new ApplicationContext();
             var part = context.OtbrakovkaEggs.ToList();
             foreach (var p in part)
@@ -56,7 +56,9 @@ namespace Pticefabrica
         }
         private void label6_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Form f1 = new Form1();
+            f1.Show();
+            Hide();
         }
     }
 }

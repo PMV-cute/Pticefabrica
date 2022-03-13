@@ -44,16 +44,17 @@ namespace Pticefabrica
             // CPMText
             // 
             this.CPMText.AutoSize = true;
-            this.CPMText.Location = new System.Drawing.Point(328, 376);
+            this.CPMText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CPMText.Location = new System.Drawing.Point(253, 288);
             this.CPMText.Name = "CPMText";
-            this.CPMText.Size = new System.Drawing.Size(0, 15);
+            this.CPMText.Size = new System.Drawing.Size(0, 21);
             this.CPMText.TabIndex = 78;
             // 
             // FormCPM
             // 
-            this.FormCPM.Location = new System.Drawing.Point(12, 361);
+            this.FormCPM.Location = new System.Drawing.Point(12, 286);
             this.FormCPM.Name = "FormCPM";
-            this.FormCPM.Size = new System.Drawing.Size(178, 23);
+            this.FormCPM.Size = new System.Drawing.Size(222, 23);
             this.FormCPM.TabIndex = 77;
             this.FormCPM.Text = "Формирование меланжа";
             this.FormCPM.UseVisualStyleBackColor = true;
@@ -63,18 +64,18 @@ namespace Pticefabrica
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(12, 72);
+            this.listBox1.Location = new System.Drawing.Point(12, 91);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(519, 124);
+            this.listBox1.Size = new System.Drawing.Size(776, 124);
             this.listBox1.TabIndex = 74;
             // 
             // ReloadCPM
             // 
-            this.ReloadCPM.Location = new System.Drawing.Point(559, 84);
+            this.ReloadCPM.Location = new System.Drawing.Point(12, 62);
             this.ReloadCPM.Name = "ReloadCPM";
-            this.ReloadCPM.Size = new System.Drawing.Size(154, 23);
+            this.ReloadCPM.Size = new System.Drawing.Size(222, 23);
             this.ReloadCPM.TabIndex = 73;
-            this.ReloadCPM.Text = "Обновить";
+            this.ReloadCPM.Text = "Обновить данные";
             this.ReloadCPM.UseVisualStyleBackColor = true;
             this.ReloadCPM.Click += new System.EventHandler(this.ReloadCPM_Click);
             // 
@@ -101,14 +102,14 @@ namespace Pticefabrica
             // 
             // BelOKtextBox
             // 
-            this.BelOKtextBox.Location = new System.Drawing.Point(12, 297);
+            this.BelOKtextBox.Location = new System.Drawing.Point(134, 257);
             this.BelOKtextBox.Name = "BelOKtextBox";
             this.BelOKtextBox.Size = new System.Drawing.Size(100, 23);
             this.BelOKtextBox.TabIndex = 79;
             // 
             // JeltOKtextBox
             // 
-            this.JeltOKtextBox.Location = new System.Drawing.Point(12, 239);
+            this.JeltOKtextBox.Location = new System.Drawing.Point(134, 228);
             this.JeltOKtextBox.Name = "JeltOKtextBox";
             this.JeltOKtextBox.Size = new System.Drawing.Size(100, 23);
             this.JeltOKtextBox.TabIndex = 80;
@@ -116,22 +117,22 @@ namespace Pticefabrica
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 279);
+            this.label2.Location = new System.Drawing.Point(12, 260);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 15);
+            this.label2.Size = new System.Drawing.Size(114, 15);
             this.label2.TabIndex = 81;
-            this.label2.Text = "Белки";
+            this.label2.Text = "Количество белков";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 218);
+            this.label3.Location = new System.Drawing.Point(12, 231);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 15);
+            this.label3.Size = new System.Drawing.Size(116, 15);
             this.label3.TabIndex = 82;
-            this.label3.Text = "Желтки";
+            this.label3.Text = "Количество желков";
             // 
-            // Form8
+            // CPM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -147,7 +148,7 @@ namespace Pticefabrica
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form8";
+            this.Name = "CPM";
             this.Text = "Form8";
             this.ResumeLayout(false);
             this.PerformLayout();

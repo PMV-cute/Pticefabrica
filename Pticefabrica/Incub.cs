@@ -27,7 +27,9 @@ namespace Pticefabrica // Инкубатор
 
         private void label6_Click_1(object sender, EventArgs e)
         {
-            Application.Exit();
+            Form f1 = new Form1();
+            f1.Show();
+            Hide();
         }
 
         private void ReloadInc_Click(object sender, EventArgs e)
@@ -71,6 +73,8 @@ namespace Pticefabrica // Инкубатор
             ApplicationContext context = new ApplicationContext();
             var parteggs = context.PartiyaEggsRodClass.ToList();
             List<Incubator> incub = context.Incubator.ToList().OrderBy(o => o.ID).ToList();
+            listBox1.Items.Add("Партии яиц родительского класса: ");
+            listBox2.Items.Add("Инкубаторы: ");
             foreach (var parteg in parteggs)
             {
                 DateTime date = parteg.DatePostEggs;
@@ -88,6 +92,7 @@ namespace Pticefabrica // Инкубатор
                 }
                 */
             }
+            
             foreach (var inc in incub)
             {
                 if (inc.FreeOrNotFree)

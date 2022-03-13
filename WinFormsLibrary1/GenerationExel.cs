@@ -12,7 +12,7 @@ namespace WinFormsLibrary1
     public class GenerationExel
     {
         /**/
-        public bool Generate(List<List<String>> report, string ways, string dir, string reportname, List<String> colnames)
+        public bool Generate(List<List<String>> report, string ways, string dir, string reportname, List<String> colnames, int kvart)
         {
             ExcelPackage package = new ExcelPackage();
 
@@ -20,14 +20,16 @@ namespace WinFormsLibrary1
             var sheet = package.Workbook.Worksheets
                     .Add("Report");
 
-            sheet.Cells["B2"].Value = "Company:";
+            sheet.Cells["B2"].Value = "Компания:";
             sheet.Cells[2, 3].Value = "Птицефабрика 1";
-            sheet.Cells["B3"].Value = "Location:";
+            sheet.Cells["B3"].Value = "Адрес:";
             sheet.Cells["C3"].Value = "пгт Зимний, ул.Снежная, д.1";
-            sheet.Cells["B4"].Value = "Sector:";
+            sheet.Cells["B4"].Value = "Сектор:";
             sheet.Cells["C4"].Value = "Производственный";
-            sheet.Cells["B5"].Value = "Report type";
+            sheet.Cells["B5"].Value = "Тип отчета";
             sheet.Cells["C5"].Value = reportname;
+            sheet.Cells["B6"].Value = "Квартал";
+            sheet.Cells["C6"].Value = $"Q{kvart}";
 
             sheet.Cells[8, 2].Value = "Total Count:";
             for(int i = 0; i < colnames.Count; i++)

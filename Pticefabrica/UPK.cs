@@ -26,7 +26,9 @@ namespace Pticefabrica
         }
         private void label6_Click_1(object sender, EventArgs e)
         {
-            Application.Exit();
+            Form f1 = new Form1();
+            f1.Show();
+            Hide();
         }
 
         private void ReloadUPK_Click(object sender, EventArgs e)
@@ -51,6 +53,7 @@ namespace Pticefabrica
         private void Reload()
         {
             listBox1.Items.Clear();
+            listBox1.Items.Add("Партии бройлеров ");
             UPKLoad.Text = "";
             ApplicationContext context = new ApplicationContext();
             var part = context.PartiyaVzrosloyChicken.ToList();

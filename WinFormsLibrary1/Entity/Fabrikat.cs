@@ -9,6 +9,7 @@ namespace WinFormsLibrary1.Entity
         [Required]
         public int ID { get; set; }
         public DateTime DateUp { get; set; }
+        public int kolvo { get; set; }
         public int UPKID2 { get; set; }
     }
 }

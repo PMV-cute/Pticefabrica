@@ -42,14 +42,15 @@ namespace Pticefabrica
             // UPKText
             // 
             this.UPKText.AutoSize = true;
-            this.UPKText.Location = new System.Drawing.Point(328, 377);
+            this.UPKText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.UPKText.Location = new System.Drawing.Point(302, 323);
             this.UPKText.Name = "UPKText";
-            this.UPKText.Size = new System.Drawing.Size(0, 15);
+            this.UPKText.Size = new System.Drawing.Size(0, 21);
             this.UPKText.TabIndex = 70;
             // 
             // FormUPK
             // 
-            this.FormUPK.Location = new System.Drawing.Point(12, 362);
+            this.FormUPK.Location = new System.Drawing.Point(12, 321);
             this.FormUPK.Name = "FormUPK";
             this.FormUPK.Size = new System.Drawing.Size(178, 23);
             this.FormUPK.TabIndex = 69;
@@ -59,9 +60,9 @@ namespace Pticefabrica
             // 
             // LoadUPK
             // 
-            this.LoadUPK.Location = new System.Drawing.Point(559, 126);
+            this.LoadUPK.Location = new System.Drawing.Point(12, 242);
             this.LoadUPK.Name = "LoadUPK";
-            this.LoadUPK.Size = new System.Drawing.Size(154, 23);
+            this.LoadUPK.Size = new System.Drawing.Size(178, 23);
             this.LoadUPK.TabIndex = 66;
             this.LoadUPK.Text = "Отправка в УПК";
             this.LoadUPK.UseVisualStyleBackColor = true;
@@ -71,18 +72,18 @@ namespace Pticefabrica
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(12, 73);
+            this.listBox1.Location = new System.Drawing.Point(12, 102);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(519, 124);
+            this.listBox1.Size = new System.Drawing.Size(775, 124);
             this.listBox1.TabIndex = 65;
             // 
             // ReloadUPK
             // 
-            this.ReloadUPK.Location = new System.Drawing.Point(559, 85);
+            this.ReloadUPK.Location = new System.Drawing.Point(12, 64);
             this.ReloadUPK.Name = "ReloadUPK";
-            this.ReloadUPK.Size = new System.Drawing.Size(154, 23);
+            this.ReloadUPK.Size = new System.Drawing.Size(178, 23);
             this.ReloadUPK.TabIndex = 64;
-            this.ReloadUPK.Text = "Обновить";
+            this.ReloadUPK.Text = "Обновить данные";
             this.ReloadUPK.UseVisualStyleBackColor = true;
             this.ReloadUPK.Click += new System.EventHandler(this.ReloadUPK_Click);
             // 
@@ -110,12 +111,13 @@ namespace Pticefabrica
             // UPKLoad
             // 
             this.UPKLoad.AutoSize = true;
-            this.UPKLoad.Location = new System.Drawing.Point(12, 218);
+            this.UPKLoad.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.UPKLoad.Location = new System.Drawing.Point(12, 278);
             this.UPKLoad.Name = "UPKLoad";
-            this.UPKLoad.Size = new System.Drawing.Size(0, 15);
+            this.UPKLoad.Size = new System.Drawing.Size(0, 30);
             this.UPKLoad.TabIndex = 72;
             // 
-            // Form5
+            // UPK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,7 +131,7 @@ namespace Pticefabrica
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form5";
+            this.Name = "UPK";
             this.Text = "Form5";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -19,7 +19,7 @@ namespace WinFormsLibrary1
             Reproductor reproductor = context.Reproductor.FirstOrDefault();
             reproductor.KolvoB = a;
             reproductor.KolvoN = b;
-            
+
             var repr = context.Reproductor.ToList();
             if (c > 0)
             {
@@ -34,17 +34,17 @@ namespace WinFormsLibrary1
                     context.PartiyaEggsRodClass.Add(partiyaEggsRodClass);
                     context.SaveChanges();
                 }
-                if (c%1000 != 0)
+                if (c % 1000 != 0)
                 {
                     PartiyaEggsRodClass partiyaEggsRodClass1 = new PartiyaEggsRodClass
                     {
-                        Kolvo = c %1000,
+                        Kolvo = c % 1000,
                         RepID = repr[repr.Count - 1].RepID,
                         DatePostEggs = date
                     };
                     context.PartiyaEggsRodClass.Add(partiyaEggsRodClass1);
                 }
-                
+
                 //PartiyaEggsRodClass partiyaEggsRodClass = context.PartiyaEggsRodClass.Where(h => h.ID == 1).FirstOrDefault(); //Удаление сущности из таблицы
                 //context.PartiyaEggsRodClass.Remove(partiyaEggsRodClass);
                 context.SaveChanges();
@@ -57,12 +57,11 @@ namespace WinFormsLibrary1
             int k = 0;
             k = a.IndexOf(";");
             a = a.Substring(0, k);
-
             k = b.IndexOf(";");
             b = b.Substring(0, k);
             int IDb = Convert.ToInt32(a);
             int IDn = Convert.ToInt32(b);
-            
+
             PartiyaVzrosloyChicken partiyaVzrosloyChickenB = context.PartiyaVzrosloyChicken.Where(h => h.ID == IDb).FirstOrDefault();
             PartiyaVzrosloyChicken partiyaVzrosloyChickenN = context.PartiyaVzrosloyChicken.Where(h => h.ID == IDn).FirstOrDefault();
 
@@ -78,12 +77,12 @@ namespace WinFormsLibrary1
                 context.SaveChanges();
                 return "";
             }
-            else 
+            else
             {
-                return "Проверьте корректность выбора"; 
+                return "Проверьте корректность выбора";
             }
         }
-        
+
 
         public string IncubatorLoad(string a, string b) //Загрузка данных в инкубатор
         {
@@ -107,7 +106,7 @@ namespace WinFormsLibrary1
                 partiyaEggsRodClass.FreeOrNotFree = false;
                 partiyaEggsRodClass.IncID2 = incubator.ID;
                 context.SaveChanges();
-                return "Готово!";
+                return "Партия загружена в инкубатор!";
             }
             else { return "Инкубатор заполнен"; }
         }
@@ -140,7 +139,7 @@ namespace WinFormsLibrary1
                 incubator.DayOfBorn = DateTime.Now.AddYears(100);
                 incubator.KolvoEggs = 0;
                 context.SaveChanges();
-                return "Готово!";
+                return "Партии молодняка сформированы!";
             }
             else { return "Яйца не вылупились"; }
         }
@@ -172,7 +171,7 @@ namespace WinFormsLibrary1
                 partiyaMolodnyaka.FreeOrNotFree = false;
                 partiyaMolodnyaka.PtID = ptichnic.ID;
                 context.SaveChanges();
-                return "Готово!";
+                return "Партии молодняка загружены в птичник!";
             }
             else { return "Птичник заполнен"; }
         }
@@ -193,7 +192,7 @@ namespace WinFormsLibrary1
                     Kolvo = ptichnic.Kolvo,
                     PtID2 = ptichnic.ID,
                     DateForm = DateTime.Now,
-                    
+
                 };
                 context.PartiyaVzrosloyChicken.Add(partiyaVzrosloyChicken);
                 ptichnic.FreeOrNotFree = true;
@@ -201,7 +200,7 @@ namespace WinFormsLibrary1
                 ptichnic.Kolvo = 0;
                 ptichnic.TypeChicken = "";
                 context.SaveChanges();
-                return "Готово!";
+                return "Партия взрослой птицы сформирована!";
             }
             else { return "Птицы не выросли"; }
         }
@@ -223,10 +222,10 @@ namespace WinFormsLibrary1
                 partiyaVzrosloyChicken.UPKID = upk.ID;
                 partiyaVzrosloyChicken.FreeOrNotFree = false;
                 context.SaveChanges();
-                return "Готово!";
+                return "Партия отправлена в УПК!";
             }
             else { return "УПК заполнен"; }
-        
+
         }
         public string UPKFormFabricat()
         {
@@ -234,20 +233,19 @@ namespace WinFormsLibrary1
             UPK upk = context.UPK.FirstOrDefault();
             if (upk.FreeOrNotFree == false)
             {
-               for(int i = 0; i< upk.KolvoB; i++)
-               {
-                    Fabrikat fabrikat = new Fabrikat
-                    {
-                        UPKID2 = upk.ID,
-                        DateUp = DateTime.Now
-                    };
-                    context.Fabrikat.Add(fabrikat);
-                    context.SaveChanges();
-                }
+                Fabrikat fabrikat = new Fabrikat
+                {
+                    UPKID2 = upk.ID,
+                    DateUp = DateTime.Now,
+                    kolvo = upk.KolvoB
+                };
+                context.Fabrikat.Add(fabrikat);
+                context.SaveChanges();
+
                 upk.KolvoB = 0;
                 upk.FreeOrNotFree = true;
                 context.SaveChanges();
-                return "Готово!";
+                return "Фабрикат сформирован!";
             }
             else { return "Птиц нет"; }
         }
@@ -273,7 +271,7 @@ namespace WinFormsLibrary1
                 partiyaVzrosloyChicken.CoPrID = KPE.ID;
                 partiyaVzrosloyChicken.FreeOrNotFree = false;
                 context.SaveChanges();
-                return "Готово!";
+                return "Партия загружена в комплекс производства яиц!";
             }
             else { return "КПЯ заполнен"; }
 
@@ -287,8 +285,8 @@ namespace WinFormsLibrary1
             ComplexProizvodstvaEggs KPE = context.ComplexProizvodstvaEggs.Where(h => h.ID == IDb).FirstOrDefault();
             if (KPE.FreeOrNotFree == true)
                 return "Птиц нет";
-            
-            if(KPE.Cikl >= KPE.CiklMax && KPE.FreeOrNotFree == false)
+
+            if (KPE.Cikl >= KPE.CiklMax && KPE.FreeOrNotFree == false)
             {
                 KPE.KolvoN = 0;
                 KPE.FreeOrNotFree = true;
@@ -310,10 +308,10 @@ namespace WinFormsLibrary1
                 KPE.Cikl++;
                 context.PartiyaEggs.Add(partiyaEggs);
                 context.SaveChanges();
-                return "Готово!";
+                return $"Партия яиц сформированна! Цикл {KPE.Cikl}.";
             }
         }
-        
+
         public string CSEFormEgg(int b, string a, int[] category)
         {
             int c = 0;
@@ -332,7 +330,7 @@ namespace WinFormsLibrary1
                 partiyaEggs.CehSortID = cse.ID;
                 partiyaEggs.FreeOrNotFree = false;
                 context.SaveChanges();
-                for (int i = 0; i < category.Length; i++ )
+                for (int i = 0; i < category.Length; i++)
                 {
                     PartiyaTovarnEggs partiyaTovarnEggs = new PartiyaTovarnEggs
                     {
@@ -343,7 +341,7 @@ namespace WinFormsLibrary1
                     };
                     context.PartiyaTovarnEggs.Add(partiyaTovarnEggs);
                     context.SaveChanges();
-                    
+
                 }
                 OtbrakovkaEggs otbrakovkaEggs = new OtbrakovkaEggs
                 {
@@ -353,7 +351,7 @@ namespace WinFormsLibrary1
                 };
                 context.OtbrakovkaEggs.Add(otbrakovkaEggs);
                 context.SaveChanges();
-                return "Готово";
+                return "Партии товарных яиц сформированны!";
             }
             else
             {
@@ -362,7 +360,7 @@ namespace WinFormsLibrary1
         }
 
 
-        public string CPMFormMelanj(int b,  int j, string a)
+        public string CPMFormMelanj(int b, int j, string a)
         {
             ApplicationContext context = new ApplicationContext();
             int k = a.IndexOf(";");
@@ -370,42 +368,36 @@ namespace WinFormsLibrary1
             int IDb = Convert.ToInt32(a);
             OtbrakovkaEggs otbrakovkaEggs = context.OtbrakovkaEggs.Where(h => h.ID == IDb).FirstOrDefault();
             CehProizvMelanja cpm = context.CehProizvMelanja.FirstOrDefault();
-            
-            if (b+j > otbrakovkaEggs.kolvo)
+
+            if (b + j > otbrakovkaEggs.kolvo)
                 return "Неточность введенных данных";
             if (otbrakovkaEggs.FreeOrNotFree == true)
             {
                 otbrakovkaEggs.CehPrMID2 = cpm.ID;
                 otbrakovkaEggs.FreeOrNotFree = false;
                 context.SaveChanges();
-                for (int i = 0; i < b; i++)
+                Melanj melanj = new Melanj
                 {
-                    Melanj melanj = new Melanj
-                    {
-                        CehPrMID = cpm.ID,
-                        DateRosliva = otbrakovkaEggs.dateTime,
-                        TypeMelanga = "Белок",
-                    };
-                    context.Melanj.Add(melanj);
-                    context.SaveChanges();
+                    CehPrMID = cpm.ID,
+                    DateRosliva = otbrakovkaEggs.dateTime,
+                    TypeMelanga = "Белок",
+                    kolvo = b
+                };
+                Melanj melanjj = new Melanj
+                {
+                    CehPrMID = cpm.ID,
+                    DateRosliva = otbrakovkaEggs.dateTime,
+                    TypeMelanga = "Желток",
+                    kolvo = j
+                };
+                context.Melanj.AddRange(melanj, melanjj);
+                context.SaveChanges();
 
-                }
-                for (int i = 0; i < j; i++)
-                {
-                    Melanj melanj = new Melanj
-                    {
-                        CehPrMID = cpm.ID,
-                        DateRosliva = otbrakovkaEggs.dateTime,
-                        TypeMelanga = "Желток",
-                    };
-                    context.Melanj.Add(melanj);
-                    context.SaveChanges();
-                }
-                return "Готово";
+                return "Партия меланжа сформирована";
             }
             else
             {
-                return "Проверьте правильность выбранных данных";
+                return "Проверьте правильность введенных данных";
             }
         }
 

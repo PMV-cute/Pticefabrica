@@ -67,31 +67,32 @@ namespace Pticefabrica
             // IncubatorText
             // 
             this.IncubatorText.AutoSize = true;
-            this.IncubatorText.Location = new System.Drawing.Point(328, 358);
+            this.IncubatorText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.IncubatorText.Location = new System.Drawing.Point(12, 410);
             this.IncubatorText.Name = "IncubatorText";
-            this.IncubatorText.Size = new System.Drawing.Size(0, 15);
+            this.IncubatorText.Size = new System.Drawing.Size(0, 21);
             this.IncubatorText.TabIndex = 54;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(12, 415);
+            this.button5.Location = new System.Drawing.Point(519, 337);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(154, 23);
+            this.button5.Size = new System.Drawing.Size(187, 23);
             this.button5.TabIndex = 53;
-            this.button5.Text = "Отправка в птичник";
+            this.button5.Text = "Отправка птиц в птичник";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(82, 374);
+            this.textBox5.Location = new System.Drawing.Point(413, 377);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 23);
             this.textBox5.TabIndex = 52;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(82, 334);
+            this.textBox4.Location = new System.Drawing.Point(413, 337);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 23);
             this.textBox4.TabIndex = 51;
@@ -100,16 +101,16 @@ namespace Pticefabrica
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 15;
-            this.listBox2.Location = new System.Drawing.Point(12, 199);
+            this.listBox2.Location = new System.Drawing.Point(12, 207);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(775, 124);
             this.listBox2.TabIndex = 49;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(559, 122);
+            this.button3.Location = new System.Drawing.Point(12, 340);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(154, 23);
+            this.button3.Size = new System.Drawing.Size(187, 23);
             this.button3.TabIndex = 48;
             this.button3.Text = "Добавить в инкубатор";
             this.button3.UseVisualStyleBackColor = true;
@@ -119,40 +120,40 @@ namespace Pticefabrica
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(12, 69);
+            this.listBox1.Location = new System.Drawing.Point(12, 77);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(519, 124);
+            this.listBox1.Size = new System.Drawing.Size(775, 124);
             this.listBox1.TabIndex = 47;
             // 
             // ReloadInc
             // 
-            this.ReloadInc.Location = new System.Drawing.Point(559, 81);
+            this.ReloadInc.Location = new System.Drawing.Point(12, 48);
             this.ReloadInc.Name = "ReloadInc";
-            this.ReloadInc.Size = new System.Drawing.Size(154, 23);
+            this.ReloadInc.Size = new System.Drawing.Size(187, 23);
             this.ReloadInc.TabIndex = 46;
-            this.ReloadInc.Text = "Обновить";
+            this.ReloadInc.Text = "Обновить данные";
             this.ReloadInc.UseVisualStyleBackColor = true;
             this.ReloadInc.Click += new System.EventHandler(this.ReloadInc_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 337);
+            this.label2.Location = new System.Drawing.Point(271, 340);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 15);
+            this.label2.Size = new System.Drawing.Size(136, 15);
             this.label2.TabIndex = 55;
-            this.label2.Text = "Бройлеры";
+            this.label2.Text = "Количество бройлеров";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 377);
+            this.label3.Location = new System.Drawing.Point(271, 380);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 15);
+            this.label3.Size = new System.Drawing.Size(123, 15);
             this.label3.TabIndex = 56;
-            this.label3.Text = "Несушки";
+            this.label3.Text = "Количество несушек";
             // 
-            // Form3
+            // Incub
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -170,7 +171,7 @@ namespace Pticefabrica
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label6);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form3";
+            this.Name = "Incub";
             this.Text = "Form3";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -98,12 +98,12 @@ namespace Pticefabrica
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(49, 30);
+            this.label3.Location = new System.Drawing.Point(90, 27);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(174, 20);
+            this.label3.Size = new System.Drawing.Size(109, 20);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Птицефабрика ВятГу";
+            this.label3.Text = "Авторизация";
             // 
             // label4
             // 

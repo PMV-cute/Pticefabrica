@@ -30,7 +30,7 @@ namespace Pticefabrica  // Репродуктор
             if (int.TryParse(textBox1.Text, out int value1) && int.TryParse(textBox2.Text, out int value2) && int.TryParse(textBox3.Text, out int value3))
             {
                 new Logical().ReproductorLog(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), dateTimePicker1.Value);
-                ReproductorText.Text = "Готово!";
+                ReproductorText.Text = "Партия яиц сформирована!";
             }
             else
             {
@@ -40,13 +40,6 @@ namespace Pticefabrica  // Репродуктор
             }
 
         }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            {
-                Reload();
-            }
-        }
-
         private void button6_Click(object sender, EventArgs e)
         {
             if (listBox5.SelectedItem != null && listBox6.SelectedItem != null)
@@ -61,17 +54,20 @@ namespace Pticefabrica  // Репродуктор
         }
         private void CloseButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Form f1 = new Form1();
+            f1.Show();
+            Hide();
         }
         private void Reload()
         {
             listBox5.Items.Clear();
             listBox6.Items.Clear();
-
+            listBox5.Items.Add("Партии бройлеров: ");
+            listBox6.Items.Add("Партии несушек: ");
             ApplicationContext context = new ApplicationContext();
             Reproductor reproductor = context.Reproductor.FirstOrDefault();
-            label5.Text = "Должно быть: " + reproductor.maxB;
-            label6.Text = "Должно быть: " + reproductor.maxN;
+            label5.Text = "Должно быть бройлеров в репродукторе: " + reproductor.maxB;
+            label6.Text = "Должно быть несушек в репродукторе: " + reproductor.maxN;
             textBox1.Text = reproductor.KolvoB.ToString();
             textBox2.Text = reproductor.KolvoN.ToString();
             var parts = context.PartiyaVzrosloyChicken.ToList();
@@ -96,6 +92,11 @@ namespace Pticefabrica  // Репродуктор
                     }
                 }
             }
+        }
+
+        private void ReloadBtn_Click(object sender, EventArgs e)
+        {
+            Reload();
         }
     }
 }

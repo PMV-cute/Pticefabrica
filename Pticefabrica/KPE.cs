@@ -26,7 +26,9 @@ namespace Pticefabrica
         }
         private void label6_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Form f1 = new Form1();
+            f1.Show();
+            Hide();
         }
         private void ReloadKPE_Click(object sender, EventArgs e)
         {
@@ -57,7 +59,8 @@ namespace Pticefabrica
         {
             listBox1.Items.Clear();
             listBox2.Items.Clear();
-            
+            listBox1.Items.Add("Партии несушек: ");
+            listBox2.Items.Add("Комплексы производства яиц: ");
             ApplicationContext context = new ApplicationContext();
             ComplexProizvodstvaEggs cpe = context.ComplexProizvodstvaEggs.FirstOrDefault();
             label3.Text = "Количество циклов: " + cpe.CiklMax;
@@ -68,7 +71,7 @@ namespace Pticefabrica
             {
                 if (parteg.FreeOrNotFree == true && parteg.TypeChiсken == "Несушка")
                 {
-                    listBox1.Items.Add($"{parteg.ID}; Дата: {parteg.DateForm}; Количество: {parteg.Kolvo};");
+                    listBox1.Items.Add($"{parteg.ID}; Дата: {parteg.DateForm}; Количество птиц: {parteg.Kolvo};");
                 }
                 else
                 {

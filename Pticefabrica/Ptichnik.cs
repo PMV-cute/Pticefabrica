@@ -27,7 +27,9 @@ namespace Pticefabrica  // Птичник
 
         private void label6_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Form f1 = new Form1();
+            f1.Show();
+            Hide();
         }
         private void ReloadPtichnic_Click(object sender, EventArgs e)
         {
@@ -56,6 +58,8 @@ namespace Pticefabrica  // Птичник
         {
             listBox3.Items.Clear();
             listBox4.Items.Clear();
+            listBox3.Items.Add("Партии молодых птиц: ");
+            listBox4.Items.Add("Птичники: ");
             ApplicationContext context = new ApplicationContext();
             var partms = context.PartiyaMolodnyaka.ToList();
             List<Ptichnic> pt = context.Ptichnic.ToList().OrderBy(o => o.ID).ToList();

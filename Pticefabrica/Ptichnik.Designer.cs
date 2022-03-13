@@ -63,16 +63,17 @@ namespace Pticefabrica
             // PtichnicText
             // 
             this.PtichnicText.AutoSize = true;
-            this.PtichnicText.Location = new System.Drawing.Point(328, 373);
+            this.PtichnicText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PtichnicText.Location = new System.Drawing.Point(240, 388);
             this.PtichnicText.Name = "PtichnicText";
-            this.PtichnicText.Size = new System.Drawing.Size(0, 15);
+            this.PtichnicText.Size = new System.Drawing.Size(0, 21);
             this.PtichnicText.TabIndex = 61;
             // 
             // FormVzroslChicken
             // 
-            this.FormVzroslChicken.Location = new System.Drawing.Point(12, 358);
+            this.FormVzroslChicken.Location = new System.Drawing.Point(12, 389);
             this.FormVzroslChicken.Name = "FormVzroslChicken";
-            this.FormVzroslChicken.Size = new System.Drawing.Size(154, 23);
+            this.FormVzroslChicken.Size = new System.Drawing.Size(222, 23);
             this.FormVzroslChicken.TabIndex = 60;
             this.FormVzroslChicken.Text = "Формирование взрослой партии";
             this.FormVzroslChicken.UseVisualStyleBackColor = true;
@@ -82,18 +83,18 @@ namespace Pticefabrica
             // 
             this.listBox4.FormattingEnabled = true;
             this.listBox4.ItemHeight = 15;
-            this.listBox4.Location = new System.Drawing.Point(12, 199);
+            this.listBox4.Location = new System.Drawing.Point(12, 200);
             this.listBox4.Name = "listBox4";
             this.listBox4.Size = new System.Drawing.Size(775, 124);
             this.listBox4.TabIndex = 58;
             // 
             // LoadPtichnic
             // 
-            this.LoadPtichnic.Location = new System.Drawing.Point(559, 122);
+            this.LoadPtichnic.Location = new System.Drawing.Point(12, 341);
             this.LoadPtichnic.Name = "LoadPtichnic";
-            this.LoadPtichnic.Size = new System.Drawing.Size(154, 23);
+            this.LoadPtichnic.Size = new System.Drawing.Size(222, 23);
             this.LoadPtichnic.TabIndex = 57;
-            this.LoadPtichnic.Text = "Добавление в птичник";
+            this.LoadPtichnic.Text = "Добавление партий птиц в птичник";
             this.LoadPtichnic.UseVisualStyleBackColor = true;
             this.LoadPtichnic.Click += new System.EventHandler(this.LoadPtichnic_Click);
             // 
@@ -101,22 +102,22 @@ namespace Pticefabrica
             // 
             this.listBox3.FormattingEnabled = true;
             this.listBox3.ItemHeight = 15;
-            this.listBox3.Location = new System.Drawing.Point(12, 69);
+            this.listBox3.Location = new System.Drawing.Point(12, 70);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(519, 124);
+            this.listBox3.Size = new System.Drawing.Size(775, 124);
             this.listBox3.TabIndex = 56;
             // 
             // ReloadPtichnic
             // 
-            this.ReloadPtichnic.Location = new System.Drawing.Point(559, 81);
+            this.ReloadPtichnic.Location = new System.Drawing.Point(12, 41);
             this.ReloadPtichnic.Name = "ReloadPtichnic";
-            this.ReloadPtichnic.Size = new System.Drawing.Size(154, 23);
+            this.ReloadPtichnic.Size = new System.Drawing.Size(215, 23);
             this.ReloadPtichnic.TabIndex = 55;
-            this.ReloadPtichnic.Text = "Обновить";
+            this.ReloadPtichnic.Text = "Обновить данные";
             this.ReloadPtichnic.UseVisualStyleBackColor = true;
             this.ReloadPtichnic.Click += new System.EventHandler(this.ReloadPtichnic_Click);
             // 
-            // Form4
+            // Ptichnik
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -130,7 +131,7 @@ namespace Pticefabrica
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form4";
+            this.Name = "Ptichnik";
             this.Text = "Form4";
             this.ResumeLayout(false);
             this.PerformLayout();

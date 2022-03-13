@@ -50,15 +50,15 @@ namespace Pticefabrica
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 242);
+            this.label2.Location = new System.Drawing.Point(13, 232);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 15);
+            this.label2.Size = new System.Drawing.Size(163, 15);
             this.label2.TabIndex = 94;
-            this.label2.Text = "Категория 0";
+            this.label2.Text = "Количество яиц категории 0";
             // 
             // Category1
             // 
-            this.Category1.Location = new System.Drawing.Point(119, 269);
+            this.Category1.Location = new System.Drawing.Point(195, 258);
             this.Category1.Name = "Category1";
             this.Category1.Size = new System.Drawing.Size(100, 23);
             this.Category1.TabIndex = 93;
@@ -66,14 +66,15 @@ namespace Pticefabrica
             // CSEText
             // 
             this.CSEText.AutoSize = true;
-            this.CSEText.Location = new System.Drawing.Point(257, 381);
+            this.CSEText.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CSEText.Location = new System.Drawing.Point(237, 400);
             this.CSEText.Name = "CSEText";
-            this.CSEText.Size = new System.Drawing.Size(0, 15);
+            this.CSEText.Size = new System.Drawing.Size(0, 21);
             this.CSEText.TabIndex = 92;
             // 
             // FormCSE
             // 
-            this.FormCSE.Location = new System.Drawing.Point(13, 377);
+            this.FormCSE.Location = new System.Drawing.Point(12, 398);
             this.FormCSE.Name = "FormCSE";
             this.FormCSE.Size = new System.Drawing.Size(201, 23);
             this.FormCSE.TabIndex = 91;
@@ -85,18 +86,18 @@ namespace Pticefabrica
             // 
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(13, 88);
+            this.listBox1.Location = new System.Drawing.Point(13, 99);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(519, 124);
+            this.listBox1.Size = new System.Drawing.Size(775, 124);
             this.listBox1.TabIndex = 87;
             // 
             // ReloadCSE
             // 
-            this.ReloadCSE.Location = new System.Drawing.Point(560, 100);
+            this.ReloadCSE.Location = new System.Drawing.Point(13, 70);
             this.ReloadCSE.Name = "ReloadCSE";
-            this.ReloadCSE.Size = new System.Drawing.Size(154, 23);
+            this.ReloadCSE.Size = new System.Drawing.Size(201, 23);
             this.ReloadCSE.TabIndex = 86;
-            this.ReloadCSE.Text = "Обновить";
+            this.ReloadCSE.Text = "Обновить данные";
             this.ReloadCSE.UseVisualStyleBackColor = true;
             this.ReloadCSE.Click += new System.EventHandler(this.ReloadCSE_Click);
             // 
@@ -123,28 +124,28 @@ namespace Pticefabrica
             // 
             // Category2
             // 
-            this.Category2.Location = new System.Drawing.Point(225, 269);
+            this.Category2.Location = new System.Drawing.Point(195, 287);
             this.Category2.Name = "Category2";
             this.Category2.Size = new System.Drawing.Size(100, 23);
             this.Category2.TabIndex = 96;
             // 
             // Category3
             // 
-            this.Category3.Location = new System.Drawing.Point(331, 269);
+            this.Category3.Location = new System.Drawing.Point(195, 316);
             this.Category3.Name = "Category3";
             this.Category3.Size = new System.Drawing.Size(100, 23);
             this.Category3.TabIndex = 97;
             // 
             // Category0
             // 
-            this.Category0.Location = new System.Drawing.Point(13, 269);
+            this.Category0.Location = new System.Drawing.Point(195, 229);
             this.Category0.Name = "Category0";
             this.Category0.Size = new System.Drawing.Size(100, 23);
             this.Category0.TabIndex = 98;
             // 
             // OtbrakovkaTextBox
             // 
-            this.OtbrakovkaTextBox.Location = new System.Drawing.Point(13, 324);
+            this.OtbrakovkaTextBox.Location = new System.Drawing.Point(195, 345);
             this.OtbrakovkaTextBox.Name = "OtbrakovkaTextBox";
             this.OtbrakovkaTextBox.Size = new System.Drawing.Size(100, 23);
             this.OtbrakovkaTextBox.TabIndex = 99;
@@ -152,40 +153,40 @@ namespace Pticefabrica
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(119, 242);
+            this.label3.Location = new System.Drawing.Point(14, 261);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 15);
+            this.label3.Size = new System.Drawing.Size(163, 15);
             this.label3.TabIndex = 100;
-            this.label3.Text = "Категория 1";
+            this.label3.Text = "Количество яиц категории 1";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(225, 242);
+            this.label4.Location = new System.Drawing.Point(13, 290);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 15);
+            this.label4.Size = new System.Drawing.Size(163, 15);
             this.label4.TabIndex = 101;
-            this.label4.Text = "Категория 2";
+            this.label4.Text = "Количество яиц категории 2";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(331, 242);
+            this.label5.Location = new System.Drawing.Point(13, 319);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 15);
+            this.label5.Size = new System.Drawing.Size(163, 15);
             this.label5.TabIndex = 102;
-            this.label5.Text = "Категория 3";
+            this.label5.Text = "Количество яиц категории 3";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 306);
+            this.label7.Location = new System.Drawing.Point(13, 348);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(33, 15);
+            this.label7.Size = new System.Drawing.Size(172, 15);
             this.label7.TabIndex = 103;
-            this.label7.Text = "Брак";
+            this.label7.Text = "Количество бракованных яиц";
             // 
-            // Form7
+            // CSE
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -207,7 +208,7 @@ namespace Pticefabrica
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form7";
+            this.Name = "CSE";
             this.Text = "Form7";
             this.ResumeLayout(false);
             this.PerformLayout();
