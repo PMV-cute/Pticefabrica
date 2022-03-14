@@ -23,7 +23,6 @@ namespace Pticefabrica
             Message m = Message.Create(base.Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
             this.WndProc(ref m);
         }
-
         private void label6_Click(object sender, EventArgs e)
         {
             Form f1 = new Form1();
@@ -38,8 +37,8 @@ namespace Pticefabrica
                 int kvartal = (int)(numericUpDown1.Value);
                 int year = (int)(numericUpDown2.Value);
                 if (new Reporter().GetReport(year, kvartal, item))
-                    OtchetLabel.Text = "Все четко!";
-                else OtchetLabel.Text = "Все не четко!";
+                    OtchetLabel.Text = $"Отчет по \"{item}\" сформирован!";
+                else OtchetLabel.Text = "Отчет не сформирован!";
             }
             else OtchetLabel.Text = "Проверьте правильность введенных данных";
         }
@@ -48,11 +47,11 @@ namespace Pticefabrica
             ApplicationContext context = new ApplicationContext();
             List<Reproductor> a = context.Reproductor.ToList().OrderBy(o => o.RepID).ToList();
             List<ComplexProizvodstvaEggs> d = context.ComplexProizvodstvaEggs.ToList().OrderBy(o => o.ID).ToList();
-            foreach(var aa in a)
+            foreach (var aa in a)
             {
                 aa.maxB = (int)MaxKolvoB.Value;
                 aa.maxN = (int)MaxKolvoN.Value;
-                
+
             }
             context.SaveChanges();
             foreach (var dd in d)
@@ -62,9 +61,8 @@ namespace Pticefabrica
             }
             OtchetLabel.Text = "Изменения готовы! ";
         }
-        
 
-        private void Relaod1(object sender, EventArgs e)
+        private void ReloadFunc1()
         {
             string item = comboBox1.SelectedItem.ToString();
             listBox1.Items.Clear();
@@ -76,8 +74,9 @@ namespace Pticefabrica
             List<ComplexProizvodstvaEggs> d = context.ComplexProizvodstvaEggs.ToList().OrderBy(o => o.ID).ToList();
             if (item == "Репродуктор")
             {
+                listBox1.Items.Add("Репродуктор: ");
                 foreach (var ar in a)
-                    listBox1.Items.Add($"Репродуктор: {ar.RepID}; Бройлеры: {ar.KolvoB}; Несушки: {ar.KolvoN};");
+                    listBox1.Items.Add($"{ar.RepID}; Бройлеры: {ar.KolvoB}; Несушки: {ar.KolvoN};");
             }
             if (item == "Инкубаторы")
             {
@@ -143,8 +142,100 @@ namespace Pticefabrica
                 }
             }
         }
+        private void Relaod1(object sender, EventArgs e)
+        {
+            ReloadFunc1();
+        }
 
-        private void Reload2(object sender, EventArgs e)
+        private void CehBtn_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem == null || comboBox1 == null)
+            {
+                ProductLabel.Text = "Выберите цех для очистки.";
+                return;
+            }
+            string item = comboBox1.SelectedItem.ToString();
+            string label = listBox1.SelectedItem.ToString();
+
+            ApplicationContext context = new ApplicationContext();
+            var asd = context.UPK.ToList();
+            List<Reproductor> a = context.Reproductor.ToList().OrderBy(o => o.RepID).ToList();
+            List<Incubator> b = context.Incubator.ToList().OrderBy(o => o.ID).ToList();
+            List<Ptichnic> cas = context.Ptichnic.ToList().OrderBy(o => o.ID).ToList();
+            List<ComplexProizvodstvaEggs> d = context.ComplexProizvodstvaEggs.ToList().OrderBy(o => o.ID).ToList();
+            if (item == "Репродуктор")
+            {
+                foreach(var abs in a)
+                {
+                    abs.KolvoB = 0;
+                    abs.KolvoN = 0;
+                }
+                context.SaveChanges();
+            }
+            if (item == "Инкубаторы")
+            {
+                label = label.Substring(0, label.IndexOf(";"));
+                foreach (var inc in b)
+                {
+                    if (inc.ID.ToString() == label)
+                    {
+                        inc.KolvoEggs = 0;
+                        inc.FreeOrNotFree = true;
+                        inc.DatePost = DateTime.Now;
+                        inc.DayOfBorn = DateTime.Now;
+                        context.SaveChanges();
+                    }
+                }
+            }
+            if (item == "Птичники")
+            {
+                label = label.Substring(0, label.IndexOf(";"));
+                foreach (var abs in cas)
+                {
+                    if (abs.ID.ToString() == label)
+                    {
+                        abs.Kolvo = 0;
+                        abs.FreeOrNotFree = true;
+                        abs.DatePost = DateTime.Now;
+                        abs.DateGrow = DateTime.Now;
+                        abs.TypeChicken = "";
+                        context.SaveChanges();
+                    }
+                }
+            }
+            if (item == "Комплексы производства яиц")
+            {
+                label = label.Substring(0, label.IndexOf(";"));
+                foreach (var abs in d)
+                {
+                    if (abs.ID.ToString() == label)
+                    {
+                        abs.KolvoN = 0;
+                        abs.FreeOrNotFree = true;
+                        abs.Pfeed = false;
+                        abs.Pwater = false;
+                        abs.Cikl = 0;
+                        abs.DateForm = DateTime.Now;
+                        context.SaveChanges();
+                    }
+                }
+            }
+            if (item == "УПК")
+            {
+                foreach (var abs in asd)
+                {
+                    abs.KolvoB = 0;
+                    abs.FreeOrNotFree = true;
+                    abs.Dateform = DateTime.Now;
+                }
+                context.SaveChanges();
+            }
+            if (item == "Инкубаторы" || item == "Птичники" || item == "Комплексы производства яиц")
+                CehLabel.Text = $"{item} №{label} очищен.";
+            else CehLabel.Text = $"{item} очищен.";
+            ReloadFunc1();
+        }
+        private void ReloadFunc2()
         {
             string item = comboBox2.SelectedItem.ToString();
 
@@ -179,54 +270,62 @@ namespace Pticefabrica
                 }
             }
         }
+        private void Reload2(object sender, EventArgs e)
+        {
+            ReloadFunc2();
+        }
         private void ProdBtn_Click(object sender, EventArgs e)
         {
             ApplicationContext context = new ApplicationContext();
-            if (listBox2.SelectedItem != null && comboBox2 != null)
+            if (listBox2.SelectedItem == null || comboBox2 == null)
             {
-                string item = comboBox2.SelectedItem.ToString();
-                string label = listBox2.SelectedItem.ToString();
-
-                label = label.Substring(0, label.IndexOf(";"));
-                
-                List<Fabrikat> b = context.Fabrikat.ToList().OrderBy(o => o.ID).ToList();
-                List<Melanj> a = context.Melanj.ToList().OrderBy(o => o.Ntari).ToList();
-                List<PartiyaTovarnEggs> c = context.PartiyaTovarnEggs.ToList().OrderBy(o => o.ID).ToList();
-                if(item == "Меланж")
-                {
-                    foreach(var aa in a)
-                    {
-                        if(aa.Ntari.ToString() == label)
-                        {
-                            context.Remove(context.Melanj.Single(s => s.Ntari == aa.Ntari)); // Удаление сущности из таблицы
-                            context.SaveChanges();
-                        }
-                    }
-                }
-                if(item == "Фабрикат")
-                {
-                    foreach (var bb in b)
-                    {
-                        if (bb.ID.ToString() == label)
-                        {
-                            context.Remove(context.Fabrikat.Single(s => s.ID == bb.ID)); // Удаление сущности из таблицы
-                            context.SaveChanges();
-                        }
-                    }
-                }
-                if (item == "Партии товарных яиц")
-                {
-                    foreach (var cc in c)
-                    {
-                        if (cc.ID.ToString() == label)
-                        {
-                            context.Remove(context.PartiyaTovarnEggs.Single(s => s.ID == cc.ID)); // Удаление сущности из таблицы
-                            context.SaveChanges();
-                        }
-                    }
-                }
-
+                ProductLabel.Text = "Выберите партию для удаления.";
+                return;
             }
+            string item = comboBox2.SelectedItem.ToString();
+            string label = listBox2.SelectedItem.ToString();
+
+            label = label.Substring(0, label.IndexOf(";"));
+
+            List<Fabrikat> b = context.Fabrikat.ToList().OrderBy(o => o.ID).ToList();
+            List<Melanj> a = context.Melanj.ToList().OrderBy(o => o.Ntari).ToList();
+            List<PartiyaTovarnEggs> c = context.PartiyaTovarnEggs.ToList().OrderBy(o => o.ID).ToList();
+            if (item == "Меланж")
+            {
+                foreach (var aa in a)
+                {
+                    if (aa.Ntari.ToString() == label)
+                    {
+                        context.Remove(context.Melanj.Single(s => s.Ntari == aa.Ntari)); // Удаление сущности из таблицы
+                        context.SaveChanges();
+                    }
+                }
+            }
+            if (item == "Фабрикат")
+            {
+                foreach (var bb in b)
+                {
+                    if (bb.ID.ToString() == label)
+                    {
+                        context.Remove(context.Fabrikat.Single(s => s.ID == bb.ID)); // Удаление сущности из таблицы
+                        context.SaveChanges();
+                    }
+                }
+            }
+            if (item == "Партии товарных яиц")
+            {
+                foreach (var cc in c)
+                {
+                    if (cc.ID.ToString() == label)
+                    {
+                        context.Remove(context.PartiyaTovarnEggs.Single(s => s.ID == cc.ID)); // Удаление сущности из таблицы
+                        context.SaveChanges();
+                    }
+                }
+            }
+            ProductLabel.Text = $"{item} №{label} удален.";
+
+            ReloadFunc2();
         }
         private void Reload3(object sender, EventArgs e)
         {
@@ -310,7 +409,5 @@ namespace Pticefabrica
                 }
             }
         }
-
-       
     }
 }

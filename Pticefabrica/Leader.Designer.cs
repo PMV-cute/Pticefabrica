@@ -33,9 +33,12 @@ namespace Pticefabrica
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.CehLabel = new System.Windows.Forms.Label();
+            this.CehBtn = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ProductLabel = new System.Windows.Forms.Label();
             this.ProdBtn = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
@@ -43,6 +46,7 @@ namespace Pticefabrica
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.OtchetLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,7 +62,6 @@ namespace Pticefabrica
             this.MaxCikl = new System.Windows.Forms.NumericUpDown();
             this.MaxKolvoN = new System.Windows.Forms.NumericUpDown();
             this.MaxKolvoB = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -108,6 +111,8 @@ namespace Pticefabrica
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.CehLabel);
+            this.tabPage1.Controls.Add(this.CehBtn);
             this.tabPage1.Controls.Add(this.comboBox1);
             this.tabPage1.Controls.Add(this.listBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
@@ -117,6 +122,26 @@ namespace Pticefabrica
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Цеха";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // CehLabel
+            // 
+            this.CehLabel.AutoSize = true;
+            this.CehLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CehLabel.Location = new System.Drawing.Point(8, 358);
+            this.CehLabel.Name = "CehLabel";
+            this.CehLabel.Size = new System.Drawing.Size(49, 21);
+            this.CehLabel.TabIndex = 6;
+            this.CehLabel.Text = "asdas";
+            // 
+            // CehBtn
+            // 
+            this.CehBtn.Location = new System.Drawing.Point(8, 322);
+            this.CehBtn.Name = "CehBtn";
+            this.CehBtn.Size = new System.Drawing.Size(196, 23);
+            this.CehBtn.TabIndex = 5;
+            this.CehBtn.Text = "Очистить цех";
+            this.CehBtn.UseVisualStyleBackColor = true;
+            this.CehBtn.Click += new System.EventHandler(this.CehBtn_Click);
             // 
             // comboBox1
             // 
@@ -139,11 +164,12 @@ namespace Pticefabrica
             this.listBox1.ItemHeight = 15;
             this.listBox1.Location = new System.Drawing.Point(6, 32);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(787, 319);
+            this.listBox1.Size = new System.Drawing.Size(787, 289);
             this.listBox1.TabIndex = 0;
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.ProductLabel);
             this.tabPage2.Controls.Add(this.ProdBtn);
             this.tabPage2.Controls.Add(this.comboBox2);
             this.tabPage2.Controls.Add(this.listBox2);
@@ -155,13 +181,23 @@ namespace Pticefabrica
             this.tabPage2.Text = "Готовая продукция";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // ProductLabel
+            // 
+            this.ProductLabel.AutoSize = true;
+            this.ProductLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ProductLabel.Location = new System.Drawing.Point(8, 348);
+            this.ProductLabel.Name = "ProductLabel";
+            this.ProductLabel.Size = new System.Drawing.Size(49, 21);
+            this.ProductLabel.TabIndex = 4;
+            this.ProductLabel.Text = "asdas";
+            // 
             // ProdBtn
             // 
-            this.ProdBtn.Location = new System.Drawing.Point(85, 340);
+            this.ProdBtn.Location = new System.Drawing.Point(8, 312);
             this.ProdBtn.Name = "ProdBtn";
-            this.ProdBtn.Size = new System.Drawing.Size(75, 23);
+            this.ProdBtn.Size = new System.Drawing.Size(196, 23);
             this.ProdBtn.TabIndex = 3;
-            this.ProdBtn.Text = "Удалить";
+            this.ProdBtn.Text = "Удалить партию продукции";
             this.ProdBtn.UseVisualStyleBackColor = true;
             this.ProdBtn.Click += new System.EventHandler(this.ProdBtn_Click);
             // 
@@ -238,6 +274,15 @@ namespace Pticefabrica
             this.tabPage4.Text = "Отчетность";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 85);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(67, 15);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Вид товара";
+            // 
             // comboBox4
             // 
             this.comboBox4.FormattingEnabled = true;
@@ -254,10 +299,10 @@ namespace Pticefabrica
             // OtchetLabel
             // 
             this.OtchetLabel.AutoSize = true;
-            this.OtchetLabel.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.OtchetLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.OtchetLabel.Location = new System.Drawing.Point(8, 157);
             this.OtchetLabel.Name = "OtchetLabel";
-            this.OtchetLabel.Size = new System.Drawing.Size(0, 30);
+            this.OtchetLabel.Size = new System.Drawing.Size(0, 21);
             this.OtchetLabel.TabIndex = 5;
             // 
             // label3
@@ -415,15 +460,6 @@ namespace Pticefabrica
             this.MaxKolvoB.Size = new System.Drawing.Size(120, 23);
             this.MaxKolvoB.TabIndex = 13;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 85);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 15);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Вид товара";
-            // 
             // Leader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -437,7 +473,9 @@ namespace Pticefabrica
             this.Text = "Leader";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
@@ -484,5 +522,8 @@ namespace Pticefabrica
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Button ProdBtn;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label ProductLabel;
+        private System.Windows.Forms.Label CehLabel;
+        private System.Windows.Forms.Button CehBtn;
     }
 }
