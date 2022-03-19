@@ -73,9 +73,9 @@ namespace Pticefabrica
             // 
             this.FormVzroslChicken.Location = new System.Drawing.Point(12, 389);
             this.FormVzroslChicken.Name = "FormVzroslChicken";
-            this.FormVzroslChicken.Size = new System.Drawing.Size(222, 23);
+            this.FormVzroslChicken.Size = new System.Drawing.Size(242, 23);
             this.FormVzroslChicken.TabIndex = 60;
-            this.FormVzroslChicken.Text = "Формирование взрослой партии";
+            this.FormVzroslChicken.Text = "Сформировать партию взрослой птицы";
             this.FormVzroslChicken.UseVisualStyleBackColor = true;
             this.FormVzroslChicken.Click += new System.EventHandler(this.FormVzroslChicken_Click);
             // 
@@ -92,9 +92,9 @@ namespace Pticefabrica
             // 
             this.LoadPtichnic.Location = new System.Drawing.Point(12, 341);
             this.LoadPtichnic.Name = "LoadPtichnic";
-            this.LoadPtichnic.Size = new System.Drawing.Size(222, 23);
+            this.LoadPtichnic.Size = new System.Drawing.Size(242, 23);
             this.LoadPtichnic.TabIndex = 57;
-            this.LoadPtichnic.Text = "Добавление партий птиц в птичник";
+            this.LoadPtichnic.Text = "Добавить партию птиц в птичник";
             this.LoadPtichnic.UseVisualStyleBackColor = true;
             this.LoadPtichnic.Click += new System.EventHandler(this.LoadPtichnic_Click);
             // 

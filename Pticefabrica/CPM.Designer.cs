@@ -56,7 +56,7 @@ namespace Pticefabrica
             this.FormCPM.Name = "FormCPM";
             this.FormCPM.Size = new System.Drawing.Size(222, 23);
             this.FormCPM.TabIndex = 77;
-            this.FormCPM.Text = "Формирование меланжа";
+            this.FormCPM.Text = "Сформировать партию меланжа";
             this.FormCPM.UseVisualStyleBackColor = true;
             this.FormCPM.Click += new System.EventHandler(this.FormCPM_Click);
             // 

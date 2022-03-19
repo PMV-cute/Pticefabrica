@@ -64,6 +64,10 @@ namespace Pticefabrica
 
         private void ReloadFunc1()
         {
+            if (comboBox1 == null)
+            {
+                return;
+            }
             string item = comboBox1.SelectedItem.ToString();
             listBox1.Items.Clear();
             ApplicationContext context = new ApplicationContext();
@@ -171,6 +175,7 @@ namespace Pticefabrica
                     abs.KolvoN = 0;
                 }
                 context.SaveChanges();
+                //return;
             }
             if (item == "Инкубаторы")
             {
@@ -184,6 +189,7 @@ namespace Pticefabrica
                         inc.DatePost = DateTime.Now;
                         inc.DayOfBorn = DateTime.Now;
                         context.SaveChanges();
+                        //return;
                     }
                 }
             }
@@ -200,6 +206,7 @@ namespace Pticefabrica
                         abs.DateGrow = DateTime.Now;
                         abs.TypeChicken = "";
                         context.SaveChanges();
+                        //return;
                     }
                 }
             }
@@ -217,6 +224,7 @@ namespace Pticefabrica
                         abs.Cikl = 0;
                         abs.DateForm = DateTime.Now;
                         context.SaveChanges();
+                        //return;
                     }
                 }
             }
@@ -229,6 +237,7 @@ namespace Pticefabrica
                     abs.Dateform = DateTime.Now;
                 }
                 context.SaveChanges();
+                //return;
             }
             if (item == "Инкубаторы" || item == "Птичники" || item == "Комплексы производства яиц")
                 CehLabel.Text = $"{item} №{label} очищен.";
@@ -237,6 +246,10 @@ namespace Pticefabrica
         }
         private void ReloadFunc2()
         {
+            if (comboBox2 == null)
+            {
+                return;
+            }
             string item = comboBox2.SelectedItem.ToString();
 
             listBox2.Items.Clear();
@@ -298,6 +311,7 @@ namespace Pticefabrica
                     {
                         context.Remove(context.Melanj.Single(s => s.Ntari == aa.Ntari)); // Удаление сущности из таблицы
                         context.SaveChanges();
+                        //return;
                     }
                 }
             }
@@ -309,6 +323,7 @@ namespace Pticefabrica
                     {
                         context.Remove(context.Fabrikat.Single(s => s.ID == bb.ID)); // Удаление сущности из таблицы
                         context.SaveChanges();
+                        //return;
                     }
                 }
             }
@@ -320,6 +335,7 @@ namespace Pticefabrica
                     {
                         context.Remove(context.PartiyaTovarnEggs.Single(s => s.ID == cc.ID)); // Удаление сущности из таблицы
                         context.SaveChanges();
+                        //return;
                     }
                 }
             }
@@ -327,8 +343,12 @@ namespace Pticefabrica
 
             ReloadFunc2();
         }
-        private void Reload3(object sender, EventArgs e)
+        private void ReloadFunc3()
         {
+            if (comboBox3 == null)
+            {
+                return;
+            }
             string item = comboBox3.SelectedItem.ToString();
             listBox5.Items.Clear();
             ApplicationContext context = new ApplicationContext();
@@ -346,15 +366,15 @@ namespace Pticefabrica
                     date1 = date1.AddDays(-3);
                     if (DateTime.Compare(date, date1) >= 0 && parteg.FreeOrNotFree)
                     {
-                        listBox5.Items.Add($"Ждут распределения {parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo};");
+                        listBox5.Items.Add($"{parteg.ID}; Ждут распределения; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo};");
                     }
                     if (DateTime.Compare(date, date1) < 0 && parteg.FreeOrNotFree)
                     {
-                        listBox5.Items.Add($"Просрочка {parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo}; ");
+                        listBox5.Items.Add($"{parteg.ID}; Просрочка; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo}; ");
                     }
                     if (!parteg.FreeOrNotFree)
                     {
-                        listBox5.Items.Add($"Уже вылупились/Растут {parteg.ID}; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo}; ");
+                        listBox5.Items.Add($"{parteg.ID}; Уже вылупились/Растут; Дата: {parteg.DatePostEggs}; Количество: {parteg.Kolvo}; ");
                     }
                 }
             }
@@ -365,11 +385,11 @@ namespace Pticefabrica
                 {
                     if (partm.PtID != null)
                     {
-                        listBox5.Items.Add($"Растут/Выросли {partm.ID}; Дата: {partm.DataForm}; Количество: {partm.Kolvo}; {partm.TypeChicken}");
+                        listBox5.Items.Add($"{partm.ID}; Растут/Выросли; Дата: {partm.DataForm}; Количество: {partm.Kolvo}; {partm.TypeChicken}");
                     }
                     else
                     {
-                        listBox5.Items.Add($"Еще не в птичнике {partm.ID}; Дата: {partm.DataForm}; Количество: {partm.Kolvo}; {partm.TypeChicken}");
+                        listBox5.Items.Add($"{partm.ID}; Еще не в птичнике; Дата: {partm.DataForm}; Количество: {partm.Kolvo}; {partm.TypeChicken}");
                     }
 
                 }
@@ -382,11 +402,11 @@ namespace Pticefabrica
                 {
                     if (parteg.FreeOrNotFree)
                     {
-                        listBox5.Items.Add($"Ждут распределения {parteg.ID}; Дата: {parteg.DateForm}; Количество: {parteg.Kolvo}; {parteg.TypeChiсken}");
+                        listBox5.Items.Add($"{parteg.ID}; Ждут распределения; Дата: {parteg.DateForm}; Количество: {parteg.Kolvo}; {parteg.TypeChiсken}");
                     }
                     else
                     {
-                        listBox5.Items.Add($"Ушли в производство {parteg.ID}; Дата: {parteg.DateForm}; Количество: {parteg.Kolvo}; {parteg.TypeChiсken}");
+                        listBox5.Items.Add($"{parteg.ID}; Ушли в производство; Дата: {parteg.DateForm}; Количество: {parteg.Kolvo}; {parteg.TypeChiсken}");
 
                     }
                 }
@@ -399,15 +419,88 @@ namespace Pticefabrica
                 {
                     if (p.FreeOrNotFree)
                     {
-                        listBox5.Items.Add($"Готовы к сортировке {p.ID}; Дата: {p.DateForm}; Количество: {p.Kolvo};");
+                        listBox5.Items.Add($"{p.ID}; Готовы к сортировке; Дата: {p.DateForm}; Количество: {p.Kolvo};");
                     }
                     else
                     {
-                        listBox5.Items.Add($"Уже отсортированы {p.ID}; Дата: {p.DateForm}; Количество: {p.Kolvo};");
+                        listBox5.Items.Add($"{p.ID}; Уже отсортированы; Дата: {p.DateForm}; Количество: {p.Kolvo};");
 
                     }
                 }
             }
+        }
+        private void Reload3(object sender, EventArgs e)
+        {
+            ReloadFunc3();
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ApplicationContext context = new ApplicationContext();
+            if (listBox5.SelectedItem == null || comboBox3 == null)
+            {
+                PartLabel.Text = "Выберите партию для удаления.";
+                return;
+            }
+            string item = comboBox3.SelectedItem.ToString();
+            string label = listBox5.SelectedItem.ToString();
+
+            label = label.Substring(0, label.IndexOf(";"));
+
+            List<PartiyaEggsRodClass> a = context.PartiyaEggsRodClass.ToList().OrderBy(o => o.ID).ToList();
+            List<PartiyaMolodnyaka> b = context.PartiyaMolodnyaka.ToList().OrderBy(o => o.ID).ToList();
+            List<PartiyaVzrosloyChicken> c = context.PartiyaVzrosloyChicken.ToList().OrderBy(o => o.ID).ToList();
+            List<PartiyaEggs> d = context.PartiyaEggs.ToList().OrderBy(o => o.ID).ToList();
+            if (item == "Партии яиц родительского стада")
+            {
+                foreach (var aa in a)
+                {
+                    if (aa.ID.ToString() == label)
+                    {
+                        context.Remove(context.PartiyaEggsRodClass.Single(s => s.ID == aa.ID)); // Удаление сущности из таблицы
+                        context.SaveChanges();
+                        //return;
+                    }
+                }
+            }
+            if (item == "Партии молодняка")
+            {
+                foreach (var bb in b)
+                {
+                    if (bb.ID.ToString() == label)
+                    {
+                        context.Remove(context.PartiyaMolodnyaka.Single(s => s.ID == bb.ID)); // Удаление сущности из таблицы
+                        context.SaveChanges();
+                        //return;
+                    }
+                }
+            }
+            if (item == "Партии взрослой птицы")
+            {
+                foreach (var cc in c)
+                {
+                    if (cc.ID.ToString() == label)
+                    {
+                        context.Remove(context.PartiyaVzrosloyChicken.Single(s => s.ID == cc.ID)); // Удаление сущности из таблицы
+                        context.SaveChanges();
+                        //return;
+                    }
+                }
+            }
+            if (item == "Партии неотсортированных яиц")
+            {
+                foreach (var cc in d)
+                {
+                    if (cc.ID.ToString() == label)
+                    {
+                        context.Remove(context.PartiyaEggs.Single(s => s.ID == cc.ID)); // Удаление сущности из таблицы
+                        context.SaveChanges();
+                        //return;
+                    }
+                }
+            }
+            PartLabel.Text = $"{item} №{label} удален.";
+
+            ReloadFunc3();
         }
     }
 }

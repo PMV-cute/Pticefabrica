@@ -6,6 +6,7 @@ namespace WinFormsLibrary1
 {
     public class ApplicationContext : DbContext
     {
+        public DbSet<Pticefabrica> pticefabrica { get; set; }
         public DbSet<CehProizvMelanja> CehProizvMelanja { get; set; }
         public DbSet<CehSortEggs> CehSortEggs { get; set; }
         public DbSet<Chicken> Chicken { get; set; }
@@ -27,7 +28,7 @@ namespace WinFormsLibrary1
         protected override void OnModelCreating(ModelBuilder modelBuilder) 
         {
             //modelBuilder.Entity<Broyler>().HasIndex(s => s.TypeChiсken).IsUnique(); //Работает и делает поля уникальными
-            // Значение по умолчанию, можно сделать и вызов функции но я хз как (getdate())
+            // Значение по умолчанию, можно сделать и вызов функции, но я хз как (getdate())
             modelBuilder.Entity<Incubator>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);
 
             modelBuilder.Entity<PartiyaEggsRodClass>().Property(s => s.FreeOrNotFree).HasDefaultValue(true);

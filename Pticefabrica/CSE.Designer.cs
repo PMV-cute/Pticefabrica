@@ -76,9 +76,9 @@ namespace Pticefabrica
             // 
             this.FormCSE.Location = new System.Drawing.Point(12, 398);
             this.FormCSE.Name = "FormCSE";
-            this.FormCSE.Size = new System.Drawing.Size(201, 23);
+            this.FormCSE.Size = new System.Drawing.Size(225, 23);
             this.FormCSE.TabIndex = 91;
-            this.FormCSE.Text = "Формирование товарных яиц";
+            this.FormCSE.Text = "Сформировать партии товарных яиц";
             this.FormCSE.UseVisualStyleBackColor = true;
             this.FormCSE.Click += new System.EventHandler(this.FormCSE_Click);
             // 

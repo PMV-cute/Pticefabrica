@@ -43,6 +43,8 @@ namespace Pticefabrica
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.PartLabel = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -129,13 +131,12 @@ namespace Pticefabrica
             this.CehLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CehLabel.Location = new System.Drawing.Point(8, 358);
             this.CehLabel.Name = "CehLabel";
-            this.CehLabel.Size = new System.Drawing.Size(49, 21);
+            this.CehLabel.Size = new System.Drawing.Size(0, 21);
             this.CehLabel.TabIndex = 6;
-            this.CehLabel.Text = "asdas";
             // 
             // CehBtn
             // 
-            this.CehBtn.Location = new System.Drawing.Point(8, 322);
+            this.CehBtn.Location = new System.Drawing.Point(8, 312);
             this.CehBtn.Name = "CehBtn";
             this.CehBtn.Size = new System.Drawing.Size(196, 23);
             this.CehBtn.TabIndex = 5;
@@ -154,7 +155,7 @@ namespace Pticefabrica
             "УПК"});
             this.comboBox1.Location = new System.Drawing.Point(8, 3);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 23);
+            this.comboBox1.Size = new System.Drawing.Size(196, 23);
             this.comboBox1.TabIndex = 1;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.Relaod1);
             // 
@@ -164,7 +165,7 @@ namespace Pticefabrica
             this.listBox1.ItemHeight = 15;
             this.listBox1.Location = new System.Drawing.Point(6, 32);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(787, 289);
+            this.listBox1.Size = new System.Drawing.Size(787, 274);
             this.listBox1.TabIndex = 0;
             // 
             // tabPage2
@@ -187,9 +188,8 @@ namespace Pticefabrica
             this.ProductLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ProductLabel.Location = new System.Drawing.Point(8, 348);
             this.ProductLabel.Name = "ProductLabel";
-            this.ProductLabel.Size = new System.Drawing.Size(49, 21);
+            this.ProductLabel.Size = new System.Drawing.Size(0, 21);
             this.ProductLabel.TabIndex = 4;
-            this.ProductLabel.Text = "asdas";
             // 
             // ProdBtn
             // 
@@ -210,7 +210,7 @@ namespace Pticefabrica
             "Партии товарных яиц"});
             this.comboBox2.Location = new System.Drawing.Point(8, 3);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(151, 23);
+            this.comboBox2.Size = new System.Drawing.Size(196, 23);
             this.comboBox2.TabIndex = 2;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.Reload2);
             // 
@@ -225,6 +225,8 @@ namespace Pticefabrica
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.PartLabel);
+            this.tabPage3.Controls.Add(this.button2);
             this.tabPage3.Controls.Add(this.comboBox3);
             this.tabPage3.Controls.Add(this.listBox5);
             this.tabPage3.Location = new System.Drawing.Point(4, 24);
@@ -233,6 +235,25 @@ namespace Pticefabrica
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Партии";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // PartLabel
+            // 
+            this.PartLabel.AutoSize = true;
+            this.PartLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PartLabel.Location = new System.Drawing.Point(8, 354);
+            this.PartLabel.Name = "PartLabel";
+            this.PartLabel.Size = new System.Drawing.Size(0, 21);
+            this.PartLabel.TabIndex = 4;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(8, 313);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(144, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Удалить партию";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // comboBox3
             // 
@@ -244,7 +265,7 @@ namespace Pticefabrica
             "Партии неотсортированных яиц"});
             this.comboBox3.Location = new System.Drawing.Point(8, 4);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(187, 23);
+            this.comboBox3.Size = new System.Drawing.Size(215, 23);
             this.comboBox3.TabIndex = 2;
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.Reload3);
             // 
@@ -254,7 +275,7 @@ namespace Pticefabrica
             this.listBox5.ItemHeight = 15;
             this.listBox5.Location = new System.Drawing.Point(3, 33);
             this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(787, 349);
+            this.listBox5.Size = new System.Drawing.Size(787, 274);
             this.listBox5.TabIndex = 1;
             // 
             // tabPage4
@@ -477,6 +498,7 @@ namespace Pticefabrica
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
@@ -525,5 +547,7 @@ namespace Pticefabrica
         private System.Windows.Forms.Label ProductLabel;
         private System.Windows.Forms.Label CehLabel;
         private System.Windows.Forms.Button CehBtn;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label PartLabel;
     }
 }

@@ -62,9 +62,9 @@ namespace Pticefabrica
             // 
             this.FormKPE.Location = new System.Drawing.Point(13, 415);
             this.FormKPE.Name = "FormKPE";
-            this.FormKPE.Size = new System.Drawing.Size(201, 23);
+            this.FormKPE.Size = new System.Drawing.Size(222, 23);
             this.FormKPE.TabIndex = 79;
-            this.FormKPE.Text = "Отправка на сортировку";
+            this.FormKPE.Text = "Сформировать партию яиц";
             this.FormKPE.UseVisualStyleBackColor = true;
             this.FormKPE.Click += new System.EventHandler(this.FormKPE_Click);
             // 
@@ -72,9 +72,9 @@ namespace Pticefabrica
             // 
             this.LoadUPK.Location = new System.Drawing.Point(13, 332);
             this.LoadUPK.Name = "LoadUPK";
-            this.LoadUPK.Size = new System.Drawing.Size(201, 23);
+            this.LoadUPK.Size = new System.Drawing.Size(222, 23);
             this.LoadUPK.TabIndex = 76;
-            this.LoadUPK.Text = "Отправка партий птиц в комплекс";
+            this.LoadUPK.Text = "Отправить партию птиц в комплекс";
             this.LoadUPK.UseVisualStyleBackColor = true;
             this.LoadUPK.Click += new System.EventHandler(this.LoadUPK_Click);
             // 

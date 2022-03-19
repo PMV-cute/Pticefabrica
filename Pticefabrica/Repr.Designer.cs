@@ -83,7 +83,7 @@ namespace Pticefabrica
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(351, 337);
+            this.label6.Location = new System.Drawing.Point(451, 119);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(0, 15);
             this.label6.TabIndex = 45;
@@ -91,7 +91,7 @@ namespace Pticefabrica
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(351, 285);
+            this.label5.Location = new System.Drawing.Point(451, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(0, 15);
             this.label5.TabIndex = 44;

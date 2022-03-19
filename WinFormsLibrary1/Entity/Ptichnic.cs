@@ -22,10 +22,5 @@ namespace WinFormsLibrary1.Entity
         public ICollection<PartiyaMolodnyaka> PartiyaMolodnyakas { get; set; }
         [ForeignKey("PtID2")]
         public ICollection<PartiyaVzrosloyChicken> PartiyaVzrosloyChickens { get; set; }
-        public void TimerGrow() { }
-
-        public void FormPartii() { }
-
-        public void VipuscPartii() { }
     }
 }

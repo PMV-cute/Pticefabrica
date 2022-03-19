@@ -77,9 +77,9 @@ namespace Pticefabrica
             // 
             this.button5.Location = new System.Drawing.Point(519, 337);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(187, 23);
+            this.button5.Size = new System.Drawing.Size(229, 23);
             this.button5.TabIndex = 53;
-            this.button5.Text = "Отправка птиц в птичник";
+            this.button5.Text = "Сформировать партии молодняка";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
