@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/database.png
+/FabricatExcel.png
+/Prezentatsia_Pticefabrica.pptx
+/uml.png

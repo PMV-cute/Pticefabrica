@@ -14,7 +14,7 @@ namespace WinFormsLibrary1.Entity
         public int? RepID { get; set; }
         public int? IncID2 { get; set; }
 
-        //public Reproductor Reproductor { get; set; }
+        public Reproductor Reproductor { get; set; }
         public Incubator Incubator { get; set; }
     }
 }

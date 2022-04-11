@@ -22,10 +22,5 @@ namespace WinFormsLibrary1.Entity
         public ICollection<PartiyaTovarnEggs> PartiyaTovarnEggses { get; set; }
         [ForeignKey("CehSortID3")]
         public ICollection<OtbrakovkaEggs> OtbrakovkaEggses { get; set; }
-
-        public void Otbracovka() { }
-        public void FormPartii() { }
-        public void Upacovca() { }
-        public void VipuscPartii() { }
     }
 }

@@ -20,6 +20,14 @@ namespace WinFormsLibrary1
                     return;
                 }
             }
+            Pticefabrica pticefabrica = new Pticefabrica
+            {
+                Addres = "г. Киров Кировская обл. ул. Московская д. 1.",
+                Name = "Птицефабрика №1",
+                Number = 1,
+            };
+            context.pticefabrica.Add(pticefabrica);
+            context.SaveChanges();
             Reproductor reproductor = new Reproductor
             {
                 KolvoB = 200,

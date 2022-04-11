@@ -41,7 +41,7 @@ namespace Pticefabrica
                 else OtchetLabel.Text = "Отчет не сформирован!";
             }
             else OtchetLabel.Text = "Проверьте правильность введенных данных";
-        }
+        }   
         private void button1_Click(object sender, EventArgs e)
         {
             ApplicationContext context = new ApplicationContext();
